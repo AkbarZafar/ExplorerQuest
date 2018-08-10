@@ -26,17 +26,17 @@ public class MainActivity extends AppCompatActivity {
             TextView incorrect=(TextView)findViewById(R.id.textView);
         EditText user=(EditText)findViewById(R.id.editText);
             String value = user.getText().toString();
-            if (value.equals("Username")|| TextUtils.isEmpty(value)){
+            if (TextUtils.isEmpty(value)){
                 user.setText("");
                 incorrect.setText("Invalid username.");
 
             }else{
+                Integer HP=100, mula=0;
                 Intent send = new Intent(getApplicationContext(), gamescreen.class);
-                send.putExtra("value",value.toString());
+                send.putExtra("value",value);
+                send.putExtra("HP",100);
+                send.putExtra("mula",0);
                 startActivity(send);
-
-                Intent begin=new Intent(this,gamescreen.class);
-                startActivity(begin);
             }
     }
 }
