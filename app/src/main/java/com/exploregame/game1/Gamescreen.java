@@ -2,20 +2,30 @@ package com.exploregame.game1;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.TextView;import android.content.SharedPreferences;
-import android.text.TextUtils;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.view.View;
-import android.widget.Button;
 import android.content.Intent;
-import android.widget.EditText;
+
+import java.io.IOException;
+
+import pl.droidsonroids.gif.GifDrawable;
 
 
-public class gamescreen extends AppCompatActivity {
+public class Gamescreen extends AppCompatActivity {
 String user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gamescreen);
+
+        try{
+            GifDrawable warrior=new GifDrawable(getResources(), R.drawable.warrioridle);
+            ImageView gifhold=findViewById(R.id.idle);
+            gifhold.setImageDrawable(warrior);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
 
         user= getIntent().getStringExtra("value");
         Integer money=getIntent().getIntExtra("mula",0);
@@ -32,11 +42,15 @@ String user;
 
         TextView hp=(TextView)findViewById(R.id.HP);
         hp.setText(""+HP);
+
     }
 
     public void backpack(View x){
-        Intent bag=new Intent(getApplicationContext(), bag.class);
+        Intent bag=new Intent(getApplicationContext(), Bag.class);
         bag.putExtra("user", user);
         startActivity(bag);
     }
+     public void explore(View x){
+
+     }
 }
