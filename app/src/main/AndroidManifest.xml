@@ -7,7 +7,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:label="Adventure Game">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Gamescreen" />
-        <activity android:name=".Bag"></activity>
+        <activity android:name=".Bag" />
+        <activity android:name=".Settings"></activity>
     </application>
 
 </manifest>

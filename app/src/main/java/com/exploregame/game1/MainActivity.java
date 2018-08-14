@@ -1,5 +1,6 @@
 package com.exploregame.game1;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,30 +12,49 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
+    String user;
+    int HP, money,level,experience;
         @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        sharedPreferences=this.getPreferences(Context.MODE_PRIVATE);
+        user=sharedPreferences.getString("user",null);
 
+        HP=sharedPreferences.getInt("HP",100);
+        money=sharedPreferences.getInt("money",0);
+        level=sharedPreferences.getInt("level",1);
+        experience=sharedPreferences.getInt("experience",0);
+        if (user!=null){
+            sendinfo(money,HP,level,experience);
+        }
         }
 
     public void begin(View x){
             TextView incorrect=(TextView)findViewById(R.id.textView);
-        EditText user=(EditText)findViewById(R.id.editText);
-            String value = user.getText().toString();
-            if (TextUtils.isEmpty(value)){
-                user.setText("");
+        EditText username=(EditText)findViewById(R.id.editText);
+            user = username.getText().toString();
+            if (TextUtils.isEmpty(user)){
+                username.setText("");
                 incorrect.setText("Invalid username.");
 
             }else{
-                Integer HP=100, mula=0;
-                Intent send = new Intent(getApplicationContext(), Gamescreen.class);
-                send.putExtra("value",value);
-                send.putExtra("HP",100);
-                send.putExtra("mula",0);
-                startActivity(send);
-                finish();
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("user",user);
+                editor.commit();
+
+                sendinfo(money,HP,level,experience);
             }
+    }
+    public void sendinfo(int money,int HP,int level, int experience){
+        Intent send = new Intent(getApplicationContext(), Gamescreen.class);
+        send.putExtra("user",user);
+        send.putExtra("HP",HP);
+        send.putExtra("money",money);
+        send.putExtra("level",level);
+        send.putExtra("experience",experience);
+        startActivity(send);
+        finish();
     }
 }
