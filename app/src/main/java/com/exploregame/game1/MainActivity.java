@@ -2,6 +2,7 @@ package com.exploregame.game1;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -19,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        sharedPreferences=this.getPreferences(Context.MODE_PRIVATE);
+            sharedPreferences= PreferenceManager.getDefaultSharedPreferences(this);
         user=sharedPreferences.getString("user",null);
 
         HP=sharedPreferences.getInt("HP",100);

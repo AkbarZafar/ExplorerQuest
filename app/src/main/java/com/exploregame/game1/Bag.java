@@ -35,7 +35,8 @@ public class Bag extends AppCompatActivity {
     }
 
     public void back(View x){
-
+        Intent cross=new Intent(getApplicationContext(),Gamescreen.class);
+        startActivity(cross);
         finish();
     }
 }

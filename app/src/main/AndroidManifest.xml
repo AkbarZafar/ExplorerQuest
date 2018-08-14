@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".Gamescreen" />
         <activity android:name=".Bag" />
-        <activity android:name=".Settings"></activity>
+        <activity android:name=".Settings" />
+        <activity android:name=".Terrain"></activity>
     </application>
 
 </manifest>
