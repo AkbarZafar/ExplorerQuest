@@ -33,8 +33,7 @@
         android:onClick="explore"
         android:text="Explore"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.031"
+        app:layout_constraintEnd_toStartOf="@+id/inventory"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.985" />
@@ -64,10 +63,10 @@
         android:text="Backpack"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.963"
+        app:layout_constraintHorizontal_bias="0.958"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.985" />
+        app:layout_constraintVertical_bias="0.983" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -216,5 +215,18 @@
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.015" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="78dp"
+        android:layout_height="74dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/level"
+        app:layout_constraintEnd_toEndOf="@+id/level"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/level"
+        app:layout_constraintTop_toTopOf="@+id/level"
+        app:layout_constraintVertical_bias="0.238"
+        app:srcCompat="@drawable/circle" />
 
 </android.support.constraint.ConstraintLayout>

@@ -17,10 +17,6 @@ import android.support.v7.app.AlertDialog;
 
 
 
-
-
-
-
 public class Settings extends AppCompatActivity {
 
     public Button confirm;
@@ -54,6 +50,7 @@ public class Settings extends AppCompatActivity {
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i){
+
                         Intent reset=new Intent(getApplicationContext(),MainActivity.class);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.clear();

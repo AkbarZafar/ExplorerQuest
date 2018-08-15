@@ -35,13 +35,26 @@ public class Gamescreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gamescreen);
 
+        warriorwalkon();
         extract();
         gif();
         setup();
 
     }
 
+    public void warriorwalkon(){
+        ImageView character=(ImageView)findViewById(R.id.idle);
+        TranslateAnimation setpostion=new TranslateAnimation(1500,0,0,0);
 
+        if (randoms!=null) {
+            setpostion.setDuration((randoms)+1* 3100);
+        }else{
+            setpostion.setDuration(2500);
+        }
+        setpostion.setFillAfter(true);
+        character.startAnimation(setpostion);
+
+    }
 
     public void gif(){
         try{
@@ -86,10 +99,13 @@ public class Gamescreen extends AppCompatActivity {
     }
 
      public void explore(View view){
+
          Button press=findViewById(R.id.explore);
          press.setEnabled(false);
+
          Button bagpress=findViewById(R.id.inventory);
          bagpress.setEnabled(false);
+
          ImageButton presssettings=findViewById(R.id.settingsbutton);
          presssettings.setEnabled(false);
 
@@ -112,7 +128,6 @@ public class Gamescreen extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-
                 randomer();
             }
 
@@ -120,74 +135,24 @@ public class Gamescreen extends AppCompatActivity {
             public void onAnimationRepeat(Animation animation) {}
         });
     }
+
     public void randomer(){
         Random rand=new Random();
         randoms=rand.nextInt(5)+1;
 
-        int events=rand.nextInt(6);
-
         background();
-
-        switch (events){
-            case 0:{
-                
-            break;}
-            case 1:{
-
-                break;}
-            case 2:{
-
-                break;}
-            case 3:{
-
-                break;}
-            case 4:{
-
-                break;}
-            case 5:{
-
-                break;}
-        }
-
-        resetpage();
-
     }
 
     public void background(){
         Intent explorer=new Intent(getApplicationContext(),Terrain.class);
+
+        Intent itemfound=new Intent(getApplicationContext(),Found.class);
+        startActivity(itemfound);
+
         for (int i=0;i<=randoms;i++){
             startActivity(explorer);
         }
-    }
-
-    public void resetpage(){
-
-        Button press=findViewById(R.id.explore);
-        press.setEnabled(true);
-        Button bagpress=findViewById(R.id.inventory);
-        bagpress.setEnabled(true);
-        ImageButton presssettings=findViewById(R.id.settingsbutton);
-        presssettings.setEnabled(true);
-
-
-        ImageView character=(ImageView)findViewById(R.id.idle);
-        TranslateAnimation setpostion=new TranslateAnimation(1500,0,0,0);
-        setpostion.setDuration((randoms+1)*3100);
-        setpostion.setFillAfter(true);
-        character.startAnimation(setpostion);
-
-        setpostion.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {}
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                //image.setX(490);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {}
-        });
+        finish();
     }
 
      public void settings(View y){
