@@ -20,7 +20,8 @@
         <activity android:name=".Bag" />
         <activity android:name=".Settings" />
         <activity android:name=".Terrain" />
-        <activity android:name=".Found"></activity>
+        <activity android:name=".Found" />
+        <activity android:name=".Death"></activity>
     </application>
 
 </manifest>

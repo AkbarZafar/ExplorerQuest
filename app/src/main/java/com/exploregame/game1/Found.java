@@ -119,10 +119,15 @@ public class Found extends AppCompatActivity {
     }
 
     public void OK(View X){
-        Intent OK=new Intent(getApplicationContext(),Gamescreen.class);
-        OK.putExtra("HP",HP);
-        OK.putExtra("money",money);
-        startActivity(OK);
+        if (HP<=0){
+         Intent death=new Intent(getApplicationContext(),Death.class);
+         startActivity(death);
+        }else {
+            Intent OK = new Intent(getApplicationContext(), Gamescreen.class);
+            OK.putExtra("HP", HP);
+            OK.putExtra("money", money);
+            startActivity(OK);
+        }
         finish();
     }
 }
