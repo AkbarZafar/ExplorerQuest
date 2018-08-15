@@ -19,7 +19,8 @@
         <activity android:name=".Gamescreen" />
         <activity android:name=".Bag" />
         <activity android:name=".Settings" />
-        <activity android:name=".Terrain"></activity>
+        <activity android:name=".Terrain" />
+        <activity android:name=".Found"></activity>
     </application>
 
 </manifest>

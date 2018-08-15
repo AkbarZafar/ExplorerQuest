@@ -8,6 +8,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 
 import java.io.IOException;
+import java.util.Random;
 
 import pl.droidsonroids.gif.GifDrawable;
 
@@ -16,21 +17,50 @@ public class Terrain extends AppCompatActivity {
 
     ImageView image;
 
+    int randoms;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_terrain);
 
         gif();
+        backgroundset();
         walker();
-
     }
 
+    public void backgroundset(){
+
+
+        ImageView background=(ImageView)findViewById(R.id.background);
+
+        Random rand=new Random();
+
+        int i=rand.nextInt(5);
+
+        switch (i){
+            case 0:{
+                background.setImageResource(R.drawable.mountains_grassnrock);
+            break;}
+            case 1:{
+                background.setImageResource(R.drawable.forest);
+                break;}
+            case 2:{
+                background.setImageResource(R.drawable.mountains_rock);
+                break;}
+            case 3:{
+                background.setImageResource(R.drawable.mountains_winter);
+                break;}
+            case 4:{
+                background.setImageResource(R.drawable.pyramids);
+                break;}
+
+        }
+    }
 
     public void walker(){
 
         image = findViewById(R.id.idle);
-        Animation walk = new TranslateAnimation(0, -1500, 0, 0);
+        Animation walk = new TranslateAnimation(0, -1700, 0, 0);
         walk.setDuration(2000);
 
         image.startAnimation(walk);
@@ -42,7 +72,7 @@ public class Terrain extends AppCompatActivity {
             @Override
             public void onAnimationEnd(Animation animation) {
                 image.setX(-1000);
-                cross();
+                finish();
             }
 
             @Override
@@ -59,11 +89,6 @@ public class Terrain extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-    public void cross(){
-        Intent backer=new Intent(getApplicationContext(),Gamescreen.class);
 
-        startActivity(backer);
-        finish();
-    }
 
 }

@@ -1,10 +1,12 @@
 package com.exploregame.game1;
 
+import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.View;
@@ -17,12 +19,14 @@ import org.w3c.dom.Text;
 import java.io.IOException;
 import java.util.Random;
 
+import javax.xml.datatype.Duration;
+
 import pl.droidsonroids.gif.GifDrawable;
 
 public class Gamescreen extends AppCompatActivity {
 
     String user;
-    Integer HP, money, level, experience;
+    Integer HP, money, level, experience,randoms;
     TranslateAnimation walk;
     ImageView image;
 
@@ -86,31 +90,19 @@ public class Gamescreen extends AppCompatActivity {
          press.setEnabled(false);
          Button bagpress=findViewById(R.id.inventory);
          bagpress.setEnabled(false);
+         ImageButton presssettings=findViewById(R.id.settingsbutton);
+         presssettings.setEnabled(false);
 
          walker();
      }
 
-     public void event(){
-
-         Random number=new Random();
-         int random=number.nextInt(1);
-
-         Intent explore=new Intent(getApplicationContext(),Terrain.class);
-
-         switch (random){
-             case (0):{
-                 startActivity(explore);
-             break;}
-         }
-         explore.putExtra("random",random);
-         finish();
-     }
     public void walker() {
 
 
         image = findViewById(R.id.idle);
         walk = new TranslateAnimation(0, -1000, 0, 0);
         walk.setDuration(1500);
+        walk.setFillAfter(true);
 
         image.startAnimation(walk);
 
@@ -120,17 +112,83 @@ public class Gamescreen extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                image.setX(-1000);
-                event();
 
+                randomer();
             }
 
             @Override
             public void onAnimationRepeat(Animation animation) {}
         });
     }
+    public void randomer(){
+        Random rand=new Random();
+        randoms=rand.nextInt(5)+1;
+
+        int events=rand.nextInt(6);
+
+        background();
+
+        switch (events){
+            case 0:{
+                
+            break;}
+            case 1:{
+
+                break;}
+            case 2:{
+
+                break;}
+            case 3:{
+
+                break;}
+            case 4:{
+
+                break;}
+            case 5:{
+
+                break;}
+        }
+
+        resetpage();
+
+    }
+
+    public void background(){
+        Intent explorer=new Intent(getApplicationContext(),Terrain.class);
+        for (int i=0;i<=randoms;i++){
+            startActivity(explorer);
+        }
+    }
+
+    public void resetpage(){
+
+        Button press=findViewById(R.id.explore);
+        press.setEnabled(true);
+        Button bagpress=findViewById(R.id.inventory);
+        bagpress.setEnabled(true);
+        ImageButton presssettings=findViewById(R.id.settingsbutton);
+        presssettings.setEnabled(true);
 
 
+        ImageView character=(ImageView)findViewById(R.id.idle);
+        TranslateAnimation setpostion=new TranslateAnimation(1500,0,0,0);
+        setpostion.setDuration((randoms+1)*3100);
+        setpostion.setFillAfter(true);
+        character.startAnimation(setpostion);
+
+        setpostion.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {}
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                //image.setX(490);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {}
+        });
+    }
 
      public void settings(View y){
         Intent settings=new Intent(getApplicationContext(),Settings.class);
