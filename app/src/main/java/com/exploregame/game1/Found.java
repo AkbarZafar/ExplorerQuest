@@ -15,7 +15,7 @@ public class Found extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
 
-    Integer HP,money;
+    Integer HP,money,rawmeat,bread,apple;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,33 +32,40 @@ public class Found extends AppCompatActivity {
     public void unload(){
         HP=sharedPreferences.getInt("HP",100);
         money=sharedPreferences.getInt("money",0);
+        bread=sharedPreferences.getInt("bread",0);
+        apple=sharedPreferences.getInt("apple",0);
+        rawmeat=sharedPreferences.getInt("rawmeat",0);
     }
 
     public void updater(){
         SharedPreferences.Editor editor= sharedPreferences.edit();
         editor.putInt("HP",HP);
         editor.putInt("money",money);
+        editor.putInt("bread",bread);
+        editor.putInt("apple",apple );
+        editor.putInt("rawmeat",rawmeat);
         editor.commit();
     }
 
     public void event(){
         Random random=new Random();
-        //int events=random.nextInt(5);
+        int events=random.nextInt(3);
 
-        int events=2;
+        //int events=3;
         switch (events){
-            case 0:{
+            case 0:
+            case 1:{
                 itemfind();
                 break;}
-            case 1:{
+            //case 2:{
                 //monster
-                break;}
+                //break;}
             case 2:{
                 ditch();
                 break;}
-            case 3:{
+            //case 4:{
                 //hut
-                break;}
+                //break;}
             default:{
 
             }
@@ -87,45 +94,55 @@ public class Found extends AppCompatActivity {
         TextView foundorlost=(TextView)findViewById(R.id.youfound);
         foundorlost.setText("You Found:");
 
+
         Random rander=new Random();
-        //int i=rander.nextInt(5);
-        int i=2;
+        int i=rander.nextInt(5);
+        //int i=2;
+
         switch (i){
             case 0:{
-                //rawmeat
+                item.setImageResource(R.drawable.rawmeat);
+
+                rawmeat=rawmeat+1;
                 founditem.setText("Raw meat");
                 break;}
             case 1:{
-                //apple
+                item.setImageResource(R.drawable.appleimage);
+
+                apple=apple+1;
                 founditem.setText("An apple");
                 break;}
             case 2:{
-                //moneysmall
+                item.setImageResource(R.drawable.goldbag);
+
                 int c=rander.nextInt(25)+2;
                 founditem.setText(c+" Gold");
                 money=c+money;
                 break;}
             case 3:{
-                //moneybigrange
+                item.setImageResource(R.drawable.goldbag);
+
                 int c=rander.nextInt(45)+2;
                 founditem.setText(c+" Gold");
                 money=c+money;
                 break;}
             case 4:{
-                //breadinabag
+                item.setImageResource(R.drawable.breadpicture);
+
+                bread=bread+1;
                 founditem.setText("A loaf of bread");
                 break;}
         }
     }
 
     public void OK(View X){
+
+
         if (HP<=0){
          Intent death=new Intent(getApplicationContext(),Death.class);
          startActivity(death);
         }else {
             Intent OK = new Intent(getApplicationContext(), Gamescreen.class);
-            OK.putExtra("HP", HP);
-            OK.putExtra("money", money);
             startActivity(OK);
         }
         finish();

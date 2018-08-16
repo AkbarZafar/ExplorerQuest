@@ -21,7 +21,8 @@
         <activity android:name=".Settings" />
         <activity android:name=".Terrain" />
         <activity android:name=".Found" />
-        <activity android:name=".Death"></activity>
+        <activity android:name=".Death" />
+        <activity android:name=".Levelup"></activity>
     </application>
 
 </manifest>

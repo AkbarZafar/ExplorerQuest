@@ -30,6 +30,7 @@ public class Settings extends AppCompatActivity {
         sharedPreferences= PreferenceManager.getDefaultSharedPreferences(this);
 
         confirm = (Button) findViewById(R.id.resetgame);
+
         confirm.setOnClickListener(new View.OnClickListener() {
 
             @Override

@@ -1,6 +1,8 @@
 package com.exploregame.game1;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.animation.Animation;
@@ -25,8 +27,9 @@ import pl.droidsonroids.gif.GifDrawable;
 
 public class Gamescreen extends AppCompatActivity {
 
+    SharedPreferences sharedPreferences;
     String user;
-    Integer HP, money, level, experience,randoms;
+    Integer HP, money, level, experience,randoms,apple,bread,rawmeat;
     TranslateAnimation walk;
     ImageView image;
 
@@ -35,11 +38,33 @@ public class Gamescreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gamescreen);
 
+        sharedPreferences= PreferenceManager.getDefaultSharedPreferences(this);
+
         warriorwalkon();
         extract();
+
+        levelcheck();
         gif();
         setup();
 
+    }
+
+    public void levelcheck(){
+        if (experience>=100){
+            level=level+1;
+            experience=experience-100;
+
+            SharedPreferences.Editor editor=sharedPreferences.edit();
+            editor.putInt("experience",experience);
+            editor.putInt("level",level);
+            editor.commit();
+
+            Intent levelup=new Intent(getApplicationContext(),Levelup.class);
+            startActivity(levelup);
+            finish();
+        }else{
+
+        }
     }
 
     public void warriorwalkon(){
@@ -49,7 +74,7 @@ public class Gamescreen extends AppCompatActivity {
         if (randoms!=null) {
             setpostion.setDuration((randoms)+1* 3100);
         }else{
-            setpostion.setDuration(2500);
+            setpostion.setDuration(1500);
         }
         setpostion.setFillAfter(true);
         character.startAnimation(setpostion);
@@ -84,16 +109,18 @@ public class Gamescreen extends AppCompatActivity {
     }
 
     public void extract(){
-         user = getIntent().getStringExtra("user");
-         money = getIntent().getIntExtra("money", 0);
-         HP = getIntent().getIntExtra("HP", 100);
-         level=getIntent().getIntExtra("level",1);
-         experience=getIntent().getIntExtra("experience",0);
+        user=sharedPreferences.getString("user",user);
+        HP=sharedPreferences.getInt("HP",100);
+        money=sharedPreferences.getInt("money",0);
+        level=sharedPreferences.getInt("level",1);
+        experience=sharedPreferences.getInt("experience",0);
+        apple=sharedPreferences.getInt("apple",0);
+        rawmeat=sharedPreferences.getInt("rawmeat",0);
+        bread=sharedPreferences.getInt("bread",0);
     }
 
     public void backpack(View x){
         Intent bag=new Intent(getApplicationContext(), Bag.class);
-        bag.putExtra("user", user);
         startActivity(bag);
         finish();
     }
@@ -117,7 +144,7 @@ public class Gamescreen extends AppCompatActivity {
 
         image = findViewById(R.id.idle);
         walk = new TranslateAnimation(0, -1000, 0, 0);
-        walk.setDuration(1500);
+        walk.setDuration(1000);
         walk.setFillAfter(true);
 
         image.startAnimation(walk);
@@ -138,7 +165,7 @@ public class Gamescreen extends AppCompatActivity {
 
     public void randomer(){
         Random rand=new Random();
-        randoms=rand.nextInt(5)+1;
+        randoms=rand.nextInt(3);
 
         background();
     }
