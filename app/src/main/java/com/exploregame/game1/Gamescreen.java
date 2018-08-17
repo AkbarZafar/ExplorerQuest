@@ -74,7 +74,7 @@ public class Gamescreen extends AppCompatActivity {
         if (randoms!=null) {
             setpostion.setDuration((randoms)+1* 3100);
         }else{
-            setpostion.setDuration(1500);
+            setpostion.setDuration(1000);
         }
         setpostion.setFillAfter(true);
         character.startAnimation(setpostion);
