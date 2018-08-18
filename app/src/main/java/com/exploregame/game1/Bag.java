@@ -22,7 +22,7 @@ import pl.droidsonroids.gif.GifDrawable;
 public class Bag extends AppCompatActivity {
 
     String user;
-    Integer rawmeat, bread, apple, experience, setter, HP;
+    Integer rawmeat, bread, apple, experience, setter, HP,maxhp;
 
     SharedPreferences sharedPreferences;
     @Override
@@ -41,7 +41,7 @@ public class Bag extends AppCompatActivity {
 
     public void present(){
         TextView health=(TextView)findViewById(R.id.HP);
-        health.setText(""+HP);
+        health.setText(HP+"/"+maxhp);
 
         TextView username=(TextView)findViewById(R.id.Backpack);
         username.setText(user+"'s Backpack");
@@ -136,7 +136,7 @@ public class Bag extends AppCompatActivity {
         Random rander=new Random();
         int expgain=rander.nextInt(7)+5;
 
-        if(HP<100){
+        if(HP<maxhp){
 
         switch (setter){
             case 1:{
@@ -172,8 +172,8 @@ public class Bag extends AppCompatActivity {
         }
 
 
-        if (HP>100){
-            HP=100;
+        if (HP>maxhp){
+            HP=maxhp;
         }
 
         TextView hprestore=(TextView)findViewById(R.id.result);
@@ -195,6 +195,7 @@ public class Bag extends AppCompatActivity {
         apple=sharedPreferences.getInt("apple",0);
         experience=sharedPreferences.getInt("experience",0);
         HP=sharedPreferences.getInt("HP",100);
+        maxhp=sharedPreferences.getInt("maxhp",100);
     }
 
     public void gif(){
@@ -218,11 +219,8 @@ public class Bag extends AppCompatActivity {
     }
 
     public void back(View x){
-
         update();
 
-        Intent cross=new Intent(getApplicationContext(),Gamescreen.class);
-        startActivity(cross);
         finish();
     }
 }

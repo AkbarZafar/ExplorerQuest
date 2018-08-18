@@ -16,8 +16,6 @@ import pl.droidsonroids.gif.GifDrawable;
 public class Terrain extends AppCompatActivity {
 
     ImageView image;
-
-    int randoms;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

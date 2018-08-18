@@ -22,6 +22,22 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/environment" />
 
+    <ImageView
+        android:id="@+id/idle"
+        android:layout_width="218dp"
+        android:layout_height="235dp"
+        android:layout_marginBottom="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/warrioridle" />
+
     <Button
         android:id="@+id/explore"
         android:layout_width="172dp"
@@ -121,14 +137,14 @@
 
     <TextView
         android:id="@+id/HP"
-        android:layout_width="49dp"
+        android:layout_width="103dp"
         android:layout_height="37dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:gravity="center_vertical"
-        android:text="HP"
+        android:text="HP/maxHP"
         android:textColor="@android:color/black"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -137,22 +153,6 @@
         app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="@+id/imageView"
         app:layout_constraintVertical_bias="0.015" />
-
-    <ImageView
-        android:id="@+id/idle"
-        android:layout_width="218dp"
-        android:layout_height="235dp"
-        android:layout_marginBottom="40dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/warrioridle" />
 
     <com.budiyev.android.circularprogressbar.CircularProgressBar
         android:id="@+id/progress_bar"

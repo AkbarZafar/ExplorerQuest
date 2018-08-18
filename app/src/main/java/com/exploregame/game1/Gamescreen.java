@@ -29,7 +29,7 @@ public class Gamescreen extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
     String user;
-    Integer HP, money, level, experience,randoms,apple,bread,rawmeat;
+    Integer HP, money, level, experience,randoms,apple,bread,rawmeat,attack, defence, maxhp,city,distance,difficulty;
     TranslateAnimation walk;
     ImageView image;
 
@@ -42,15 +42,25 @@ public class Gamescreen extends AppCompatActivity {
 
         warriorwalkon();
         extract();
-
+        cityset();
         levelcheck();
         gif();
         setup();
 
     }
 
+    public void cityset(){
+        if (city == 0) {
+            Random random=new Random();
+            city=random.nextInt(5)+25;
+
+            SharedPreferences.Editor editor=sharedPreferences.edit();
+            editor.putInt("city",city);
+        }
+    }
+
     public void levelcheck(){
-        if (experience>=100){
+        if (experience>=100&&level<12){
             level=level+1;
             experience=experience-100;
 
@@ -62,6 +72,8 @@ public class Gamescreen extends AppCompatActivity {
             Intent levelup=new Intent(getApplicationContext(),Levelup.class);
             startActivity(levelup);
             finish();
+        }else if (level==12){
+            experience=100;
         }else{
 
         }
@@ -99,7 +111,7 @@ public class Gamescreen extends AppCompatActivity {
         mula.setText(""+money);
 
         TextView hp=(TextView)findViewById(R.id.HP);
-        hp.setText(""+HP);
+        hp.setText(HP+"/"+maxhp);
 
         CircularProgressBar progressBar = findViewById(R.id.progress_bar);
         progressBar.setProgress(experience);
@@ -117,12 +129,17 @@ public class Gamescreen extends AppCompatActivity {
         apple=sharedPreferences.getInt("apple",0);
         rawmeat=sharedPreferences.getInt("rawmeat",0);
         bread=sharedPreferences.getInt("bread",0);
+        attack=sharedPreferences.getInt("attack",1);
+        defence=sharedPreferences.getInt("defence",1);
+        maxhp=sharedPreferences.getInt("maxhp",100);
+        distance=sharedPreferences.getInt("distance",0);
+        city=sharedPreferences.getInt("city",0);
+        difficulty=sharedPreferences.getInt("difficulty",1);
     }
 
     public void backpack(View x){
         Intent bag=new Intent(getApplicationContext(), Bag.class);
         startActivity(bag);
-        finish();
     }
 
      public void explore(View view){

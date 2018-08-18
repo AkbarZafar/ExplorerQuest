@@ -15,7 +15,7 @@ public class Found extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
 
-    Integer HP,money,rawmeat,bread,apple;
+    Integer HP,money,rawmeat,bread,apple,distance,city,difficulty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +25,21 @@ public class Found extends AppCompatActivity {
         sharedPreferences= PreferenceManager.getDefaultSharedPreferences(this);
 
         unload();
+        cityreach();
         event();
         updater();
+    }
+
+    public void cityreach(){
+        distance=distance+1;
+        if (distance==city){
+            difficulty=difficulty+1;
+
+            Intent reach= new Intent(getApplicationContext(),Cityinterface.class);
+            startActivity(reach);
+
+            city=0;
+        }
     }
 
     public void unload(){
@@ -35,6 +48,9 @@ public class Found extends AppCompatActivity {
         bread=sharedPreferences.getInt("bread",0);
         apple=sharedPreferences.getInt("apple",0);
         rawmeat=sharedPreferences.getInt("rawmeat",0);
+        distance=sharedPreferences.getInt("distance",0);
+        city=sharedPreferences.getInt("city",0);
+        difficulty=sharedPreferences.getInt("difficulty",1);
     }
 
     public void updater(){
@@ -44,12 +60,15 @@ public class Found extends AppCompatActivity {
         editor.putInt("bread",bread);
         editor.putInt("apple",apple );
         editor.putInt("rawmeat",rawmeat);
+        editor.putInt("distance",distance);
+        editor.putInt("city",city);
+        editor.putFloat("difficulty",difficulty);
         editor.commit();
     }
 
     public void event(){
         Random random=new Random();
-        int events=random.nextInt(3);
+        int events=random.nextInt(4);
 
         //int events=3;
         switch (events){
@@ -57,10 +76,10 @@ public class Found extends AppCompatActivity {
             case 1:{
                 itemfind();
                 break;}
-            //case 2:{
-                //monster
-                //break;}
             case 2:{
+                fight();
+                break;}
+            case 3:{
                 ditch();
                 break;}
             //case 4:{
@@ -71,6 +90,15 @@ public class Found extends AppCompatActivity {
             }
         }
 
+    }
+
+    public void fight(){
+        //play animation leadinto fight
+
+        Intent fightinitiate=new Intent(getApplicationContext(),Fight.class);
+        startActivity(fightinitiate);
+        updater();
+        finish();
     }
 
     public void ditch(){
@@ -142,6 +170,8 @@ public class Found extends AppCompatActivity {
          Intent death=new Intent(getApplicationContext(),Death.class);
          startActivity(death);
         }else {
+
+
             Intent OK = new Intent(getApplicationContext(), Gamescreen.class);
             startActivity(OK);
         }

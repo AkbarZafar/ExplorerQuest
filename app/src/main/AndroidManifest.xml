@@ -22,7 +22,10 @@
         <activity android:name=".Terrain" />
         <activity android:name=".Found" />
         <activity android:name=".Death" />
-        <activity android:name=".Levelup"></activity>
+        <activity android:name=".Levelup" />
+        <activity android:name=".Selectperk" />
+        <activity android:name=".Cityinterface" />
+        <activity android:name=".Fight"></activity>
     </application>
 
 </manifest>

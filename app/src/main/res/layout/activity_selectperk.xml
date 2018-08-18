@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Selectperk">
+
+    <Button
+        android:id="@+id/perkattck"
+        android:layout_width="148dp"
+        android:layout_height="82dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="104dp"
+        android:onClick="atklvl"
+        android:text="Upgrade to attack level 2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.268" />
+
+    <Button
+        android:id="@+id/perkhp"
+        android:layout_width="148dp"
+        android:layout_height="82dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:onClick="hplvl"
+        android:text="You've reached the max HP limit!"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.524" />
+
+    <Button
+        android:id="@+id/perkdef"
+        android:layout_width="148dp"
+        android:layout_height="82dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="104dp"
+        android:layout_marginStart="8dp"
+        android:onClick="deflvl"
+        android:text="def 1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.98"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.796" />
+
+    <Button
+        android:id="@+id/confirm"
+        android:layout_width="222dp"
+        android:layout_height="79dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="confirm"
+        android:text="Confirm"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/perkdef"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <Button
+        android:id="@+id/exit"
+        android:layout_width="222dp"
+        android:layout_height="79dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="exit"
+        android:text="Done"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/perkdef"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <TextView
+        android:id="@+id/currentattk"
+        android:layout_width="148dp"
+        android:layout_height="43dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:text="Attack: "
+        android:textSize="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/perkattck"
+        app:layout_constraintEnd_toEndOf="@+id/perkattck"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/perkattck"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/currenthp"
+        android:layout_width="148dp"
+        android:layout_height="43dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:text="Max HP: "
+        android:textSize="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/perkhp"
+        app:layout_constraintEnd_toEndOf="@+id/perkhp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/perkhp"
+        app:layout_constraintTop_toBottomOf="@+id/perkattck"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/currentdef"
+        android:layout_width="148dp"
+        android:layout_height="43dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:text="Defence: "
+        android:textSize="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/perkdef"
+        app:layout_constraintEnd_toEndOf="@+id/perkdef"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/perkdef"
+        app:layout_constraintTop_toBottomOf="@+id/perkhp"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/pickaperk"
+        android:layout_width="226dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="Select a perk to upgrade"
+        android:textSize="28dp"
+        app:layout_constraintBottom_toTopOf="@+id/currentattk"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+</android.support.constraint.ConstraintLayout>

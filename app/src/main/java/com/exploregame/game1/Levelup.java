@@ -1,18 +1,33 @@
 package com.exploregame.game1;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 public class Levelup extends AppCompatActivity {
+
+    SharedPreferences sharedPreferences;
+
+    int level;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_levelup);
 
+        sharedPreferences= PreferenceManager.getDefaultSharedPreferences(this);
 
+        sharedPreferences.getInt("level",1);
+
+        TextView levelnow=(TextView)findViewById(R.id.levelnow);
+        if (level==12){
+            levelnow.setText("You've reached the max level!");
+        }
+        levelnow.setText("You are now level "+level);
     }
 
     public void OK(View X){
