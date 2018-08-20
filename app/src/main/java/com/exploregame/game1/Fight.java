@@ -185,7 +185,7 @@ public class Fight extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                updater();
+                unload();
                 healthupdate();
             }
 
