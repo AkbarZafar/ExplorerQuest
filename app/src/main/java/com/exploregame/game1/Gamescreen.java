@@ -43,7 +43,6 @@ public class Gamescreen extends AppCompatActivity {
         warriorwalkon();
         extract();
         cityset();
-        levelcheck();
         gif();
         setup();
 
@@ -61,34 +60,45 @@ public class Gamescreen extends AppCompatActivity {
 
     public void levelcheck(){
         if (experience>=100&&level<12){
-            level=level+1;
-            experience=experience-100;
+            level+=1;
+            experience-=100;
 
             SharedPreferences.Editor editor=sharedPreferences.edit();
             editor.putInt("experience",experience);
             editor.putInt("level",level);
-            editor.commit();
+            editor.apply();
 
             Intent levelup=new Intent(getApplicationContext(),Levelup.class);
             startActivity(levelup);
             finish();
         }else if (level==12){
             experience=100;
-        }else{
-
         }
     }
 
     public void warriorwalkon(){
         ImageView character=(ImageView)findViewById(R.id.idle);
-        TranslateAnimation setpostion=new TranslateAnimation(1500,0,0,0);
+        TranslateAnimation setpostion=new TranslateAnimation(550,0,0,0);
 
-        if (randoms!=null) {
-            setpostion.setDuration((randoms)+1* 3100);
-        }else{
-            setpostion.setDuration(1000);
-        }
+
+        setpostion.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {}
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                extract();
+                hpsetup();
+                levelcheck();
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {}
+        });
+        setpostion.setDuration(500);
         setpostion.setFillAfter(true);
+
+
         character.startAnimation(setpostion);
 
     }
@@ -110,14 +120,19 @@ public class Gamescreen extends AppCompatActivity {
         TextView mula=(TextView)findViewById(R.id.money);
         mula.setText(""+money);
 
-        TextView hp=(TextView)findViewById(R.id.HP);
-        hp.setText(HP+"/"+maxhp);
+        hpsetup();
 
         CircularProgressBar progressBar = findViewById(R.id.progress_bar);
         progressBar.setProgress(experience);
 
         TextView leveldisplay=(TextView)findViewById(R.id.level);
         leveldisplay.setText(""+level);
+    }
+
+    public void hpsetup(){
+
+        TextView hp=(TextView)findViewById(R.id.HP);
+        hp.setText(HP+"/"+maxhp);
     }
 
     public void extract(){
@@ -140,6 +155,8 @@ public class Gamescreen extends AppCompatActivity {
     public void backpack(View x){
         Intent bag=new Intent(getApplicationContext(), Bag.class);
         startActivity(bag);
+
+        warriorwalkon();
     }
 
      public void explore(View view){
@@ -172,7 +189,7 @@ public class Gamescreen extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                randomer();
+                background();
             }
 
             @Override
@@ -180,18 +197,15 @@ public class Gamescreen extends AppCompatActivity {
         });
     }
 
-    public void randomer(){
-        Random rand=new Random();
-        randoms=rand.nextInt(3);
-
-        background();
-    }
 
     public void background(){
         Intent explorer=new Intent(getApplicationContext(),Terrain.class);
 
         Intent itemfound=new Intent(getApplicationContext(),Found.class);
         startActivity(itemfound);
+
+        Random rand=new Random();
+        randoms=rand.nextInt(3);
 
         for (int i=0;i<=randoms;i++){
             startActivity(explorer);

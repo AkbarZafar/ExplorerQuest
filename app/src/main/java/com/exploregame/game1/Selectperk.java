@@ -27,7 +27,7 @@ public class Selectperk extends AppCompatActivity {
 
     public void unpack(){
         sharedPreferences.getInt("attack",1);//attack level timesed by 6,, 6(current),12,18,24,32,40
-        sharedPreferences.getInt("defence",1);//defence timesed by 1.5%,, 1.5%(current),3%,4.5%,6%,7.5%,10%
+        sharedPreferences.getInt("defence",1);//defence timesed by 3%,, 3%(current),6%,9%,12%,15%,20%
         sharedPreferences.getInt("maxhp",1);//hp boosted by 15 every time,, 100(current),115,130,145,160,200
     }
 

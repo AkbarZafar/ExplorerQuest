@@ -62,7 +62,7 @@ public class Found extends AppCompatActivity {
         editor.putInt("rawmeat",rawmeat);
         editor.putInt("distance",distance);
         editor.putInt("city",city);
-        editor.putFloat("difficulty",difficulty);
+        editor.putInt("difficulty",difficulty);
         editor.commit();
     }
 
@@ -93,7 +93,7 @@ public class Found extends AppCompatActivity {
     }
 
     public void fight(){
-        //play animation leadinto fight
+        //play animation lead into fight
 
         Intent fightinitiate=new Intent(getApplicationContext(),Fight.class);
         startActivity(fightinitiate);

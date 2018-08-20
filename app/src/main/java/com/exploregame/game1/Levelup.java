@@ -31,7 +31,7 @@ public class Levelup extends AppCompatActivity {
     }
 
     public void OK(View X){
-        Intent back=new Intent(getApplicationContext(),Gamescreen.class);
+        Intent back=new Intent(getApplicationContext(),Selectperk.class);
         startActivity(back);
         finish();
     }

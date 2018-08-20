@@ -185,6 +185,8 @@ public class Bag extends AppCompatActivity {
         ImageView confirm=(ImageView)findViewById(R.id.imageaction);
         confirm.setVisibility(View.GONE);
 
+        update();
+
         present();
     }
 
@@ -219,8 +221,6 @@ public class Bag extends AppCompatActivity {
     }
 
     public void back(View x){
-        update();
-
         finish();
     }
 }
