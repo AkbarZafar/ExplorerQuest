@@ -125,19 +125,24 @@ public class Selectperk extends AppCompatActivity {
         setter = 3;
     }
 
+    @Override
+    public void onBackPressed(){
+
+    }
+
     public void confirm(View x) {
         switch (setter) {
             case 1: {
                 attack = attack + 1;
-            }
+            break;}
             case 2: {
                 defence = defence + 1;
-            }
+            break;}
             case 3: {
                 maxhp = maxhp + 15;
                 if (maxhp == 175) {
                     maxhp = 200;
-                }
+                break;}
             }
         }
 

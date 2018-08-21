@@ -86,6 +86,11 @@ public class Terrain extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed(){
+
+    }
+
     public void gif() {
         try {
             GifDrawable warrior = new GifDrawable(getResources(), R.drawable.warrioridle);

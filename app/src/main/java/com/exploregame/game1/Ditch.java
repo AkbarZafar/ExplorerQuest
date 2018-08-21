@@ -56,6 +56,11 @@ public class Ditch extends AppCompatActivity {
         finish();
     }
 
+    @Override
+    public void onBackPressed(){
+
+    }
+
     public void updater() {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt("HP", HP);

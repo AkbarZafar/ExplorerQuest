@@ -30,8 +30,6 @@ public class Gamescreen extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     String user;
     Integer HP, money, level, experience, randoms, apple, bread, rawmeat, attack, defence, maxhp, city, distance, difficulty;
-    TranslateAnimation walk;
-    ImageView image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,10 +49,11 @@ public class Gamescreen extends AppCompatActivity {
     public void cityset() {
         if (city == 0) {
             Random random = new Random();
-            city = random.nextInt(5) + 25;
+            city = random.nextInt(5) + 20;
 
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putInt("city", city);
+            editor.apply();
         }
     }
 
@@ -182,9 +181,8 @@ public class Gamescreen extends AppCompatActivity {
 
     public void walker() {
 
-
-        image = findViewById(R.id.idle);
-        walk = new TranslateAnimation(0, -1000, 0, 0);
+        ImageView image = findViewById(R.id.idle);
+        TranslateAnimation walk = new TranslateAnimation(0, -1000, 0, 0);
         walk.setDuration(1000);
         walk.setFillAfter(true);
 
@@ -267,6 +265,7 @@ public class Gamescreen extends AppCompatActivity {
         } else {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putInt("distance", distance);
+            editor.apply();
         }
     }
 

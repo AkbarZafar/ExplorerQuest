@@ -13,6 +13,11 @@ public class Cityinterface extends AppCompatActivity {
         setContentView(R.layout.activity_cityinterface);
     }
 
+    @Override
+    public void onBackPressed(){
+
+    }
+
     public void OK(View x){
         Intent okay= new Intent(getApplicationContext(),Gamescreen.class);
         startActivity(okay);

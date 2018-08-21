@@ -30,6 +30,11 @@ public class Levelup extends AppCompatActivity {
         levelnow.setText("You are now level "+level);
     }
 
+    @Override
+    public void onBackPressed(){
+
+    }
+
     public void OK(View X){
         Intent back=new Intent(getApplicationContext(),Selectperk.class);
         startActivity(back);

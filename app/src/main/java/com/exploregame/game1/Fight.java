@@ -112,10 +112,14 @@ public class Fight extends AppCompatActivity {
         //animation
 
         Random rander = new Random();
+
+
         double dmg = rander.nextInt(4) + (4 * difficulty);
-
-        dmg = (1 - (defence * 0.03)) * dmg;
-
+        if (defence == 5) {
+            dmg *= (1 - 0.20);
+        } else {
+            dmg *= (1 - (defence * 0.03));
+        }
 
         HP -= ((int) Math.round(dmg));
     }
@@ -138,8 +142,14 @@ public class Fight extends AppCompatActivity {
     public void playerhit() {
         //animation
         Random rander = new Random();
-        int dmg = rander.nextInt(4) + (attack * 6);
 
+        int dmg;
+
+        if (attack == 5) {
+            dmg = rander.nextInt(4) + 40;
+        } else {
+            dmg = rander.nextInt(4) + (attack * 6);
+        }
         enemyhp -= dmg;
     }
 
@@ -159,6 +169,7 @@ public class Fight extends AppCompatActivity {
         Button attack = (Button) findViewById(R.id.Buttonhit);
         Button run = (Button) findViewById(R.id.buttonrun);
         Button bag = (Button) findViewById(R.id.buttonbag);
+
 
     }
 
@@ -252,6 +263,11 @@ public class Fight extends AppCompatActivity {
         finish();
     }
 
+    @Override
+    public void onBackPressed() {
+
+    }
+
     public void loot() {
         Intent item = new Intent(getApplicationContext(), Found.class);
 
@@ -261,8 +277,9 @@ public class Fight extends AppCompatActivity {
         switch (i) {
             case 0:
             case 1: {
-                startActivity(item);
-                startActivity(item);
+                for (int y = 0; y < 1; y++) {
+                    startActivity(item);
+                }
                 break;
             }
             case 2:

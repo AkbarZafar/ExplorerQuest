@@ -22,6 +22,11 @@ public class Death extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed(){
+
+    }
+
     public void restart(View X){
         Intent restart=new Intent(getApplicationContext(),MainActivity.class);
         startActivity(restart);

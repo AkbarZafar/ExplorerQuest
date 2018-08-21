@@ -204,6 +204,11 @@ public class Bag extends AppCompatActivity {
         maxhp = sharedPreferences.getInt("maxhp", 100);
     }
 
+    @Override
+    public void onBackPressed(){
+
+    }
+
     public void gif() {
         try {
             GifDrawable warrior = new GifDrawable(getResources(), R.drawable.warrioridle);

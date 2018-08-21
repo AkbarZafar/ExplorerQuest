@@ -29,6 +29,10 @@ public class Found extends AppCompatActivity {
         updater();
     }
 
+    @Override
+    public void onBackPressed(){
+
+    }
 
     public void unload() {
         money = sharedPreferences.getInt("money", 0);
