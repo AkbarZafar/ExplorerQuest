@@ -9,16 +9,19 @@
 
     <ImageView
         android:id="@+id/item_found"
-        android:layout_width="384dp"
+        android:layout_width="330dp"
         android:layout_height="304dp"
         android:layout_marginBottom="140dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ditch" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/rawmeat" />
 
     <TextView
         android:id="@+id/founditem"
@@ -27,17 +30,17 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="304dp"
         android:gravity="center"
         android:text="TextView"
         android:textColor="@android:color/black"
         android:textSize="25dp"
-        app:layout_constraintBottom_toBottomOf="@+id/item_found"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/item_found"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="@+id/item_found"
         app:layout_constraintTop_toTopOf="@+id/item_found"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/button3"

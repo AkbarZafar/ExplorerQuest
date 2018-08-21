@@ -25,7 +25,8 @@
         <activity android:name=".Levelup" />
         <activity android:name=".Selectperk" />
         <activity android:name=".Cityinterface" />
-        <activity android:name=".Fight"></activity>
+        <activity android:name=".Fight" />
+        <activity android:name=".Ditch"></activity>
     </application>
 
 </manifest>

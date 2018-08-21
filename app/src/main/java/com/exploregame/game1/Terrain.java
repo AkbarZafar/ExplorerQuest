@@ -16,6 +16,7 @@ import pl.droidsonroids.gif.GifDrawable;
 public class Terrain extends AppCompatActivity {
 
     ImageView image;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,36 +27,41 @@ public class Terrain extends AppCompatActivity {
         walker();
     }
 
-    public void backgroundset(){
+    public void backgroundset() {
 
 
-        ImageView background=(ImageView)findViewById(R.id.background);
+        ImageView background = (ImageView) findViewById(R.id.background);
 
-        Random rand=new Random();
+        Random rand = new Random();
 
-        int i=rand.nextInt(5);
+        int i = rand.nextInt(5);
 
-        switch (i){
-            case 0:{
+        switch (i) {
+            case 0: {
                 background.setImageResource(R.drawable.mountains_grassnrock);
-            break;}
-            case 1:{
+                break;
+            }
+            case 1: {
                 background.setImageResource(R.drawable.forest);
-                break;}
-            case 2:{
+                break;
+            }
+            case 2: {
                 background.setImageResource(R.drawable.mountains_rock);
-                break;}
-            case 3:{
+                break;
+            }
+            case 3: {
                 background.setImageResource(R.drawable.mountains_winter);
-                break;}
-            case 4:{
+                break;
+            }
+            case 4: {
                 background.setImageResource(R.drawable.pyramids);
-                break;}
+                break;
+            }
 
         }
     }
 
-    public void walker(){
+    public void walker() {
 
         image = findViewById(R.id.idle);
         Animation walk = new TranslateAnimation(0, -1700, 0, 0);
@@ -65,7 +71,8 @@ public class Terrain extends AppCompatActivity {
 
         walk.setAnimationListener(new Animation.AnimationListener() {
             @Override
-            public void onAnimationStart(Animation animation) {}
+            public void onAnimationStart(Animation animation) {
+            }
 
             @Override
             public void onAnimationEnd(Animation animation) {
@@ -74,16 +81,17 @@ public class Terrain extends AppCompatActivity {
             }
 
             @Override
-            public void onAnimationRepeat(Animation animation) {}
+            public void onAnimationRepeat(Animation animation) {
+            }
         });
     }
 
-    public void gif(){
-        try{
-            GifDrawable warrior=new GifDrawable(getResources(), R.drawable.warrioridle);
-            ImageView gifhold=findViewById(R.id.idle);
+    public void gif() {
+        try {
+            GifDrawable warrior = new GifDrawable(getResources(), R.drawable.warrioridle);
+            ImageView gifhold = findViewById(R.id.idle);
             gifhold.setImageDrawable(warrior);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

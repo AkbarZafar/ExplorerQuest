@@ -21,7 +21,7 @@ public class Levelup extends AppCompatActivity {
 
         sharedPreferences= PreferenceManager.getDefaultSharedPreferences(this);
 
-        sharedPreferences.getInt("level",1);
+        level=sharedPreferences.getInt("level",1);
 
         TextView levelnow=(TextView)findViewById(R.id.levelnow);
         if (level==12){

@@ -22,15 +22,16 @@ import pl.droidsonroids.gif.GifDrawable;
 public class Bag extends AppCompatActivity {
 
     String user;
-    Integer rawmeat, bread, apple, experience, setter, HP,maxhp;
+    Integer rawmeat, bread, apple, experience, setter, HP, maxhp;
 
     SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bag);
 
-        sharedPreferences= PreferenceManager.getDefaultSharedPreferences(this);
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         gif();
         unload();
@@ -39,60 +40,60 @@ public class Bag extends AppCompatActivity {
     }
 
 
-    public void present(){
-        TextView health=(TextView)findViewById(R.id.HP);
-        health.setText(HP+"/"+maxhp);
+    public void present() {
+        TextView health = (TextView) findViewById(R.id.HP);
+        health.setText(HP + "/" + maxhp);
 
-        TextView username=(TextView)findViewById(R.id.Backpack);
-        username.setText(user+"'s Backpack");
+        TextView username = (TextView) findViewById(R.id.Backpack);
+        username.setText(user + "'s Backpack");
 
 
-        ImageButton box1=(ImageButton)findViewById(R.id.box1);
-        ImageButton box2=(ImageButton)findViewById(R.id.box2);
-        ImageButton box3=(ImageButton)findViewById(R.id.box3);
+        ImageButton box1 = (ImageButton) findViewById(R.id.box1);
+        ImageButton box2 = (ImageButton) findViewById(R.id.box2);
+        ImageButton box3 = (ImageButton) findViewById(R.id.box3);
 
-        TextView quantity1=(TextView)findViewById(R.id.quantity1);
-        TextView quantity2=(TextView)findViewById(R.id.quantity2);
-        TextView quantity3=(TextView)findViewById(R.id.quantity3);
+        TextView quantity1 = (TextView) findViewById(R.id.quantity1);
+        TextView quantity2 = (TextView) findViewById(R.id.quantity2);
+        TextView quantity3 = (TextView) findViewById(R.id.quantity3);
 
-        if (bread>0){
+        if (bread > 0) {
             box1.setVisibility(View.VISIBLE);
             box1.setImageResource(R.drawable.breadpicture);
 
             quantity1.setVisibility(View.VISIBLE);
-            quantity1.setText(""+bread);
-        }else{
+            quantity1.setText("" + bread);
+        } else {
             box1.setVisibility(View.GONE);
             quantity1.setVisibility(View.GONE);
         }
 
-        if (apple>0){
+        if (apple > 0) {
             box2.setVisibility(View.VISIBLE);
             box2.setImageResource(R.drawable.appleimage);
 
             quantity2.setVisibility(View.VISIBLE);
-            quantity2.setText(""+apple);
-        }else{
+            quantity2.setText("" + apple);
+        } else {
             box2.setVisibility(View.GONE);
             quantity2.setVisibility(View.GONE);
         }
 
-        if(rawmeat>0){
+        if (rawmeat > 0) {
             box3.setVisibility(View.VISIBLE);
             box3.setImageResource(R.drawable.rawmeat);
 
             quantity3.setVisibility(View.VISIBLE);
-            quantity3.setText(""+rawmeat);
-        }else{
+            quantity3.setText("" + rawmeat);
+        } else {
             box3.setVisibility(View.GONE);
             quantity3.setVisibility(View.GONE);
         }
     }
 
-    public void box1(View X){
-        ImageView confirm=(ImageView)findViewById(R.id.imageaction);
-        Button confirmation=(Button)findViewById(R.id.buttonaction);
-        TextView hprestore=(TextView)findViewById(R.id.result);
+    public void box1(View X) {
+        ImageView confirm = (ImageView) findViewById(R.id.imageaction);
+        Button confirmation = (Button) findViewById(R.id.buttonaction);
+        TextView hprestore = (TextView) findViewById(R.id.result);
 
         hprestore.setText("Restores 6HP");
         hprestore.setVisibility(View.VISIBLE);
@@ -100,13 +101,13 @@ public class Bag extends AppCompatActivity {
         confirm.setVisibility(View.VISIBLE);
         confirm.setImageResource(R.drawable.breadpicture);
 
-        setter=1;
-        }
+        setter = 1;
+    }
 
-    public void box2(View X){
-        ImageView confirm=(ImageView)findViewById(R.id.imageaction);
-        Button confirmation=(Button)findViewById(R.id.buttonaction);
-        TextView hprestore=(TextView)findViewById(R.id.result);
+    public void box2(View X) {
+        ImageView confirm = (ImageView) findViewById(R.id.imageaction);
+        Button confirmation = (Button) findViewById(R.id.buttonaction);
+        TextView hprestore = (TextView) findViewById(R.id.result);
 
         hprestore.setText("Restores 7HP");
         hprestore.setVisibility(View.VISIBLE);
@@ -114,48 +115,51 @@ public class Bag extends AppCompatActivity {
         confirm.setVisibility(View.VISIBLE);
         confirm.setImageResource(R.drawable.appleimage);
 
-        setter=2;
+        setter = 2;
     }
 
-    public void box3(View X){
-        Button confirmation=(Button)findViewById(R.id.buttonaction);
+    public void box3(View X) {
+        Button confirmation = (Button) findViewById(R.id.buttonaction);
         confirmation.setVisibility(View.VISIBLE);
-        TextView hprestore=(TextView)findViewById(R.id.result);
+        TextView hprestore = (TextView) findViewById(R.id.result);
 
         hprestore.setText("Restores 5HP");
         hprestore.setVisibility(View.VISIBLE);
-        ImageView confirm=(ImageView)findViewById(R.id.imageaction);
+        ImageView confirm = (ImageView) findViewById(R.id.imageaction);
         confirm.setVisibility(View.VISIBLE);
         confirm.setImageResource(R.drawable.rawmeat);
 
-        setter=3;
+        setter = 3;
     }
 
-    public void action(View X){
+    public void action(View X) {
 
-        Random rander=new Random();
-        int expgain=rander.nextInt(7)+5;
+        Random rander = new Random();
+        int expgain = rander.nextInt(7) + 5;
 
-        if(HP<maxhp){
+        if (HP < maxhp) {
 
-        switch (setter){
-            case 1:{
-                HP=HP+6;
-                experience=experience+expgain;
-                bread=bread-1;
-            break;}
-            case 2:{
-                HP=HP+7;
-                experience=experience+expgain;
-                apple=apple-1;
-                break;}
-            case 3:{
-                HP=HP+5;
-                experience=experience+expgain;
-                rawmeat=rawmeat-1;
-                break;}
-        }
-        } else{
+            switch (setter) {
+                case 1: {
+                    HP = HP + 6;
+                    experience = experience + expgain;
+                    bread = bread - 1;
+                    break;
+                }
+                case 2: {
+                    HP = HP + 7;
+                    experience = experience + expgain;
+                    apple = apple - 1;
+                    break;
+                }
+                case 3: {
+                    HP = HP + 5;
+                    experience = experience + expgain;
+                    rawmeat = rawmeat - 1;
+                    break;
+                }
+            }
+        } else {
             AlertDialog.Builder builder = new AlertDialog.Builder(Bag.this);
 
             builder.setCancelable(true);
@@ -164,25 +168,25 @@ public class Bag extends AppCompatActivity {
 
             builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                 @Override
-                public void onClick(DialogInterface dialogInterface, int i){
+                public void onClick(DialogInterface dialogInterface, int i) {
 
-                    }
+                }
             });
             builder.show();
         }
 
 
-        if (HP>maxhp){
-            HP=maxhp;
+        if (HP > maxhp) {
+            HP = maxhp;
         }
 
-        TextView hprestore=(TextView)findViewById(R.id.result);
+        TextView hprestore = (TextView) findViewById(R.id.result);
         hprestore.setVisibility(View.INVISIBLE);
 
-        Button confirmation=(Button)findViewById(R.id.buttonaction);
+        Button confirmation = (Button) findViewById(R.id.buttonaction);
         confirmation.setVisibility(View.GONE);
 
-        ImageView confirm=(ImageView)findViewById(R.id.imageaction);
+        ImageView confirm = (ImageView) findViewById(R.id.imageaction);
         confirm.setVisibility(View.GONE);
 
         update();
@@ -190,37 +194,37 @@ public class Bag extends AppCompatActivity {
         present();
     }
 
-    public void unload(){
-        user=sharedPreferences.getString("user",null);
-        bread=sharedPreferences.getInt("bread",0);
-        rawmeat=sharedPreferences.getInt("rawmeat",0);
-        apple=sharedPreferences.getInt("apple",0);
-        experience=sharedPreferences.getInt("experience",0);
-        HP=sharedPreferences.getInt("HP",100);
-        maxhp=sharedPreferences.getInt("maxhp",100);
+    public void unload() {
+        user = sharedPreferences.getString("user", null);
+        bread = sharedPreferences.getInt("bread", 0);
+        rawmeat = sharedPreferences.getInt("rawmeat", 0);
+        apple = sharedPreferences.getInt("apple", 0);
+        experience = sharedPreferences.getInt("experience", 0);
+        HP = sharedPreferences.getInt("HP", 100);
+        maxhp = sharedPreferences.getInt("maxhp", 100);
     }
 
-    public void gif(){
-        try{
-            GifDrawable warrior=new GifDrawable(getResources(), R.drawable.warrioridle);
-            ImageView gifhold=findViewById(R.id.idle);
+    public void gif() {
+        try {
+            GifDrawable warrior = new GifDrawable(getResources(), R.drawable.warrioridle);
+            ImageView gifhold = findViewById(R.id.idle);
             gifhold.setImageDrawable(warrior);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void update(){
+    public void update() {
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt("HP",HP);
-        editor.putInt("rawmeat",rawmeat);
-        editor.putInt("bread",bread);
-        editor.putInt("apple",apple);
-        editor.putInt("experience",experience);
+        editor.putInt("HP", HP);
+        editor.putInt("rawmeat", rawmeat);
+        editor.putInt("bread", bread);
+        editor.putInt("apple", apple);
+        editor.putInt("experience", experience);
         editor.commit();
     }
 
-    public void back(View x){
+    public void back(View x) {
         finish();
     }
 }
