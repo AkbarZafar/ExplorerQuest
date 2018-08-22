@@ -22,7 +22,7 @@ import pl.droidsonroids.gif.GifDrawable;
 public class Bag extends AppCompatActivity {
 
     String user;
-    Integer rawmeat, bread, apple, experience, setter, HP, maxhp;
+    Integer rawmeat, bread, apple, experience, setter, HP, maxhp,cookedmeat;
 
     SharedPreferences sharedPreferences;
 
@@ -202,6 +202,7 @@ public class Bag extends AppCompatActivity {
         experience = sharedPreferences.getInt("experience", 0);
         HP = sharedPreferences.getInt("HP", 100);
         maxhp = sharedPreferences.getInt("maxhp", 100);
+        cookedmeat=sharedPreferences.getInt("cookedmeat",0);
     }
 
     @Override

@@ -116,7 +116,7 @@ public class Fight extends AppCompatActivity {
 
         double dmg = rander.nextInt(4) + (4 * difficulty);
         if (defence == 5) {
-            dmg *= (1 - 0.20);
+            dmg *= (1 - 0.18);
         } else {
             dmg *= (1 - (defence * 0.03));
         }
@@ -146,7 +146,7 @@ public class Fight extends AppCompatActivity {
         int dmg;
 
         if (attack == 5) {
-            dmg = rander.nextInt(4) + 40;
+            dmg = rander.nextInt(4) + 35;
         } else {
             dmg = rander.nextInt(4) + (attack * 6);
         }

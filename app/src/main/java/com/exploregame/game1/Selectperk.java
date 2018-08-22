@@ -27,9 +27,9 @@ public class Selectperk extends AppCompatActivity {
     }
 
     public void unpack() {
-        attack = sharedPreferences.getInt("attack", 1);//attack level timesed by 6,, 6(current),12,18,24,32,40
-        defence = sharedPreferences.getInt("defence", 1);//defence timesed by 3%,, 3%(current),6%,9%,12%,15%,20%
-        maxhp = sharedPreferences.getInt("maxhp", 100);//hp boosted by 15 every time,, 100(current),115,130,145,160,200
+        attack = sharedPreferences.getInt("attack", 1);//attack level timesed by 6,, 6(current),12,18,24,35
+        defence = sharedPreferences.getInt("defence", 1);//defence timesed by 3%,, 3%(current),6%,9%,12%,18%
+        maxhp = sharedPreferences.getInt("maxhp", 100);//hp boosted by 15 every time,, 100(current),115,130,145,180
     }
 
     public void setup() {
@@ -41,10 +41,13 @@ public class Selectperk extends AppCompatActivity {
 
         Button maxhealth = (Button) findViewById(R.id.perkhp);
         TextView textmaxhealth = (TextView) findViewById(R.id.currenthp);
-        if (maxhp == 200) {
-            textmaxhealth.setText("Current Max HP: 200HP");
+        if (maxhp == 180) {
+            textmaxhealth.setText("Current Max HP: 180HP");
             maxhealth.setEnabled(false);
             maxhealth.setText("You've reached the max HP limit!");
+        }else if (attack==4) {
+            textmaxhealth.setText("Current Max HP: " + maxhp);
+            maxhealth.setText("Upgrade to Max HP to 180");
         } else {
             textmaxhealth.setText("Current Max HP: " + maxhp);
             maxhealth.setText("Upgrade max HP to: " + (maxhp + 15));
@@ -53,10 +56,13 @@ public class Selectperk extends AppCompatActivity {
         Button def = (Button) findViewById(R.id.perkdef);
         TextView textdef = (TextView) findViewById(R.id.currentdef);
         if (defence == 5) {
-            textdef.setText("Current Defence: 20% resistence");
+            textdef.setText("Current Defence: 18% resistence");
             def.setText("You've reached max defence!");
             def.setEnabled(false);
-        } else {
+        }else if (attack==4) {
+                textdef.setText("Current Defence: " + (defence * 3) + "% resistence");
+                def.setText("Upgrade to attack to 18% resistence");
+            } else {
             textdef.setText("Current Defence: " + (defence * 3) + "% resistence");
             def.setText("Upgrade to defence to " + ((defence + 1) * 3) + "% resistence");
 
@@ -140,8 +146,8 @@ public class Selectperk extends AppCompatActivity {
             break;}
             case 3: {
                 maxhp = maxhp + 15;
-                if (maxhp == 175) {
-                    maxhp = 200;
+                if (maxhp == 145) {
+                    maxhp = 180;
                 break;}
             }
         }

@@ -29,7 +29,7 @@ public class Gamescreen extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
     String user;
-    Integer HP, money, level, experience, randoms, apple, bread, rawmeat, attack, defence, maxhp, city, distance, difficulty;
+    Integer HP, money, level, experience, randoms, apple, bread, rawmeat, attack, defence, maxhp, city, distance, difficulty, cookedmeat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +49,13 @@ public class Gamescreen extends AppCompatActivity {
     public void cityset() {
         if (city == 0) {
             Random random = new Random();
-            city = random.nextInt(5) + 20;
+            city = random.nextInt(5) + 1;
 
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putInt("city", city);
             editor.apply();
         }
+        citycheck();
     }
 
     public void levelcheck() {
@@ -156,6 +157,7 @@ public class Gamescreen extends AppCompatActivity {
         distance = sharedPreferences.getInt("distance", 0);
         city = sharedPreferences.getInt("city", 0);
         difficulty = sharedPreferences.getInt("difficulty", 1);
+        cookedmeat=sharedPreferences.getInt("cookedmeat",0);
     }
 
     public void backpack(View x) {
@@ -220,8 +222,6 @@ public class Gamescreen extends AppCompatActivity {
 
     public void event() {
 
-        citycheck();
-
         Random random = new Random();
         int events = random.nextInt(4);
 
@@ -262,6 +262,7 @@ public class Gamescreen extends AppCompatActivity {
             startActivity(reach);
 
             cityset();
+            finish();
         } else {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putInt("distance", distance);
