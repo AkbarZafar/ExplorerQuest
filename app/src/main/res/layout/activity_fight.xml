@@ -158,18 +158,18 @@
 
     <ImageView
         android:id="@+id/player"
-        android:layout_width="114dp"
-        android:layout_height="126dp"
+        android:layout_width="132dp"
+        android:layout_height="146dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.965"
+        app:layout_constraintHorizontal_bias="0.966"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtplayerhealth"
-        app:layout_constraintVertical_bias="0.565"
+        app:layout_constraintVertical_bias="0.537"
         app:srcCompat="@drawable/warrioridle" />
 
     <TextView
@@ -205,5 +205,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Won"
         app:layout_constraintVertical_bias="0.914" />
+
+    <ImageView
+        android:id="@+id/enemypicture"
+        android:layout_width="132dp"
+        android:layout_height="146dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/player"
+        app:layout_constraintEnd_toStartOf="@+id/player"
+        app:layout_constraintHorizontal_bias="0.09"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/player"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/zombieidle" />
 
 </android.support.constraint.ConstraintLayout>

@@ -17,13 +17,16 @@ import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import java.io.IOException;
 import java.util.Random;
+
+import pl.droidsonroids.gif.GifDrawable;
 
 public class Fight extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
 
-    int enemyhp, enemymax, HP, attack, defence, maxhp, difficulty;
+    int enemyhp, enemymax, HP, attack, defence, maxhp, difficulty, enemy;
     Boolean win;
 
     @Override
@@ -48,6 +51,19 @@ public class Fight extends AppCompatActivity {
     public void setup() {
         healthsetup();
         enemypick();
+        gifsetup();
+
+    }
+
+    public void gifsetup() {
+        try {
+            GifDrawable warrior = new GifDrawable(getResources(), R.drawable.warrioridle);
+            ImageView gifhold = findViewById(R.id.player);
+            gifhold.setImageDrawable(warrior);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
     }
 
@@ -57,19 +73,18 @@ public class Fight extends AppCompatActivity {
 
         switch (i) {
             case 0: {
-
+                //zombie
+                enemy=1;
                 break;
             }
             case 1: {
-
+                //troll
+                enemy=2;
                 break;
             }
             case 2: {
-
-                break;
-            }
-            case 3: {
-
+                //uglybird
+                enemy=3;
                 break;
             }
         }
