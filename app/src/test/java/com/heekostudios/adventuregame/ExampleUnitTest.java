@@ -1,4 +1,4 @@
-package com.exploregame.game1;
+package com.heekostudios.adventuregame;
 
 import org.junit.Test;
 

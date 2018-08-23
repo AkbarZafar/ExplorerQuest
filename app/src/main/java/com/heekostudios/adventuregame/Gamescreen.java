@@ -1,4 +1,4 @@
-package com.exploregame.game1;
+package com.heekostudios.adventuregame;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
