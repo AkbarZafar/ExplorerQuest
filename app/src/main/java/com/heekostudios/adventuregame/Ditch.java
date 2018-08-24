@@ -41,7 +41,7 @@ public class Ditch extends AppCompatActivity {
 
         Random random = new Random();
 
-        int fall = random.nextInt(20) + 1;
+        int fall = random.nextInt(20) + 15;
         dmglost.setText("You lost " + fall + " HP");
         HP -= fall;
     }

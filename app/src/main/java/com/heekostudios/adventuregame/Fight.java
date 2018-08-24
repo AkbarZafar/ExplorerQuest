@@ -54,7 +54,6 @@ public class Fight extends AppCompatActivity {
 
     public void setup() {
         healthsetup();
-        enemypick();
         gifsetup();
 
     }
@@ -68,10 +67,36 @@ public class Fight extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        Random rnd=new Random();
+        int i=rnd.nextInt(4);
+
         try {
-            GifDrawable warrior = new GifDrawable(getResources(), R.drawable.zombieidle);
-            ImageView gifhold = findViewById(R.id.enemypicture);
-            gifhold.setImageDrawable(warrior);
+        switch(i){
+            case 0:{
+                enemy=1;
+                GifDrawable zombie = new GifDrawable(getResources(), R.drawable.zombieidle);
+                ImageView gifhold = findViewById(R.id.enemypicture);
+                gifhold.setImageDrawable(zombie);
+                break;}
+            case 1:{
+                enemy=2;
+                GifDrawable troll = new GifDrawable(getResources(), R.drawable.zombieidle);
+                ImageView gifhold = findViewById(R.id.enemypicture);
+                gifhold.setImageDrawable(troll);
+                break;}
+            case 2:{
+                enemy=3;
+                GifDrawable birod = new GifDrawable(getResources(), R.drawable.zombieidle);
+                ImageView gifhold = findViewById(R.id.enemypicture);
+                gifhold.setImageDrawable(birod);
+                break;}
+            case 3:{
+                enemy=4;
+                GifDrawable monster = new GifDrawable(getResources(), R.drawable.zombieidle);
+                ImageView gifhold = findViewById(R.id.enemypicture);
+                gifhold.setImageDrawable(monster);
+                break;}
+        }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -79,28 +104,6 @@ public class Fight extends AppCompatActivity {
 
     }
 
-    public void enemypick() {
-        Random rander = new Random();
-        int i = rander.nextInt(4);
-
-        switch (i) {
-            case 0: {
-                //zombie
-                enemy=1;
-                break;
-            }
-            case 1: {
-                //troll
-                enemy=2;
-                break;
-            }
-            case 2: {
-                //uglybird
-                enemy=3;
-                break;
-            }
-        }
-    }
 
     public void healthsetup() {
         Random rander = new Random();
@@ -168,11 +171,16 @@ public class Fight extends AppCompatActivity {
         }
     }
 
+    public void playerhitanimation(){
+
+    }
+
     public void playerhit() {
-        //animation
+        playerhitanimation();
         Random rander = new Random();
 
         int dmg;
+        double lifestealheal;
 
         if (attack == 5) {
             dmg = rander.nextInt(4) + 35;
@@ -180,6 +188,9 @@ public class Fight extends AppCompatActivity {
             dmg = rander.nextInt(4) + (attack * 6);
         }
         enemyhp -= dmg;
+
+        lifestealheal=dmg*(0.05*lifesteal);
+        HP+=((int) Math.round(lifestealheal));
     }
 
     public void hit(View x) {
@@ -194,13 +205,25 @@ public class Fight extends AppCompatActivity {
         updater();
     }
 
-    public void disabler() {
-        Button attack = (Button) findViewById(R.id.Buttonhit);
-        Button run = (Button) findViewById(R.id.buttonrun);
-        Button bag = (Button) findViewById(R.id.buttonbag);
+    public void enabler(){
+        Button attackbtn = (Button) findViewById(R.id.Buttonhit);
+        Button runbtn = (Button) findViewById(R.id.buttonrun);
+        Button bagbtn = (Button) findViewById(R.id.buttonbag);
 
-
+        attackbtn.setEnabled(true);
+        runbtn.setEnabled(true);
+        bagbtn .setEnabled(true);
     }
+
+    public void disabler() {
+        Button attackbtn = (Button) findViewById(R.id.Buttonhit);
+        Button runbtn = (Button) findViewById(R.id.buttonrun);
+        Button bagbtn = (Button) findViewById(R.id.buttonbag);
+
+        attackbtn.setEnabled(false);
+        runbtn.setEnabled(false);
+        bagbtn .setEnabled(false);
+}
 
     public void fighttester() {
         if (HP <= 0) {

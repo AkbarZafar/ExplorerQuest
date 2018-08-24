@@ -224,22 +224,27 @@ public class Gamescreen extends AppCompatActivity {
     public void event() {
 
         Random random = new Random();
-        int events = random.nextInt(4);
+        int events = random.nextInt(9);
 
         //int events=3;
         switch (events) {
             case 0:
-            case 1: {
+            case 1:
+            case 2:
+            case 3:
+            case 4: {
                 Intent item = new Intent(getApplicationContext(), Found.class);
                 startActivity(item);
                 break;
             }
-            case 2: {
+            case 7:
+            case 6:
+            case 5: {
                 Intent fight = new Intent(getApplicationContext(), Fight.class);
                 startActivity(fight);
                 break;
             }
-            case 3: {
+            case 8: {
                 Intent ditch = new Intent(getApplicationContext(), Ditch.class);
                 startActivity(ditch);
                 break;
