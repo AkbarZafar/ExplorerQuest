@@ -22,7 +22,7 @@ import pl.droidsonroids.gif.GifDrawable;
 public class Bag extends AppCompatActivity {
 
     String user;
-    Integer rawmeat, bread, apple, experience, setter, HP, maxhp,cookedmeat;
+    Integer rawmeat, bread, apple, setter, HP, maxhp,cookedmeat;
 
     SharedPreferences sharedPreferences;
 
@@ -137,27 +137,22 @@ public class Bag extends AppCompatActivity {
 
     public void action(View X) {
 
-        Random rander = new Random();
-        int expgain = rander.nextInt(7) + 5;
 
         if (HP < maxhp) {
 
             switch (setter) {
                 case 1: {
                     HP = HP + 6;
-                    experience = experience + expgain;
                     bread = bread - 1;
                     break;
                 }
                 case 2: {
                     HP = HP + 7;
-                    experience = experience + expgain;
                     apple = apple - 1;
                     break;
                 }
                 case 3: {
                     HP = HP + 5;
-                    experience = experience + expgain;
                     rawmeat = rawmeat - 1;
                     break;
                 }
@@ -202,7 +197,6 @@ public class Bag extends AppCompatActivity {
         bread = sharedPreferences.getInt("bread", 0);
         rawmeat = sharedPreferences.getInt("rawmeat", 0);
         apple = sharedPreferences.getInt("apple", 0);
-        experience = sharedPreferences.getInt("experience", 0);
         HP = sharedPreferences.getInt("HP", 100);
         maxhp = sharedPreferences.getInt("maxhp", 100);
         cookedmeat=sharedPreferences.getInt("cookedmeat",0);
@@ -229,7 +223,6 @@ public class Bag extends AppCompatActivity {
         editor.putInt("rawmeat", rawmeat);
         editor.putInt("bread", bread);
         editor.putInt("apple", apple);
-        editor.putInt("experience", experience);
         editor.commit();
     }
 

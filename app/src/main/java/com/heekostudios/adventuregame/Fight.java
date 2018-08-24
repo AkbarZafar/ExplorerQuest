@@ -26,7 +26,7 @@ public class Fight extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
 
-    int enemyhp, enemymax, HP, attack, defence, maxhp, difficulty, enemy,lifesteal;
+    int enemyhp, enemymax, HP, attack, defence, maxhp, difficulty, enemy,lifesteal,experience;
     Boolean win;
 
     @Override
@@ -50,6 +50,7 @@ public class Fight extends AppCompatActivity {
         maxhp = sharedPreferences.getInt("maxhp", 100);
         difficulty = sharedPreferences.getInt("difficulty", 1);
         lifesteal=sharedPreferences.getInt("lifesteal",0);
+        experience=sharedPreferences.getInt("experience",0);
     }
 
     public void setup() {
@@ -242,6 +243,7 @@ public class Fight extends AppCompatActivity {
     public void updater() {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt("HP", HP);
+        editor.putInt("experience",experience);
         editor.apply();
     }
 
@@ -275,6 +277,9 @@ public class Fight extends AppCompatActivity {
         TextView won = (TextView) findViewById(R.id.Won);
         won.setText("You Won!");
 
+        Random rander=new Random();
+        experience+=rander.nextInt(12)+5;
+
         win = true;
 
         setuptwo();
@@ -283,6 +288,9 @@ public class Fight extends AppCompatActivity {
     public void success() {
         TextView won = (TextView) findViewById(R.id.Won);
         won.setText("You successfuly ran away!");
+
+        Random rander=new Random();
+        experience+=rander.nextInt(5)+1;
 
         win=false;
 
