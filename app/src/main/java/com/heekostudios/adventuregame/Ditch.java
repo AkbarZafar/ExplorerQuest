@@ -22,6 +22,8 @@ public class Ditch extends AppCompatActivity {
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+
         unload();
         fall();
         updater();

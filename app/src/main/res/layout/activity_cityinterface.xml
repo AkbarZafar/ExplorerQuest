@@ -153,7 +153,7 @@
         tools:textColor="black" />
 
     <ImageButton
-        android:id="@+id/imageButton6"
+        android:id="@+id/rawtocook"
         android:layout_width="161dp"
         android:layout_height="63dp"
         android:layout_marginBottom="8dp"
@@ -171,6 +171,7 @@
         app:srcCompat="@drawable/rawtocooked" />
 
     <ImageButton
+        android:id="@+id/lifestealbuy"
         android:layout_width="127dp"
         android:layout_height="63dp"
         android:layout_marginStart="8dp"
@@ -178,10 +179,10 @@
         android:backgroundTint="?android:attr/colorBackgroundFloating"
         android:onClick="lifestealbuy"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton6"
+        app:layout_constraintBottom_toBottomOf="@+id/rawtocook"
         app:layout_constraintEnd_toEndOf="@+id/breadbuy"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/imageButton6"
+        app:layout_constraintStart_toEndOf="@+id/rawtocook"
         app:layout_constraintTop_toBottomOf="@+id/breadbuy"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/lifesteal" />
@@ -194,6 +195,7 @@
         android:layout_marginEnd="24dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:onClick="buy"
         android:text="Buy"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -204,16 +206,34 @@
 
     <TextView
         android:id="@+id/actiondesc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="Upgrade the amount of HP points gained from hitting an enemy"
+        app:layout_constraintBottom_toTopOf="@+id/action"
+        app:layout_constraintEnd_toEndOf="@+id/action"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/action"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/cost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/action"
-        app:layout_constraintEnd_toEndOf="@+id/action"
-        app:layout_constraintStart_toStartOf="@+id/action"
+        android:gravity="center"
+        android:text="Cost: 600 gold"
+        app:layout_constraintBottom_toTopOf="@+id/actiondesc"
+        app:layout_constraintEnd_toEndOf="@+id/actiondesc"
+        app:layout_constraintStart_toStartOf="@+id/actiondesc"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 

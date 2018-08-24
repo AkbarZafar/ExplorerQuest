@@ -33,6 +33,9 @@ public class Bag extends AppCompatActivity {
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
+
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+
         gif();
         unload();
         present();

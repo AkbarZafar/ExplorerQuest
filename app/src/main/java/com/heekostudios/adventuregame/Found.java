@@ -24,6 +24,8 @@ public class Found extends AppCompatActivity {
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+
         unload();
         itemfind();
         updater();

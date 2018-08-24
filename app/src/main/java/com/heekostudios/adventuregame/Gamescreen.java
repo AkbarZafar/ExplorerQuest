@@ -29,7 +29,7 @@ public class Gamescreen extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
     String user;
-    Integer HP, money, level, experience, randoms, apple, bread, rawmeat, attack, defence, maxhp, city, distance, difficulty, cookedmeat;
+    Integer HP, money, level, experience, randoms, apple, bread, rawmeat, attack, defence, maxhp, city, distance, difficulty, cookedmeat, lifesteal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -157,7 +157,8 @@ public class Gamescreen extends AppCompatActivity {
         distance = sharedPreferences.getInt("distance", 0);
         city = sharedPreferences.getInt("city", 0);
         difficulty = sharedPreferences.getInt("difficulty", 1);
-        cookedmeat=sharedPreferences.getInt("cookedmeat",0);
+        cookedmeat = sharedPreferences.getInt("cookedmeat", 0);
+        lifesteal = sharedPreferences.getInt("lifesteal", 0);
     }
 
     public void backpack(View x) {
@@ -184,8 +185,8 @@ public class Gamescreen extends AppCompatActivity {
     public void walker() {
 
         ImageView image = findViewById(R.id.idle);
-        TranslateAnimation walk = new TranslateAnimation(0, -1000, 0, 0);
-        walk.setDuration(1000);
+        TranslateAnimation walk = new TranslateAnimation(0, -1500, 0, 0);
+        walk.setDuration(1350);
         walk.setFillAfter(true);
 
         image.startAnimation(walk);

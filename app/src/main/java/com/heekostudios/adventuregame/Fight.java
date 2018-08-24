@@ -26,7 +26,7 @@ public class Fight extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
 
-    int enemyhp, enemymax, HP, attack, defence, maxhp, difficulty, enemy;
+    int enemyhp, enemymax, HP, attack, defence, maxhp, difficulty, enemy,lifesteal;
     Boolean win;
 
     @Override
@@ -35,6 +35,9 @@ public class Fight extends AppCompatActivity {
         setContentView(R.layout.activity_fight);
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
 
         unload();
         setup();
@@ -46,6 +49,7 @@ public class Fight extends AppCompatActivity {
         attack = sharedPreferences.getInt("attack", 1);
         maxhp = sharedPreferences.getInt("maxhp", 100);
         difficulty = sharedPreferences.getInt("difficulty", 1);
+        lifesteal=sharedPreferences.getInt("lifesteal",0);
     }
 
     public void setup() {
@@ -59,6 +63,14 @@ public class Fight extends AppCompatActivity {
         try {
             GifDrawable warrior = new GifDrawable(getResources(), R.drawable.warrioridle);
             ImageView gifhold = findViewById(R.id.player);
+            gifhold.setImageDrawable(warrior);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            GifDrawable warrior = new GifDrawable(getResources(), R.drawable.zombieidle);
+            ImageView gifhold = findViewById(R.id.enemypicture);
             gifhold.setImageDrawable(warrior);
         } catch (IOException e) {
             e.printStackTrace();
@@ -139,18 +151,20 @@ public class Fight extends AppCompatActivity {
         HP -= ((int) Math.round(dmg));
     }
 
-    public void run(View x) {
+    public void runaway(View x) {
         Random rander = new Random();
         int i = rander.nextInt(6);
-        Intent runaway = new Intent(getApplicationContext(), Gamescreen.class);
+        TextView norun = (TextView) findViewById(R.id.falserun);
 
         if (i == 0) {
+            norun.setVisibility(View.GONE);
             success();
         } else {
             enemyattack();
-            TextView norun = (TextView) findViewById(R.id.falserun);
             norun.setText("Unable to run away");
             norun.setVisibility(View.VISIBLE);
+            healthupdate();
+            updater();
         }
     }
 
@@ -172,8 +186,8 @@ public class Fight extends AppCompatActivity {
         TextView norun = (TextView) findViewById(R.id.falserun);
         norun.setVisibility(View.GONE);
 
-        playerhit();
         //disabler();
+        playerhit();
         enemyattack();
         healthupdate();
         fighttester();
@@ -247,6 +261,8 @@ public class Fight extends AppCompatActivity {
         TextView won = (TextView) findViewById(R.id.Won);
         won.setText("You successfuly ran away!");
 
+        win=false;
+
         setuptwo();
     }
 
@@ -292,7 +308,7 @@ public class Fight extends AppCompatActivity {
         switch (i) {
             case 0:
             case 1: {
-                for (int y = 0; y < 1; y++) {
+                for (int y = 0; y <= 1; y++) {
                     startActivity(item);
                 }
                 break;

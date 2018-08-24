@@ -28,7 +28,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:onClick="run"
+        android:onClick="runaway"
         android:text="Run"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -150,11 +150,11 @@
         android:gravity="center"
         android:text="Unable to run away"
         android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/Buttonhit"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.29" />
 
     <ImageView
         android:id="@+id/player"
@@ -166,10 +166,10 @@
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.864"
+        app:layout_constraintHorizontal_bias="0.84"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtplayerhealth"
-        app:layout_constraintVertical_bias="0.537"
+        app:layout_constraintVertical_bias="0.538"
         app:srcCompat="@drawable/warrioridle" />
 
     <TextView
@@ -214,10 +214,10 @@
         android:layout_marginStart="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/player"
         app:layout_constraintEnd_toStartOf="@+id/player"
-        app:layout_constraintHorizontal_bias="0.546"
+        app:layout_constraintHorizontal_bias="0.875"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/player"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/zombieidle" />
 
 </android.support.constraint.ConstraintLayout>

@@ -22,6 +22,9 @@ public class Terrain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_terrain);
 
+
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+
         gif();
         backgroundset();
         walker();
