@@ -108,7 +108,7 @@ public class Fight extends AppCompatActivity {
 
     public void healthsetup() {
         Random rander = new Random();
-        enemymax = rander.nextInt(5) + (10 * difficulty);
+        enemymax = rander.nextInt(5) + (9 * difficulty);
         enemyhp = enemymax;
 
         healthupdate();
@@ -317,6 +317,7 @@ public class Fight extends AppCompatActivity {
     public void exit(View x) {
         Intent home = new Intent(getApplicationContext(), Gamescreen.class);
         startActivity(home);
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
 
         if (win) {
             loot();
@@ -349,6 +350,9 @@ public class Fight extends AppCompatActivity {
             case 4: {
                 startActivity(item);
                 break;
+            }
+            case 5:{
+                
             }
         }
         finish();

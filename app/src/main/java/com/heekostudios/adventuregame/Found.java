@@ -24,7 +24,7 @@ public class Found extends AppCompatActivity {
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
 
         unload();
         itemfind();
@@ -32,7 +32,7 @@ public class Found extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
 
     }
 
@@ -109,9 +109,9 @@ public class Found extends AppCompatActivity {
 
 
     public void OK(View X) {
-            Intent OK = new Intent(getApplicationContext(), Gamescreen.class);
-            startActivity(OK);
-
+        Intent OK = new Intent(getApplicationContext(), Gamescreen.class);
+        startActivity(OK);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         finish();
     }
 }

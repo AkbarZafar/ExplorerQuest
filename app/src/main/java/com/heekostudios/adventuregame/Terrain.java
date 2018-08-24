@@ -67,7 +67,7 @@ public class Terrain extends AppCompatActivity {
     public void walker() {
 
         image = findViewById(R.id.idle);
-        Animation walk = new TranslateAnimation(0, -1700, 0, 0);
+        Animation walk = new TranslateAnimation(0, -2000, 0, 0);
         walk.setDuration(2000);
 
         image.startAnimation(walk);

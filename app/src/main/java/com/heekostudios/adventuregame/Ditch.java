@@ -54,6 +54,7 @@ public class Ditch extends AppCompatActivity {
         } else {
             Intent home = new Intent(getApplicationContext(), Gamescreen.class);
             startActivity(home);
+            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
         }
         finish();
     }
