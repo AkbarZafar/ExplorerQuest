@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -22,12 +23,14 @@ import java.util.Random;
 
 import pl.droidsonroids.gif.GifDrawable;
 
+import static android.view.animation.Animation.ABSOLUTE;
+
 public class Fight extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
 
     int enemyhp, enemymax, HP, attack, defence, maxhp, difficulty, enemy,lifesteal,experience;
-    Boolean win;
+    Character result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +108,16 @@ public class Fight extends AppCompatActivity {
 
     }
 
+    public void swingsword(){
+        try {
+            GifDrawable warrior = new GifDrawable(getResources(), R.drawable.swordswing);
+            ImageView gifhold = findViewById(R.id.player);
+            gifhold.setImageDrawable(warrior);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public void healthsetup() {
         Random rander = new Random();
@@ -140,7 +153,7 @@ public class Fight extends AppCompatActivity {
     }
 
     public void enemyattack() {
-        //animation
+        enemyanimation();
 
         Random rander = new Random();
 
@@ -153,6 +166,40 @@ public class Fight extends AppCompatActivity {
         }
 
         HP -= ((int) Math.round(dmg));
+    }
+
+    public void enemyanimation(){
+        final ImageView enemy=(ImageView)findViewById(R.id.enemypicture);
+        final TranslateAnimation enemyattack=new TranslateAnimation(0,300,0,0);
+        enemyattack.setDuration(900);
+
+        final RotateAnimation enemyhit=new RotateAnimation(0,15);
+        enemyhit.setDuration(200);
+
+        enemyattack.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                enabler();
+                //enemyattack.REVERSE
+                //enemy.setX();
+                //enemy.startAnimation(enemyhit);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+            }
+        });
+
+
+
+
+
+        //enemyattack.setFillAfter(true);
+        enemy.startAnimation(enemyattack);
     }
 
     public void runaway(View x) {
@@ -169,6 +216,7 @@ public class Fight extends AppCompatActivity {
             norun.setVisibility(View.VISIBLE);
             healthupdate();
             updater();
+            fighttester();
         }
     }
 
@@ -198,9 +246,11 @@ public class Fight extends AppCompatActivity {
         TextView norun = (TextView) findViewById(R.id.falserun);
         norun.setVisibility(View.GONE);
 
-        //disabler();
-        playerhit();
+        swingsword();
+
+        disabler();
         enemyattack();
+        playerhit();
         healthupdate();
         fighttester();
         updater();
@@ -228,16 +278,15 @@ public class Fight extends AppCompatActivity {
 
     public void fighttester() {
         if (HP <= 0) {
+            HP=0;
             //dead animation... lose animation...
-            Intent lose = new Intent(getApplicationContext(), Death.class);
-            startActivity(lose);
-            finish();
+            dead();
         } else if (enemyhp <= 0) {
             enemyhp = 0;
-            healthupdate();
             //dead animation... win animation...
             win();
         }
+        healthupdate();
     }
 
     public void updater() {
@@ -280,7 +329,16 @@ public class Fight extends AppCompatActivity {
         Random rander=new Random();
         experience+=rander.nextInt(12)+5;
 
-        win = true;
+        result='w';
+
+        setuptwo();
+    }
+
+    public void dead(){
+        TextView won = (TextView) findViewById(R.id.Won);
+        won.setText("You Lost!");
+
+        result='d';
 
         setuptwo();
     }
@@ -292,7 +350,7 @@ public class Fight extends AppCompatActivity {
         Random rander=new Random();
         experience+=rander.nextInt(5)+1;
 
-        win=false;
+        result='r';
 
         setuptwo();
     }
@@ -316,13 +374,22 @@ public class Fight extends AppCompatActivity {
 
     public void exit(View x) {
         Intent home = new Intent(getApplicationContext(), Gamescreen.class);
-        startActivity(home);
-        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
 
-        if (win) {
-            loot();
+        switch (result){
+            case ('w'):{
+                startActivity(home);
+                loot();
+                break;}
+            case('d'):{
+                Intent lose = new Intent(getApplicationContext(), Death.class);
+                startActivity(lose);
+                finish();
+            break;}
+            case ('r'):{
+                startActivity(home);
+            break;}
         }
-
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
         finish();
     }
 
@@ -352,7 +419,7 @@ public class Fight extends AppCompatActivity {
                 break;
             }
             case 5:{
-                
+
             }
         }
         finish();

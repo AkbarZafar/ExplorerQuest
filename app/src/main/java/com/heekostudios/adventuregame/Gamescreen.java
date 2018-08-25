@@ -226,7 +226,7 @@ public class Gamescreen extends AppCompatActivity {
         Random random = new Random();
         int events = random.nextInt(9);
 
-        //int events=3;
+        //int events=7;
         switch (events) {
             case 0:
             case 1:
@@ -261,8 +261,11 @@ public class Gamescreen extends AppCompatActivity {
 
     public void citycheck() {
         distance += 1;
+        SharedPreferences.Editor editor = sharedPreferences.edit();
         if (distance == city) {
             difficulty += 1;
+            editor.putInt("difficulty",difficulty);
+            editor.apply();
 
             Intent reach = new Intent(getApplicationContext(), Cityinterface.class);
             startActivity(reach);
@@ -270,7 +273,7 @@ public class Gamescreen extends AppCompatActivity {
             cityset();
             finish();
         } else {
-            SharedPreferences.Editor editor = sharedPreferences.edit();
+
             editor.putInt("distance", distance);
             editor.apply();
         }

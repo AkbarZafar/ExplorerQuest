@@ -22,7 +22,7 @@ import pl.droidsonroids.gif.GifDrawable;
 public class Bag extends AppCompatActivity {
 
     String user;
-    Integer rawmeat, bread, apple, setter, HP, maxhp,cookedmeat;
+    Integer rawmeat, bread, apple, setter, HP, maxhp, cookedmeat;
 
     SharedPreferences sharedPreferences;
 
@@ -34,7 +34,7 @@ public class Bag extends AppCompatActivity {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
 
-        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
         gif();
         unload();
@@ -54,10 +54,12 @@ public class Bag extends AppCompatActivity {
         ImageButton box1 = (ImageButton) findViewById(R.id.box1);
         ImageButton box2 = (ImageButton) findViewById(R.id.box2);
         ImageButton box3 = (ImageButton) findViewById(R.id.box3);
+        ImageButton box4 = (ImageButton) findViewById(R.id.box4);
 
         TextView quantity1 = (TextView) findViewById(R.id.quantity1);
         TextView quantity2 = (TextView) findViewById(R.id.quantity2);
         TextView quantity3 = (TextView) findViewById(R.id.quantity3);
+        TextView quantity4 = (TextView) findViewById(R.id.quantity4);
 
         if (bread > 0) {
             box1.setVisibility(View.VISIBLE);
@@ -90,6 +92,17 @@ public class Bag extends AppCompatActivity {
         } else {
             box3.setVisibility(View.GONE);
             quantity3.setVisibility(View.GONE);
+        }
+
+        if (cookedmeat > 0) {
+            box4.setVisibility(View.VISIBLE);
+            box4.setImageResource(R.drawable.cookedmeat);
+
+            quantity4.setVisibility(View.VISIBLE);
+            quantity4.setText("" + cookedmeat);
+        } else {
+            box4.setVisibility(View.GONE);
+            quantity4.setVisibility(View.GONE);
         }
     }
 
@@ -135,6 +148,21 @@ public class Bag extends AppCompatActivity {
         setter = 3;
     }
 
+    public void box4(View x) {
+
+        Button confirmation = (Button) findViewById(R.id.buttonaction);
+        confirmation.setVisibility(View.VISIBLE);
+        TextView hprestore = (TextView) findViewById(R.id.result);
+
+        hprestore.setText("Restores 12HP");
+        hprestore.setVisibility(View.VISIBLE);
+        ImageView confirm = (ImageView) findViewById(R.id.imageaction);
+        confirm.setVisibility(View.VISIBLE);
+        confirm.setImageResource(R.drawable.cookedmeat);
+
+        setter = 4;
+    }
+
     public void action(View X) {
 
 
@@ -142,18 +170,23 @@ public class Bag extends AppCompatActivity {
 
             switch (setter) {
                 case 1: {
-                    HP = HP + 6;
-                    bread = bread - 1;
+                    HP += 6;
+                    bread -= 1;
                     break;
                 }
                 case 2: {
-                    HP = HP + 7;
-                    apple = apple - 1;
+                    HP += 7;
+                    apple -= 1;
                     break;
                 }
                 case 3: {
-                    HP = HP + 5;
-                    rawmeat = rawmeat - 1;
+                    HP += 5;
+                    rawmeat -= 1;
+                    break;
+                }
+                case 4: {
+                    HP += 12;
+                    cookedmeat -= 1;
                     break;
                 }
             }
@@ -199,11 +232,11 @@ public class Bag extends AppCompatActivity {
         apple = sharedPreferences.getInt("apple", 0);
         HP = sharedPreferences.getInt("HP", 100);
         maxhp = sharedPreferences.getInt("maxhp", 100);
-        cookedmeat=sharedPreferences.getInt("cookedmeat",0);
+        cookedmeat = sharedPreferences.getInt("cookedmeat", 0);
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
 
     }
 
@@ -223,6 +256,7 @@ public class Bag extends AppCompatActivity {
         editor.putInt("rawmeat", rawmeat);
         editor.putInt("bread", bread);
         editor.putInt("apple", apple);
+        editor.putInt("cookedmeat", cookedmeat);
         editor.commit();
     }
 

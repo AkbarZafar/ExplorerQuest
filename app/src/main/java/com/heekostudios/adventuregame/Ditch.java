@@ -10,9 +10,11 @@ import android.widget.TextView;
 
 import java.util.Random;
 
+import static java.lang.Math.round;
+
 public class Ditch extends AppCompatActivity {
 
-    Integer HP;
+    Integer HP, difficulty;
     SharedPreferences sharedPreferences;
 
     @Override
@@ -22,51 +24,59 @@ public class Ditch extends AppCompatActivity {
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
 
         unload();
         fall();
         updater();
     }
 
-    public void unload(){
-        HP=sharedPreferences.getInt("HP",100);
+    public void unload() {
+        HP = sharedPreferences.getInt("HP", 100);
+        difficulty = sharedPreferences.getInt("difficulty", 1);
     }
 
-    public void fall(){
+    public void fall() {
         TextView fell = (TextView) findViewById(R.id.youfell);
         TextView dmglost = (TextView) findViewById(R.id.lost);
 
         fell.setText("You fell in a ditch");
 
-        Random random = new Random();
+        if (HP > 4 * difficulty) {
+            Random random = new Random();
 
-        int fall = random.nextInt(20) + 15;
-        dmglost.setText("You lost " + fall + " HP");
-        HP -= fall;
+            double fall = random.nextInt(25) + 35;
+
+
+            int hplost=(int)Math.round((fall/100)*HP);
+
+            HP -= hplost;
+            dmglost.setText("You lost " + hplost + " HP");
+        } else {
+            dmglost.setText("Luckily, you lost no HP");
+        }
+
+
     }
 
     public void ok(View x) {
 
-        if (HP <= 0) {
-            Intent death = new Intent(getApplicationContext(), Death.class);
-            startActivity(death);
-        } else {
-            Intent home = new Intent(getApplicationContext(), Gamescreen.class);
-            startActivity(home);
-            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
-        }
+        Intent home = new Intent(getApplicationContext(), Gamescreen.class);
+        startActivity(home);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
         finish();
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
 
     }
 
     public void updater() {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt("HP", HP);
+        editor.putInt("difficulty", difficulty);
         editor.apply();
     }
 }

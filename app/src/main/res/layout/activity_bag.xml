@@ -86,10 +86,10 @@
         android:scaleType="centerInside"
         app:layout_constraintBottom_toTopOf="@+id/idle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.66"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Backpack"
-        app:layout_constraintVertical_bias="0.255"
+        app:layout_constraintVertical_bias="0.203"
         app:srcCompat="@drawable/breadpicture" />
 
     <TextView
@@ -112,19 +112,17 @@
         android:id="@+id/box3"
         android:layout_width="77dp"
         android:layout_height="68dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginTop="8dp"
         android:background="@android:color/transparent"
         android:onClick="box3"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toTopOf="@+id/idle"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/box2"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/box2"
-        app:layout_constraintTop_toBottomOf="@+id/Backpack"
-        app:layout_constraintVertical_bias="0.255"
+        app:layout_constraintStart_toStartOf="@+id/box2"
+        app:layout_constraintTop_toBottomOf="@+id/box2"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/rawmeat" />
 
     <TextView
@@ -180,19 +178,16 @@
         android:id="@+id/box1"
         android:layout_width="77dp"
         android:layout_height="68dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
         android:background="@android:color/transparent"
         android:onClick="box1"
         android:scaleType="centerInside"
-        app:layout_constraintBottom_toTopOf="@+id/idle"
+        app:layout_constraintBottom_toBottomOf="@+id/box2"
         app:layout_constraintEnd_toStartOf="@+id/box2"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Backpack"
-        app:layout_constraintVertical_bias="0.255"
+        app:layout_constraintTop_toTopOf="@+id/box2"
         app:srcCompat="@drawable/appleimage" />
 
     <TextView
@@ -262,5 +257,37 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/box1"
         app:layout_constraintVertical_bias="1.0" />
+
+    <ImageButton
+        android:id="@+id/box4"
+        android:layout_width="77dp"
+        android:layout_height="68dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:onClick="box4"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/box3"
+        app:layout_constraintEnd_toStartOf="@+id/box3"
+        app:layout_constraintStart_toStartOf="@+id/box1"
+        app:layout_constraintTop_toBottomOf="@+id/box2"
+        app:srcCompat="@drawable/cookedmeat" />
+
+    <TextView
+        android:id="@+id/quantity4"
+        android:layout_width="40dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:gravity="end"
+        android:text="1"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/box4"
+        app:layout_constraintEnd_toEndOf="@+id/box4"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/box4"
+        app:layout_constraintTop_toTopOf="@+id/box4"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="1" />
 
 </android.support.constraint.ConstraintLayout>
