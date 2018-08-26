@@ -170,7 +170,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtplayerhealth"
         app:layout_constraintVertical_bias="0.538"
-        app:srcCompat="@drawable/warrioridle" />
+        app:srcCompat="@drawable/swordswinggood" />
 
     <TextView
         android:id="@+id/Won"
@@ -218,7 +218,6 @@
         app:layout_constraintHorizontal_bias="0.875"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/player"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/zombieidle" />
 
 </android.support.constraint.ConstraintLayout>

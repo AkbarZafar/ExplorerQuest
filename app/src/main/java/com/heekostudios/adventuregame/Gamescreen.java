@@ -224,9 +224,9 @@ public class Gamescreen extends AppCompatActivity {
     public void event() {
 
         Random random = new Random();
-        int events = random.nextInt(9);
+        //int events = random.nextInt(9);
 
-        //int events=7;
+        int events=7;
         switch (events) {
             case 0:
             case 1:

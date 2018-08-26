@@ -1,29 +1,24 @@
 package com.heekostudios.adventuregame;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Message;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
 import android.view.animation.RotateAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import java.io.IOException;
 import java.util.Random;
 
 import pl.droidsonroids.gif.GifDrawable;
-
-import static android.view.animation.Animation.ABSOLUTE;
 
 public class Fight extends AppCompatActivity {
 
@@ -170,11 +165,25 @@ public class Fight extends AppCompatActivity {
 
     public void enemyanimation(){
         final ImageView enemy=(ImageView)findViewById(R.id.enemypicture);
-        final TranslateAnimation enemyattack=new TranslateAnimation(0,300,0,0);
-        enemyattack.setDuration(900);
+
+        AnimationSet enemyattack= new AnimationSet(true);
+
+        final TranslateAnimation enemymove=new TranslateAnimation(0,350,0,0);
+        enemymove.setDuration(700);
+        //enemymove.setFillAfter(true);
+
+//        final TranslateAnimation enemydelay=new TranslateAnimation(0,0,0,0);
 
         final RotateAnimation enemyhit=new RotateAnimation(0,15);
-        enemyhit.setDuration(200);
+        enemyhit.setDuration(50);
+        enemyhit.setStartOffset(800);
+        //enemyhit.setFillAfter(true);
+
+        enemyattack.addAnimation(enemymove);
+        enemyattack.addAnimation(enemyhit);
+
+        enemy.startAnimation(enemyattack);
+        //enemyattack.setFillAfter(true);
 
         enemyattack.setAnimationListener(new Animation.AnimationListener() {
             @Override
@@ -184,9 +193,7 @@ public class Fight extends AppCompatActivity {
             @Override
             public void onAnimationEnd(Animation animation) {
                 enabler();
-                //enemyattack.REVERSE
-                //enemy.setX();
-                //enemy.startAnimation(enemyhit);
+
             }
 
             @Override
@@ -195,11 +202,6 @@ public class Fight extends AppCompatActivity {
         });
 
 
-
-
-
-        //enemyattack.setFillAfter(true);
-        enemy.startAnimation(enemyattack);
     }
 
     public void runaway(View x) {
