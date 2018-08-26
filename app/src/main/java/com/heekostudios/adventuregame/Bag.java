@@ -68,8 +68,8 @@ public class Bag extends AppCompatActivity {
             quantity1.setVisibility(View.VISIBLE);
             quantity1.setText("" + bread);
         } else {
-            box1.setVisibility(View.GONE);
-            quantity1.setVisibility(View.GONE);
+            box1.setVisibility(View.INVISIBLE);
+            quantity1.setVisibility(View.INVISIBLE);
         }
 
         if (apple > 0) {
@@ -79,8 +79,8 @@ public class Bag extends AppCompatActivity {
             quantity2.setVisibility(View.VISIBLE);
             quantity2.setText("" + apple);
         } else {
-            box2.setVisibility(View.GONE);
-            quantity2.setVisibility(View.GONE);
+            box2.setVisibility(View.INVISIBLE);
+            quantity2.setVisibility(View.INVISIBLE);
         }
 
         if (rawmeat > 0) {
@@ -90,8 +90,8 @@ public class Bag extends AppCompatActivity {
             quantity3.setVisibility(View.VISIBLE);
             quantity3.setText("" + rawmeat);
         } else {
-            box3.setVisibility(View.GONE);
-            quantity3.setVisibility(View.GONE);
+            box3.setVisibility(View.INVISIBLE);
+            quantity3.setVisibility(View.INVISIBLE);
         }
 
         if (cookedmeat > 0) {
@@ -101,8 +101,8 @@ public class Bag extends AppCompatActivity {
             quantity4.setVisibility(View.VISIBLE);
             quantity4.setText("" + cookedmeat);
         } else {
-            box4.setVisibility(View.GONE);
-            quantity4.setVisibility(View.GONE);
+            box4.setVisibility(View.INVISIBLE);
+            quantity4.setVisibility(View.INVISIBLE);
         }
     }
 
