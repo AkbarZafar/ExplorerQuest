@@ -10,7 +10,7 @@
         android:id="@+id/imageView7"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:scaleType="center"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -62,7 +62,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="8dp"
-        android:backgroundTint="?android:attr/colorBackgroundFloating"
+        android:backgroundTint="@android:color/darker_gray"
         android:onClick="applebuy"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="@+id/rawmeatbuy"
@@ -81,8 +81,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-
-        android:backgroundTint="?android:attr/colorBackgroundFloating"
+        android:backgroundTint="@android:color/darker_gray"
         android:onClick="meatraw"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -100,7 +99,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
 
-        android:backgroundTint="?android:attr/colorBackgroundFloating"
+        android:backgroundTint="@android:color/darker_gray"
         android:onClick="breadbuy"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="@+id/rawmeatbuy"
@@ -119,7 +118,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
 
-        android:backgroundTint="?android:attr/colorBackgroundFloating"
+        android:backgroundTint="@android:color/darker_gray"
         android:onClick="meatcooked"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="@+id/applebuy"
@@ -137,10 +136,10 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.052"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.79"
+        app:layout_constraintVertical_bias="0.835"
         app:srcCompat="@drawable/coin" />
 
 
@@ -157,10 +156,11 @@
         android:textColor="@android:color/black"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/coin"
-        app:layout_constraintEnd_toStartOf="@+id/coin"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/coin"
         app:layout_constraintTop_toTopOf="@+id/coin"
+        app:layout_constraintVertical_bias="1.0"
         tools:textColor="black" />
 
     <ImageButton
@@ -170,7 +170,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
-        android:backgroundTint="?android:attr/colorBackgroundFloating"
+        android:backgroundTint="@android:color/darker_gray"
         android:onClick="cookmeat"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -187,7 +187,7 @@
         android:layout_height="63dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:backgroundTint="?android:attr/colorBackgroundFloating"
+        android:backgroundTint="@android:color/darker_gray"
         android:onClick="lifestealbuy"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="@+id/rawtocook"
@@ -248,5 +248,18 @@
         app:layout_constraintStart_toStartOf="@+id/action"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/buttonBag"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:onClick="bag"
+        android:text="Bag"
+        app:layout_constraintBottom_toBottomOf="@+id/action"
+        app:layout_constraintEnd_toStartOf="@+id/action"
+        app:layout_constraintStart_toEndOf="@+id/button5"
+        app:layout_constraintTop_toBottomOf="@+id/cost" />
 
 </android.support.constraint.ConstraintLayout>

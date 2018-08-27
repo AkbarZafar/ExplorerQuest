@@ -26,7 +26,7 @@ import pl.droidsonroids.gif.GifDrawable;
 public class Fight extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
-
+    String user;
     int enemyhp, enemymax, HP, attack, defence, maxhp, difficulty, enemy, lifesteal, experience;
     Character result = 'a';
     AnimationSet enemyattack;
@@ -53,33 +53,44 @@ public class Fight extends AppCompatActivity {
         difficulty = sharedPreferences.getInt("difficulty", 1);
         lifesteal = sharedPreferences.getInt("lifesteal", 0);
         experience = sharedPreferences.getInt("experience", 0);
+        user=sharedPreferences.getString("user",user);
     }
 
     public void setup() {
         healthsetup();
         playergifsetup();
         enemypick();
+
+        TextView playername=(TextView)findViewById(R.id.playername);
+        playername.setText(user);
     }
 
     public void enemypick() {
         Random rnd = new Random();
         int i = rnd.nextInt(4);
 
+        TextView enemyname=(TextView)findViewById(R.id.enemyname);
+
+        //int i=1;
         switch (i) {
             case 0: {
                 enemy = 1;
+                enemyname.setText("Zombie");
                 break;
             }
             case 1: {
                 enemy = 2;
+                enemyname.setText("Rebel");
                 break;
             }
             case 2: {
                 enemy = 3;
+                enemyname.setText("Monster");
                 break;
             }
             case 3: {
                 enemy = 4;
+                enemyname.setText("New Monster");
                 break;
             }
         }
@@ -97,7 +108,7 @@ public class Fight extends AppCompatActivity {
                     break;
                 }
                 case 2: {
-                    enemymonster = new GifDrawable(getResources(), R.drawable.zombieidle);
+                    enemymonster = new GifDrawable(getResources(), R.drawable.rebelidle);
                     gifhold.setImageDrawable(enemymonster);
                     break;
                 }
@@ -168,7 +179,7 @@ public class Fight extends AppCompatActivity {
                 break;
             }
             case 2: {
-                zombieanimation();
+                rebelanimation();
                 break;
             }
             case 3: {
@@ -191,6 +202,43 @@ public class Fight extends AppCompatActivity {
         }
 
         HP -= ((int) Math.round(dmg));
+    }
+
+    public void rebelanimation() {
+        try {
+            GifDrawable enemy = new GifDrawable(getResources(), R.drawable.rebelattack);
+            ImageView gifhold = findViewById(R.id.enemypicture);
+            gifhold.setImageDrawable(enemy);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        final ImageView enemy = (ImageView) findViewById(R.id.enemypicture);
+
+        enemyattack = new AnimationSet(true);
+
+        final TranslateAnimation enemymove = new TranslateAnimation(0, 375, 0, 0);
+        enemymove.setDuration(750);
+
+
+        enemyattack.addAnimation(enemymove);
+
+        enemy.startAnimation(enemyattack);
+
+        new Handler().postDelayed(new Runnable() {
+            public void run() {
+                findViewById(R.id.playerhitanimation).setVisibility(View.VISIBLE);
+                fighttester();
+            }
+        }, 450);
+
+        new Handler().postDelayed(new Runnable() {
+            public void run() {
+                findViewById(R.id.playerhitanimation).setVisibility(View.GONE);
+                enemygifsetup();
+            }
+        }, 800);
+
     }
 
     public void zombieanimation() {
@@ -315,7 +363,8 @@ public class Fight extends AppCompatActivity {
 
         enemyattack.setAnimationListener(new Animation.AnimationListener() {
             @Override
-            public void onAnimationStart(Animation animation) {}
+            public void onAnimationStart(Animation animation) {
+            }
 
             @Override
             public void onAnimationEnd(Animation animation) {
@@ -325,7 +374,8 @@ public class Fight extends AppCompatActivity {
             }
 
             @Override
-            public void onAnimationRepeat(Animation animation) {}
+            public void onAnimationRepeat(Animation animation) {
+            }
         });
 
 
@@ -358,11 +408,35 @@ public class Fight extends AppCompatActivity {
             dead();
         } else if (enemyhp <= 0) {
             enemyhp = 0;
+            enemydead();
             //dead animation... win animation...
             win();
         }
         healthupdate();
         updater();
+    }
+
+    public void enemydead() {
+        ImageView deadnme = (ImageView) findViewById(R.id.enemypicture);
+
+        switch (enemy) {
+            case 1: {
+                deadnme.setImageResource(R.drawable.zombiedead);
+                break;
+            }
+            case 2: {
+                deadnme.setImageResource(R.drawable.rebeldead);
+                break;
+            }
+            case 3: {
+                deadnme.setImageResource(R.drawable.zombiedead);
+                break;
+            }
+            case 4: {
+                deadnme.setImageResource(R.drawable.zombiedead);
+                break;
+            }
+        }
     }
 
     public void updater() {

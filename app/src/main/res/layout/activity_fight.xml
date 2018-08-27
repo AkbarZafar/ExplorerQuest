@@ -74,7 +74,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.015" />
+        app:layout_constraintVertical_bias="0.069" />
 
     <ProgressBar
         android:id="@+id/enemyhealth"
@@ -254,5 +254,33 @@
         app:layout_constraintTop_toTopOf="@+id/enemypicture"
         app:layout_constraintVertical_bias="0.406"
         app:srcCompat="@drawable/hit" />
+
+    <TextView
+        android:id="@+id/playername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/playerhealth"
+        app:layout_constraintEnd_toEndOf="@+id/playerhealth"
+        app:layout_constraintStart_toStartOf="@+id/playerhealth"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/enemyname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/enemyhealth"
+        app:layout_constraintEnd_toEndOf="@+id/enemyhealth"
+        app:layout_constraintStart_toStartOf="@+id/enemyhealth"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
 </android.support.constraint.ConstraintLayout>

@@ -9,8 +9,11 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class Cityinterface extends AppCompatActivity {
@@ -45,6 +48,13 @@ public class Cityinterface extends AppCompatActivity {
         actiondesc.setText("");
 
         cost.setText("");
+
+        findViewById(R.id.cookmeatbuy).setEnabled(true);
+        findViewById(R.id.applebuy).setEnabled(true);
+        findViewById(R.id.rawtocook).setEnabled(true);
+        findViewById(R.id.rawmeatbuy).setEnabled(true);
+        findViewById(R.id.breadbuy).setEnabled(true);
+        findViewById(R.id.lifestealbuy).setEnabled(true);
     }
 
     public void unload() {
@@ -184,7 +194,7 @@ public class Cityinterface extends AppCompatActivity {
 
         actiondesc.setText("Recieve health everytime you hit an enemy");
         if (lifesteal == 0) {
-            cost.setText("Cost: 600 gold");
+            cost.setText("Cost: 350 gold");
             actiondesc.setText("Recieve health everytime you hit an enemy");
             select = 6;
             buy.setVisibility(View.VISIBLE);
@@ -267,9 +277,9 @@ public class Cityinterface extends AppCompatActivity {
             }
             case 6: {
                 if (lifesteal==0){
-                    if (money >= 600) {
+                    if (money >= 350) {
                         lifesteal += 1;
-                        money -= 600;
+                        money -= 350;
                     } else {
                         notenoughmoney();
                     }
@@ -335,5 +345,36 @@ public class Cityinterface extends AppCompatActivity {
         Intent okay = new Intent(getApplicationContext(), Gamescreen.class);
         startActivity(okay);
         finish();
+    }
+
+    public void bag(View x){
+        Intent bag = new Intent(getApplicationContext(), Bag.class);
+        startActivity(bag);
+        backhere();
+    }
+
+    public void backhere(){
+        ImageView character = (ImageView) findViewById(R.id.coin);
+        TranslateAnimation setpostion = new TranslateAnimation(100, 0, 0, 0);
+
+
+        setpostion.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                unload();
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+            }
+        });
+        setpostion.setDuration(50);
+
+
+        character.startAnimation(setpostion);
     }
 }
