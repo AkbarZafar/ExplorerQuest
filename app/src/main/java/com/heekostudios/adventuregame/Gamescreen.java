@@ -49,7 +49,7 @@ public class Gamescreen extends AppCompatActivity {
     public void cityset() {
         if (city == 0) {
             Random random = new Random();
-            city = random.nextInt(5) + 24;
+            city = random.nextInt(5) + 7;
 
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putInt("city", city);
@@ -271,6 +271,8 @@ public class Gamescreen extends AppCompatActivity {
 
             Intent reach = new Intent(getApplicationContext(), Cityinterface.class);
             startActivity(reach);
+
+            city=0;
 
             cityset();
             finish();

@@ -4,92 +4,95 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fightclub"
+    android:orientation="vertical"
     tools:context=".Fight">
 
-    <Button
-        android:id="@+id/Buttonhit"
-        android:layout_width="0dp"
-        android:layout_height="68dp"
-        android:layout_marginBottom="88dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:onClick="hit"
-        android:text="Attack"
+
+    <FrameLayout
+        android:id="@+id/VSlayout"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.077">
 
-    <Button
-        android:id="@+id/buttonrun"
-        android:layout_width="167dp"
-        android:layout_height="74dp"
+        <TextView
+            android:id="@+id/VSlayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="VS"
+            android:visibility="visible"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toBottomOf="@+id/enemyhealth"
+            app:layout_constraintEnd_toStartOf="@+id/playerhealth"
+            app:layout_constraintHorizontal_bias="0.485"
+            app:layout_constraintStart_toEndOf="@+id/enemyhealth"
+            app:layout_constraintTop_toTopOf="@+id/playerhealth" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/enemyframelayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:onClick="runaway"
-        android:text="Run"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.87"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.983" />
+        app:layout_constraintVertical_bias="0.041">
 
-    <Button
-        android:id="@+id/buttonbag"
-        android:layout_width="167dp"
-        android:layout_height="74dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:onClick="bag"
-        android:text="Bag"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonrun"
-        app:layout_constraintEnd_toStartOf="@+id/buttonrun"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/buttonrun"
+        <TextView
+            android:id="@+id/enemyname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:visibility="visible"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toTopOf="@+id/enemyhealth"
+            app:layout_constraintEnd_toEndOf="@+id/enemyhealth"
+            app:layout_constraintStart_toStartOf="@+id/enemyhealth"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/playername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="TextView"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/playerhealth"
+        app:layout_constraintEnd_toEndOf="@+id/playerhealth"
+        app:layout_constraintStart_toStartOf="@+id/playerhealth"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
-    <ProgressBar
-        android:id="@+id/playerhealth"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="94dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:indeterminate="false"
-        android:max="100"
-        android:minHeight="50dp"
-        android:minWidth="200dp"
-        android:progress="50"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.069" />
 
     <ProgressBar
         android:id="@+id/enemyhealth"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="94dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_weight="1"
         android:indeterminate="false"
         android:max="100"
         android:minHeight="50dp"
         android:minWidth="200dp"
         android:progress="50"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/playerhealth"
         app:layout_constraintEnd_toStartOf="@+id/playerhealth"
         app:layout_constraintHorizontal_bias="0.108"
@@ -97,42 +100,33 @@
         app:layout_constraintTop_toTopOf="@+id/playerhealth"
         app:layout_constraintVertical_bias="0.875" />
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="62dp"
-        android:layout_height="55dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:text="VS"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="@+id/enemyhealth"
-        app:layout_constraintEnd_toStartOf="@+id/playerhealth"
-        app:layout_constraintStart_toEndOf="@+id/enemyhealth"
-        app:layout_constraintTop_toTopOf="@+id/playerhealth"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/txtplayerhealth"
-        android:layout_width="wrap_content"
+    <ProgressBar
+        android:id="@+id/playerhealth"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:text="78/100"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/playerhealth"
-        app:layout_constraintStart_toStartOf="@+id/playerhealth"
-        app:layout_constraintTop_toBottomOf="@+id/playerhealth"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_weight="1"
+        android:indeterminate="false"
+        android:max="100"
+        android:minHeight="50dp"
+        android:minWidth="200dp"
+        android:progress="50"
+        android:visibility="gone"
+        tools:layout_editor_absoluteX="250dp"
+        tools:layout_editor_absoluteY="49dp" />
 
     <TextView
         android:id="@+id/txtenemyhealth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_weight="1"
         android:text="5/12"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/enemyhealth"
         app:layout_constraintStart_toStartOf="@+id/enemyhealth"
@@ -140,46 +134,46 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/falserun"
-        android:layout_width="144dp"
-        android:layout_height="33dp"
+        android:id="@+id/txtplayerhealth"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:gravity="center"
-        android:text="Unable to run away"
+        android:layout_weight="1"
+        android:text="78/100"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:layout_constraintVertical_bias="0.29" />
+        app:layout_constraintEnd_toEndOf="@+id/playerhealth"
+        app:layout_constraintStart_toStartOf="@+id/playerhealth"
+        app:layout_constraintTop_toBottomOf="@+id/playerhealth"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
-        android:id="@+id/player"
-        android:layout_width="132dp"
-        android:layout_height="146dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.84"
+        android:id="@+id/enemypicture"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="32dp"
+        android:layout_weight="1"
+        android:scaleType="fitCenter"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/player"
+        app:layout_constraintEnd_toStartOf="@+id/player"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtplayerhealth"
-        app:layout_constraintVertical_bias="0.538"
-        app:srcCompat="@drawable/swordswing" />
+        app:layout_constraintTop_toTopOf="@+id/player"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/zombieidle" />
 
     <TextView
         android:id="@+id/Won"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_weight="1"
         android:text="You Won!"
         android:textSize="20dp"
         android:visibility="gone"
@@ -189,40 +183,58 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.426" />
 
-    <Button
-        android:id="@+id/Continue"
-        android:layout_width="200dp"
-        android:layout_height="72dp"
+    <TextView
+        android:id="@+id/falserun"
+        android:layout_width="match_parent"
+        android:layout_height="33dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:onClick="exit"
-        android:text="Continue"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="Unable to run away"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Won"
-        app:layout_constraintVertical_bias="0.914" />
+        app:layout_constraintTop_toBottomOf="@+id/VSlayout"
+        app:layout_constraintVertical_bias="0.29" />
 
     <ImageView
-        android:id="@+id/enemypicture"
-        android:layout_width="132dp"
-        android:layout_height="146dp"
+        android:id="@+id/player"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="32dp"
+        android:layout_weight="1"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/swordswing"
+        tools:layout_editor_absoluteY="173dp" />
+
+
+    <ImageView
+        android:id="@+id/enemyhitanimation"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/player"
-        app:layout_constraintEnd_toStartOf="@+id/player"
-        app:layout_constraintHorizontal_bias="0.875"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/player"
-        app:srcCompat="@drawable/zombieidle" />
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/enemypicture"
+        app:layout_constraintEnd_toEndOf="@+id/enemypicture"
+        app:layout_constraintHorizontal_bias="0.402"
+        app:layout_constraintStart_toStartOf="@+id/enemypicture"
+        app:layout_constraintTop_toTopOf="@+id/enemypicture"
+        app:layout_constraintVertical_bias="0.406"
+        app:srcCompat="@drawable/hit" />
 
     <ImageView
         android:id="@+id/playerhitanimation"
-        android:layout_width="44dp"
+        android:layout_width="match_parent"
         android:layout_height="44dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
@@ -238,49 +250,60 @@
         app:layout_constraintVertical_bias="0.406"
         app:srcCompat="@drawable/hit" />
 
-    <ImageView
-        android:id="@+id/enemyhitanimation"
-        android:layout_width="44dp"
-        android:layout_height="44dp"
+    <Button
+        android:id="@+id/Buttonhit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:onClick="hit"
+        android:text="Attack"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/controllayout"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/controllayout"
+        app:layout_constraintTop_toTopOf="@+id/controllayout" />
+
+    <Button
+        android:id="@+id/Continue"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:onClick="exit"
+        android:text="Continue"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/enemypicture"
-        app:layout_constraintEnd_toEndOf="@+id/enemypicture"
-        app:layout_constraintHorizontal_bias="0.402"
-        app:layout_constraintStart_toStartOf="@+id/enemypicture"
-        app:layout_constraintTop_toTopOf="@+id/enemypicture"
-        app:layout_constraintVertical_bias="0.406"
-        app:srcCompat="@drawable/hit" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Won"
+        app:layout_constraintVertical_bias="0.914" />
 
-    <TextView
-        android:id="@+id/playername"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/buttonbag"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/playerhealth"
-        app:layout_constraintEnd_toEndOf="@+id/playerhealth"
-        app:layout_constraintStart_toStartOf="@+id/playerhealth"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        android:layout_weight="1"
+        android:onClick="bag"
+        android:padding="0dp"
+        android:text="Bag"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="87dp" />
 
-    <TextView
-        android:id="@+id/enemyname"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/buttonrun"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/enemyhealth"
-        app:layout_constraintEnd_toEndOf="@+id/enemyhealth"
-        app:layout_constraintStart_toStartOf="@+id/enemyhealth"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        android:layout_weight="1"
+        android:onClick="runaway"
+        android:text="Run"
+        android:visibility="gone"
+        tools:layout_editor_absoluteX="216dp"
+        tools:layout_editor_absoluteY="79dp" />
 
 </android.support.constraint.ConstraintLayout>

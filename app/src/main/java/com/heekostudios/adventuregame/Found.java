@@ -84,7 +84,7 @@ public class Found extends AppCompatActivity {
             case 2: {
                 item.setImageResource(R.drawable.goldbag);
 
-                int c = rander.nextInt(25) + 2;
+                int c = rander.nextInt(25) + 10;
                 founditem.setText(c + " Gold");
                 money = c + money;
                 break;
@@ -92,7 +92,7 @@ public class Found extends AppCompatActivity {
             case 3: {
                 item.setImageResource(R.drawable.goldbag);
 
-                int c = rander.nextInt(45) + 2;
+                int c = rander.nextInt(45) + 10;
                 founditem.setText(c + " Gold");
                 money = c + money;
                 break;
