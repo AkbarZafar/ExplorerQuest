@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">game1</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="_78_100">78/100</string>
+    <string name="enemynamezombie">Zombie</string>
+    <string name="enemynamerebel">Rebel</string>
+    <string name="enemynameflyer">Monster</string>
+    <string name="enemynameuglyone">New Monster</string>
+    <string name="runfalse">Unable to run away</string>
+    <string name="playerwin">You Won!</string>
+    <string name="playerlost">You Lost!</string>
+    <string name="truerun">You successfully ran away!</string>
+    <string name="dash">/</string>
+    <string name="attack">Attack</string>
+    <string name="continuebtn">Continue</string>
+    <string name="bag">Bag</string>
+    <string name="run">Run</string>
+    <string name="playerpicture">playerpicture</string>
+    <string name="enemypicture">enemypicture</string>
+    <string name="vs">VS</string>
+    <string name="hiteffectonenemy">hiteffectonenemy</string>
+    <string name="hiteffectonplayer">hiteffectonplayer</string>
+</resources>
