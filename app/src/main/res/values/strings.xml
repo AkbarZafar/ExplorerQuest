@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">game1</string>
     <string name="title_activity_settings">Settings</string>
+    <string name="continue">Continue</string>
+    <string name="attack">Attack</string>
+    <string name="bag">Bag</string>
+    <string name="run">Run</string>
+    <string name="picture_of_enemy">picture of enemy</string>
+    <string name="picture_of_player">picture of player</string>
+    <string name="hit_effect_on_enemy">hit effect on enemy</string>
+    <string name="hit_effect_on_player">hit effect on player</string>
 </resources>

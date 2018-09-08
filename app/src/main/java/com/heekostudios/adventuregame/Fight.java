@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,7 +19,6 @@ import android.widget.TextView;
 import java.io.IOException;
 import java.util.Random;
 
-import pl.droidsonroids.gif.GifDecoder;
 import pl.droidsonroids.gif.GifDrawable;
 
 public class Fight extends AppCompatActivity {
@@ -277,7 +275,7 @@ public class Fight extends AppCompatActivity {
     public void runaway(View x) {
         Random rander = new Random();
         int i = rander.nextInt(6);
-        TextView norun = (TextView) findViewById(R.id.falserun);
+        TextView norun = (TextView) findViewById(R.id.Info);
 
         if (i == 0) {
             norun.setVisibility(View.GONE);
@@ -355,7 +353,7 @@ public class Fight extends AppCompatActivity {
     }
 
     public void hit(View x) {
-        TextView norun = (TextView) findViewById(R.id.falserun);
+        TextView norun = (TextView) findViewById(R.id.Info);
         norun.setVisibility(View.GONE);
 
         disabler();
@@ -473,7 +471,7 @@ public class Fight extends AppCompatActivity {
     }
 
     public void win() {
-        TextView won = (TextView) findViewById(R.id.Won);
+        TextView won = (TextView) findViewById(R.id.Info);
         won.setText("You Won!");
 
         Random rander = new Random();
@@ -485,7 +483,7 @@ public class Fight extends AppCompatActivity {
     }
 
     public void dead() {
-        TextView won = (TextView) findViewById(R.id.Won);
+        TextView won = (TextView) findViewById(R.id.Info);
         won.setText("You Lost!");
 
         result = 'd';
@@ -497,7 +495,7 @@ public class Fight extends AppCompatActivity {
     }
 
     public void success() {
-        TextView won = (TextView) findViewById(R.id.Won);
+        TextView won = (TextView) findViewById(R.id.Info);
         won.setText("You successfuly ran away!");
 
         Random rander = new Random();
@@ -521,7 +519,7 @@ public class Fight extends AppCompatActivity {
         Button resume = (Button) findViewById(R.id.Continue);
         resume.setVisibility(View.VISIBLE);
 
-        TextView message = (TextView) findViewById(R.id.Won);
+        TextView message = (TextView) findViewById(R.id.Info);
         message.setVisibility(View.VISIBLE);
     }
 
