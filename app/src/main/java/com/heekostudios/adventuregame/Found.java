@@ -92,7 +92,7 @@ public class Found extends AppCompatActivity {
             case 3: {
                 item.setImageResource(R.drawable.goldbag);
 
-                int c = rander.nextInt(45) + 10;
+                int c = rander.nextInt(65) + 10;
                 founditem.setText(c + " Gold");
                 money = c + money;
                 break;
@@ -109,8 +109,6 @@ public class Found extends AppCompatActivity {
 
 
     public void OK(View X) {
-        Intent OK = new Intent(getApplicationContext(), Gamescreen.class);
-        startActivity(OK);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         finish();
     }

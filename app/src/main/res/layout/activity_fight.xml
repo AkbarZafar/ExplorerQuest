@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,176 +8,172 @@
     android:orientation="vertical"
     tools:context=".Fight">
 
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/HPstuff"
-        android:layout_width="0dp"
-        android:layout_height="109dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/Field"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
-
-        <TextView
-            android:id="@+id/VS"
-            android:layout_width="69dp"
-            android:layout_height="37dp"
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/HPstuff"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textSize="30sp"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_weight="0.5"
+            app:layout_constraintBottom_toTopOf="@+id/Field"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="VS" />
+            app:layout_constraintVertical_bias="0.0">
 
-        <TextView
-            android:id="@+id/enemyname"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:visibility="visible"
-            app:layout_constraintBottom_toTopOf="@+id/enemyhealth"
-            app:layout_constraintEnd_toEndOf="@+id/enemyhealth"
-            app:layout_constraintStart_toStartOf="@+id/enemyhealth"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            <TextView
+                android:id="@+id/VS"
+                android:layout_width="69dp"
+                android:layout_height="37dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/vs"
+                android:textSize="30sp"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/playername"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            app:layout_constraintBottom_toTopOf="@+id/playerhealth"
-            app:layout_constraintEnd_toEndOf="@+id/playerhealth"
-            app:layout_constraintStart_toStartOf="@+id/playerhealth"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/enemyname"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:visibility="visible"
+                app:layout_constraintBottom_toTopOf="@+id/enemyhealth"
+                app:layout_constraintEnd_toEndOf="@+id/enemyhealth"
+                app:layout_constraintStart_toStartOf="@+id/enemyhealth"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
 
-        <ProgressBar
-            android:id="@+id/enemyhealth"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="16dp"
-            android:layout_weight="1"
-            android:indeterminate="false"
-            android:max="100"
-            android:minHeight="50dp"
-            android:minWidth="200dp"
-            android:progress="50"
-            app:layout_constraintBottom_toBottomOf="@+id/VS"
-            app:layout_constraintEnd_toStartOf="@+id/VS"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/VS" />
+            <TextView
+                android:id="@+id/playername"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                app:layout_constraintBottom_toTopOf="@+id/playerhealth"
+                app:layout_constraintEnd_toEndOf="@+id/playerhealth"
+                app:layout_constraintStart_toStartOf="@+id/playerhealth"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <ProgressBar
-            android:id="@+id/playerhealth"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="8dp"
-            android:layout_weight="1"
-            android:indeterminate="false"
-            android:max="100"
-            android:minHeight="50dp"
-            android:minWidth="200dp"
-            android:progress="50"
-            app:layout_constraintBottom_toBottomOf="@+id/VS"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/VS"
-            app:layout_constraintTop_toTopOf="@+id/VS" />
+            <ProgressBar
+                android:id="@+id/enemyhealth"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_weight="1"
+                android:indeterminate="false"
+                android:max="100"
+                android:minHeight="50dp"
+                android:minWidth="200dp"
+                android:progress="50"
+                app:layout_constraintBottom_toBottomOf="@+id/VS"
+                app:layout_constraintEnd_toStartOf="@+id/VS"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/VS" />
 
-        <TextView
-            android:id="@+id/txtenemyhealth"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/enemyhealth"
-            app:layout_constraintStart_toStartOf="@+id/enemyhealth"
-            app:layout_constraintTop_toBottomOf="@+id/enemyhealth" />
+            <ProgressBar
+                android:id="@+id/playerhealth"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:indeterminate="false"
+                android:max="100"
+                android:minHeight="50dp"
+                android:minWidth="200dp"
+                android:progress="50"
+                app:layout_constraintBottom_toBottomOf="@+id/VS"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/VS"
+                app:layout_constraintTop_toTopOf="@+id/VS" />
 
-        <TextView
-            android:id="@+id/txtplayerhealth"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/playerhealth"
-            app:layout_constraintStart_toStartOf="@+id/playerhealth"
-            app:layout_constraintTop_toBottomOf="@+id/playerhealth" />
-    </android.support.constraint.ConstraintLayout>
+            <TextView
+                android:id="@+id/txtenemyhealth"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/enemyhealth"
+                app:layout_constraintStart_toStartOf="@+id/enemyhealth"
+                app:layout_constraintTop_toBottomOf="@+id/enemyhealth" />
 
+            <TextView
+                android:id="@+id/txtplayerhealth"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/playerhealth"
+                app:layout_constraintStart_toStartOf="@+id/playerhealth"
+                app:layout_constraintTop_toBottomOf="@+id/playerhealth" />
+        </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/Field"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.519">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/Info"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="32dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="8dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="50sp"
+            android:textSize="40sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="blah" />
 
         <ImageView
             android:id="@+id/enemypicture"
@@ -220,17 +216,17 @@
             android:id="@+id/enemyhitanimation"
             android:layout_width="53dp"
             android:layout_height="53dp"
-            android:layout_marginBottom="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:contentDescription="@string/hit_effect_on_enemy"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@+id/enemypicture"
             app:layout_constraintEnd_toEndOf="@+id/enemypicture"
-            app:layout_constraintHorizontal_bias="0.308"
+            app:layout_constraintHorizontal_bias="0.35"
             app:layout_constraintStart_toStartOf="@+id/enemypicture"
             app:layout_constraintTop_toTopOf="@+id/enemypicture"
-            app:layout_constraintVertical_bias="0.3"
+            app:layout_constraintVertical_bias="0.58000004"
             app:srcCompat="@drawable/hit" />
 
         <ImageView
@@ -253,119 +249,109 @@
             app:srcCompat="@drawable/hit" />
     </android.support.constraint.ConstraintLayout>
 
-
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/Controls"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Field"
-        app:layout_constraintVertical_bias="1.0">
-
-        <LinearLayout
-            android:layout_width="0dp"
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/Controls"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:orientation="vertical"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="0.6"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <Button
-                android:id="@+id/Continue"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="32dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginLeft="32dp"
-                android:layout_marginRight="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="32dp"
-                android:layout_weight="1"
-                android:onClick="exit"
-                android:text="@string/continue"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Info"
-                app:layout_constraintVertical_bias="0.914" />
-
-            <Button
-                android:id="@+id/Buttonhit"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_weight="1"
-                android:onClick="hit"
-                android:text="Attack"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.124" />
+            app:layout_constraintTop_toBottomOf="@+id/Field"
+            app:layout_constraintVertical_bias="1.0">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                tools:layout_editor_absoluteX="86dp"
-                tools:layout_editor_absoluteY="152dp">
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <Button
-                    android:id="@+id/buttonbag"
+                    android:id="@+id/continuegame"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginRight="32dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="32dp"
                     android:layout_weight="1"
-                    android:onClick="bag"
-                    android:padding="0dp"
-                    android:text="@string/bag"
+                    android:onClick="exit"
+                    android:text="@string/continuegame"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/Buttonhit"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/Buttonhit"
-                    app:layout_constraintTop_toBottomOf="@+id/Buttonhit"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Info"
+                    app:layout_constraintVertical_bias="0.914" />
 
                 <Button
-                    android:id="@+id/buttonrun"
+                    android:id="@+id/Buttonhit"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:onClick="runaway"
-                    android:text="@string/run"
+                    android:onClick="hit"
+                    android:text="@string/attack"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/Buttonhit"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="@+id/Buttonhit"
-                    app:layout_constraintTop_toBottomOf="@+id/Buttonhit"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.124" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    tools:layout_editor_absoluteX="86dp"
+                    tools:layout_editor_absoluteY="152dp">
+
+                    <Button
+                        android:id="@+id/buttonbag"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:onClick="bag"
+                        android:padding="0dp"
+                        android:text="@string/bag"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/Buttonhit"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/Buttonhit"
+                        app:layout_constraintTop_toBottomOf="@+id/Buttonhit"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <Button
+                        android:id="@+id/buttonrun"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:onClick="runaway"
+                        android:text="@string/run"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/Buttonhit"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="@+id/Buttonhit"
+                        app:layout_constraintTop_toBottomOf="@+id/Buttonhit"
+                        app:layout_constraintVertical_bias="0.0" />
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
 
-    </android.support.constraint.ConstraintLayout>
+        </android.support.constraint.ConstraintLayout>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

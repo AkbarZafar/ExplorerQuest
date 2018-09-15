@@ -2,6 +2,7 @@ package com.heekostudios.adventuregame;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -38,18 +39,20 @@ public class Gamescreen extends AppCompatActivity {
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-        warriorwalkon();
         extract();
-        cityset();
-        gif();
+
         setup();
 
+        warriorwalkon();
+        cityset();
+        gif();
     }
 
     public void cityset() {
         if (city == 0) {
             Random random = new Random();
             city = random.nextInt(5) + 7;
+            distance=0;
 
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putInt("city", city);
@@ -77,7 +80,7 @@ public class Gamescreen extends AppCompatActivity {
     }
 
     public void warriorwalkon() {
-        ImageView character = (ImageView) findViewById(R.id.idle);
+        ImageView character = findViewById(R.id.idle);
         TranslateAnimation setpostion = new TranslateAnimation(550, 0, 0, 0);
 
 
@@ -117,10 +120,10 @@ public class Gamescreen extends AppCompatActivity {
     }
 
     public void setup() {
-        TextView username = (TextView) findViewById(R.id.name);
+        TextView username = findViewById(R.id.name);
         username.setText(user);
 
-        TextView mula = (TextView) findViewById(R.id.money);
+        TextView mula = findViewById(R.id.money);
         mula.setText("" + money);
 
         hpsetup();
@@ -129,16 +132,31 @@ public class Gamescreen extends AppCompatActivity {
     }
 
     public void lvlsetup() {
-        CircularProgressBar progressBar = findViewById(R.id.progress_bar);
-        progressBar.setProgress(experience);
+        final TextView leveldisplay = findViewById(R.id.level);
+        final CircularProgressBar progressBar = findViewById(R.id.progress_bar);
 
-        TextView leveldisplay = (TextView) findViewById(R.id.level);
-        leveldisplay.setText("" + level);
+
+        new Handler().postDelayed(new Runnable() {
+            public void run() {
+                if (level == 12) {
+                    progressBar.setProgressAnimationDuration(5000);
+                    progressBar.setProgress(100);
+                    progressBar.animate();
+                    leveldisplay.setText("12");
+                } else {
+                    progressBar.setProgressAnimationDuration(500);
+                    progressBar.setProgress(experience);
+                    progressBar.animate();
+                    leveldisplay.setText("" + level);
+
+                }
+            }
+        }, 20);
     }
 
     public void hpsetup() {
 
-        TextView hp = (TextView) findViewById(R.id.HP);
+        TextView hp = findViewById(R.id.HP);
         hp.setText(HP + "/" + maxhp);
     }
 
@@ -169,6 +187,11 @@ public class Gamescreen extends AppCompatActivity {
     }
 
     public void explore(View view) {
+
+        distance += 1;
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("distance", distance);
+        editor.apply();
 
         Button press = findViewById(R.id.explore);
         press.setEnabled(false);
@@ -234,6 +257,8 @@ public class Gamescreen extends AppCompatActivity {
             case 3:
             case 4:
             case 5: {
+                Intent home=new Intent(getApplicationContext(),Gamescreen.class);
+                startActivity(home);
                 Intent item = new Intent(getApplicationContext(), Found.class);
                 startActivity(item);
                 break;
@@ -262,7 +287,6 @@ public class Gamescreen extends AppCompatActivity {
     }
 
     public void citycheck() {
-        distance += 1;
         SharedPreferences.Editor editor = sharedPreferences.edit();
         if (distance == city) {
             difficulty += 1;

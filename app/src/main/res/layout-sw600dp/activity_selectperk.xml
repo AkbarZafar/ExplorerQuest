@@ -16,7 +16,7 @@
         android:layout_marginTop="8dp"
         android:gravity="center"
         android:text="@string/select_a_perk_to_upgrade"
-        android:textSize="28sp"
+        android:textSize="55sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +45,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="16sp"
+            android:textSize="25sp"
             tools:layout_editor_absoluteX="77dp"
             tools:layout_editor_absoluteY="90dp" />
 
@@ -56,6 +56,7 @@
             android:layout_weight="2"
             android:elevation="0dp"
             android:onClick="atklvl"
+            android:textSize="30sp"
             tools:layout_editor_absoluteX="77dp"
             tools:layout_editor_absoluteY="111dp" />
 
@@ -65,7 +66,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="16sp"
+            android:textSize="25sp"
             tools:layout_editor_absoluteX="77dp"
             tools:layout_editor_absoluteY="234dp" />
 
@@ -75,6 +76,7 @@
             android:layout_height="0dp"
             android:layout_weight="2"
             android:onClick="hplvl"
+            android:textSize="30sp"
             tools:layout_editor_absoluteX="77dp"
             tools:layout_editor_absoluteY="255dp" />
 
@@ -84,7 +86,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="16sp"
+            android:textSize="25sp"
             tools:layout_editor_absoluteX="77dp"
             tools:layout_editor_absoluteY="371dp" />
 
@@ -94,26 +96,9 @@
             android:layout_height="0dp"
             android:layout_weight="2"
             android:onClick="deflvl"
+            android:textSize="30sp"
             tools:layout_editor_absoluteX="77dp"
             tools:layout_editor_absoluteY="392dp" />
-
-        <Button
-            android:id="@+id/confirm"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            android:onClick="confirm"
-            android:text="@string/confirm"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/exit"
-            app:layout_constraintStart_toStartOf="@+id/exit"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
-            tools:text="Confirm" />
 
         <Button
             android:id="@+id/exit"
@@ -125,6 +110,7 @@
             android:onClick="exit"
             android:text="@string/exit"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textSize="40sp"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/linearLayout3"
@@ -132,6 +118,25 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0"
             tools:text="Exit" />
+
+        <Button
+            android:id="@+id/confirm"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:onClick="confirm"
+            android:text="@string/confirm"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textSize="40sp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/exit"
+            app:layout_constraintStart_toStartOf="@+id/exit"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            tools:text="Confirm" />
 
     </LinearLayout>
 

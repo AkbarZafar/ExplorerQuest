@@ -18,27 +18,28 @@
         android:layout_weight="1"
         android:gravity="center"
         android:text="@string/level_up"
-        android:textSize="40sp" />
+        android:textSize="75sp" />
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_weight="6">
 
         <com.budiyev.android.circularprogressbar.CircularProgressBar
             android:id="@+id/expfull"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             app:animateProgress="true"
-            app:backgroundStrokeColor="@color/colorPrimary"
-            app:backgroundStrokeWidth="50dp"
+            app:backgroundStrokeColor="#ff3f51b5"
+            app:backgroundStrokeWidth="16dp"
             app:drawBackgroundStroke="false"
             app:foregroundStrokeCap="butt"
             app:foregroundStrokeColor="@android:color/holo_green_light"
-            app:foregroundStrokeWidth="75dp"
+            app:foregroundStrokeWidth="70dp"
             app:indeterminate="false"
             app:indeterminateMinimumAngle="45"
             app:indeterminateRotationAnimationDuration="1200"
@@ -71,12 +72,13 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:gravity="center"
-            android:textSize="100sp"
+            android:textSize="170sp"
             app:layout_constraintBottom_toBottomOf="@+id/expfull"
             app:layout_constraintEnd_toEndOf="@+id/expfull"
             app:layout_constraintStart_toStartOf="@+id/expfull"
             app:layout_constraintTop_toTopOf="@+id/expfull"
             tools:text="1" />
+
     </android.support.constraint.ConstraintLayout>
 
     <TextView
@@ -89,8 +91,8 @@
         android:layout_marginTop="8dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:textSize="30sp"
-        tools:text="wqasd" />
+        android:textSize="50sp"
+        tools:text="asdads" />
 
     <Button
         android:id="@+id/selectperk"
@@ -103,6 +105,6 @@
         android:layout_weight="2"
         android:onClick="OK"
         android:text="@string/pick_perk"
-        android:textSize="30sp" />
+        android:textSize="60sp" />
 
 </LinearLayout>

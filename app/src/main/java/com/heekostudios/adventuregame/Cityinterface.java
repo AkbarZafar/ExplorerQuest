@@ -3,7 +3,6 @@ package com.heekostudios.adventuregame;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Shader;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -31,19 +30,19 @@ public class Cityinterface extends AppCompatActivity {
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-        actiondesc = (TextView) findViewById(R.id.actiondesc);
-        cost = (TextView) findViewById(R.id.cost);
+        actiondesc = findViewById(R.id.actiondesc);
+        cost = findViewById(R.id.cost);
 
         unload();
         setup();
     }
 
     public void setup() {
-        TextView moneycount = (TextView) findViewById(R.id.moneycount);
+        TextView moneycount = findViewById(R.id.moneycount);
         moneycount.setText("" + money);
 
-        buy = (Button) findViewById(R.id.action);
-        buy.setVisibility(View.GONE);
+        buy =findViewById(R.id.btnaction);
+        buy.setVisibility(View.INVISIBLE);
 
         actiondesc.setText("");
 
@@ -72,17 +71,17 @@ public class Cityinterface extends AppCompatActivity {
     }
 
     public void meatcooked(View x) {
-        ImageButton button = (ImageButton) findViewById(R.id.cookmeatbuy);
+        ImageButton button = findViewById(R.id.cookmeatbuy);
         button.setEnabled(false);
-        ImageButton button1=(ImageButton)findViewById(R.id.applebuy);
+        ImageButton button1= findViewById(R.id.applebuy);
         button1.setEnabled(true);
-        ImageButton button2=(ImageButton)findViewById(R.id.breadbuy);
+        ImageButton button2= findViewById(R.id.breadbuy);
         button2.setEnabled(true);
-        ImageButton button3=(ImageButton)findViewById(R.id.rawmeatbuy);
+        ImageButton button3= findViewById(R.id.rawmeatbuy);
         button3.setEnabled(true);
-        ImageButton button4=(ImageButton)findViewById(R.id.rawtocook);
+        ImageButton button4= findViewById(R.id.rawtocook);
         button4.setEnabled(true);
-        ImageButton button5=(ImageButton)findViewById(R.id.lifestealbuy);
+        ImageButton button5= findViewById(R.id.lifestealbuy);
         button5.setEnabled(true);
 
         buy.setVisibility(View.VISIBLE);
@@ -93,17 +92,17 @@ public class Cityinterface extends AppCompatActivity {
     }
 
     public void cookmeat(View x) {
-        ImageButton button = (ImageButton) findViewById(R.id.cookmeatbuy);
+        ImageButton button = findViewById(R.id.cookmeatbuy);
         button.setEnabled(true);
-        ImageButton button1=(ImageButton)findViewById(R.id.applebuy);
+        ImageButton button1= findViewById(R.id.applebuy);
         button1.setEnabled(true);
-        ImageButton button2=(ImageButton)findViewById(R.id.breadbuy);
+        ImageButton button2= findViewById(R.id.breadbuy);
         button2.setEnabled(true);
-        ImageButton button3=(ImageButton)findViewById(R.id.rawmeatbuy);
+        ImageButton button3= findViewById(R.id.rawmeatbuy);
         button3.setEnabled(true);
-        ImageButton button4=(ImageButton)findViewById(R.id.rawtocook);
+        ImageButton button4= findViewById(R.id.rawtocook);
         button4.setEnabled(false);
-        ImageButton button5=(ImageButton)findViewById(R.id.lifestealbuy);
+        ImageButton button5= findViewById(R.id.lifestealbuy);
         button5.setEnabled(true);
 
         buy.setVisibility(View.VISIBLE);
@@ -114,17 +113,17 @@ public class Cityinterface extends AppCompatActivity {
     }
 
     public void meatraw(View x) {
-        ImageButton button = (ImageButton) findViewById(R.id.cookmeatbuy);
+        ImageButton button = findViewById(R.id.cookmeatbuy);
         button.setEnabled(true);
-        ImageButton button1=(ImageButton)findViewById(R.id.applebuy);
+        ImageButton button1= findViewById(R.id.applebuy);
         button1.setEnabled(true);
-        ImageButton button2=(ImageButton)findViewById(R.id.breadbuy);
+        ImageButton button2= findViewById(R.id.breadbuy);
         button2.setEnabled(true);
-        ImageButton button3=(ImageButton)findViewById(R.id.rawmeatbuy);
+        ImageButton button3= findViewById(R.id.rawmeatbuy);
         button3.setEnabled(false);
-        ImageButton button4=(ImageButton)findViewById(R.id.rawtocook);
+        ImageButton button4= findViewById(R.id.rawtocook);
         button4.setEnabled(true);
-        ImageButton button5=(ImageButton)findViewById(R.id.lifestealbuy);
+        ImageButton button5= findViewById(R.id.lifestealbuy);
         button5.setEnabled(true);
 
         buy.setVisibility(View.VISIBLE);
@@ -135,17 +134,17 @@ public class Cityinterface extends AppCompatActivity {
     }
 
     public void applebuy(View x) {
-        ImageButton button = (ImageButton) findViewById(R.id.cookmeatbuy);
+        ImageButton button = findViewById(R.id.cookmeatbuy);
         button.setEnabled(true);
-        ImageButton button1=(ImageButton)findViewById(R.id.applebuy);
+        ImageButton button1= findViewById(R.id.applebuy);
         button1.setEnabled(false);
-        ImageButton button2=(ImageButton)findViewById(R.id.breadbuy);
+        ImageButton button2= findViewById(R.id.breadbuy);
         button2.setEnabled(true);
-        ImageButton button3=(ImageButton)findViewById(R.id.rawmeatbuy);
+        ImageButton button3= findViewById(R.id.rawmeatbuy);
         button3.setEnabled(true);
-        ImageButton button4=(ImageButton)findViewById(R.id.rawtocook);
+        ImageButton button4= findViewById(R.id.rawtocook);
         button4.setEnabled(true);
-        ImageButton button5=(ImageButton)findViewById(R.id.lifestealbuy);
+        ImageButton button5= findViewById(R.id.lifestealbuy);
         button5.setEnabled(true);
 
         buy.setVisibility(View.VISIBLE);
@@ -156,17 +155,17 @@ public class Cityinterface extends AppCompatActivity {
     }
 
     public void breadbuy(View x) {
-        ImageButton button = (ImageButton) findViewById(R.id.cookmeatbuy);
+        ImageButton button = findViewById(R.id.cookmeatbuy);
         button.setEnabled(true);
-        ImageButton button1=(ImageButton)findViewById(R.id.applebuy);
+        ImageButton button1= findViewById(R.id.applebuy);
         button1.setEnabled(true);
-        ImageButton button2=(ImageButton)findViewById(R.id.breadbuy);
+        ImageButton button2= findViewById(R.id.breadbuy);
         button2.setEnabled(false);
-        ImageButton button3=(ImageButton)findViewById(R.id.rawmeatbuy);
+        ImageButton button3= findViewById(R.id.rawmeatbuy);
         button3.setEnabled(true);
-        ImageButton button4=(ImageButton)findViewById(R.id.rawtocook);
+        ImageButton button4= findViewById(R.id.rawtocook);
         button4.setEnabled(true);
-        ImageButton button5=(ImageButton)findViewById(R.id.lifestealbuy);
+        ImageButton button5= findViewById(R.id.lifestealbuy);
         button5.setEnabled(true);
 
         buy.setVisibility(View.VISIBLE);
@@ -178,29 +177,29 @@ public class Cityinterface extends AppCompatActivity {
     }
 
     public void lifestealbuy(View x) {
-        ImageButton button = (ImageButton) findViewById(R.id.cookmeatbuy);
+        ImageButton button = findViewById(R.id.cookmeatbuy);
         button.setEnabled(true);
-        ImageButton button1=(ImageButton)findViewById(R.id.applebuy);
+        ImageButton button1= findViewById(R.id.applebuy);
         button1.setEnabled(true);
-        ImageButton button2=(ImageButton)findViewById(R.id.breadbuy);
+        ImageButton button2= findViewById(R.id.breadbuy);
         button2.setEnabled(true);
-        ImageButton button3=(ImageButton)findViewById(R.id.rawmeatbuy);
+        ImageButton button3= findViewById(R.id.rawmeatbuy);
         button3.setEnabled(true);
-        ImageButton button4=(ImageButton)findViewById(R.id.rawtocook);
+        ImageButton button4= findViewById(R.id.rawtocook);
         button4.setEnabled(true);
-        ImageButton button5=(ImageButton)findViewById(R.id.lifestealbuy);
+        ImageButton button5= findViewById(R.id.lifestealbuy);
         button5.setEnabled(false);
 
 
         actiondesc.setText("Recieve health everytime you hit an enemy");
         if (lifesteal == 0) {
-            cost.setText("Cost: 350 gold");
+            cost.setText("Cost: 220 gold");
             actiondesc.setText("Recieve health everytime you hit an enemy");
             select = 6;
             buy.setVisibility(View.VISIBLE);
             button.setEnabled(false);
         } else if (lifesteal > 0 && lifesteal < 5) {
-            cost.setText("Cost: 100 gold");
+            cost.setText("Cost: 75 gold");
             actiondesc.setText("Upgrade the amount of HP points gained from hitting an enemy");
             select = 6;
             button.setEnabled(false);
@@ -277,16 +276,16 @@ public class Cityinterface extends AppCompatActivity {
             }
             case 6: {
                 if (lifesteal==0){
-                    if (money >= 350) {
+                    if (money >= 220) {
                         lifesteal += 1;
-                        money -= 350;
+                        money -= 220;
                     } else {
                         notenoughmoney();
                     }
                 }else{
-                    if (money >= 100) {
+                    if (money >= 75) {
                         lifesteal += 1;
-                        money -= 100;
+                        money -= 75;
                     } else {
                         notenoughmoney();
                     }
@@ -354,7 +353,7 @@ public class Cityinterface extends AppCompatActivity {
     }
 
     public void backhere(){
-        ImageView character = (ImageView) findViewById(R.id.coin);
+        ImageView character = findViewById(R.id.coin);
         TranslateAnimation setpostion = new TranslateAnimation(100, 0, 0, 0);
 
 

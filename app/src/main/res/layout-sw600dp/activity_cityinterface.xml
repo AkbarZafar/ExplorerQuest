@@ -7,13 +7,32 @@
     android:background="@drawable/shopkeepor"
     tools:context=".Cityinterface">
 
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="172dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="@string/you_have_reached_a_city"
+        android:textColor="@android:color/background_dark"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginStart="48dp"
         android:layout_marginTop="8dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -25,9 +44,9 @@
 
         <ImageButton
             android:id="@+id/cookmeatbuy"
-            android:layout_width="63dp"
-            android:layout_height="63dp"
+            android:layout_width="99dp"
 
+            android:layout_height="99dp"
             android:layout_weight="1"
             android:backgroundTint="@android:color/darker_gray"
             android:contentDescription="@string/picture_of_cooked_meat"
@@ -39,8 +58,8 @@
 
         <ImageButton
             android:id="@+id/applebuy"
-            android:layout_width="63dp"
-            android:layout_height="63dp"
+            android:layout_width="99dp"
+            android:layout_height="99dp"
             android:layout_weight="1"
             android:backgroundTint="@android:color/darker_gray"
             android:contentDescription="@string/picture_of_apple"
@@ -52,8 +71,8 @@
 
         <ImageButton
             android:id="@+id/rawmeatbuy"
-            android:layout_width="63dp"
-            android:layout_height="63dp"
+            android:layout_width="99dp"
+            android:layout_height="99dp"
             android:layout_weight="1"
             android:backgroundTint="@android:color/darker_gray"
             android:contentDescription="@string/picture_of_rawmeat"
@@ -65,8 +84,8 @@
 
         <ImageButton
             android:id="@+id/breadbuy"
-            android:layout_width="63dp"
-            android:layout_height="63dp"
+            android:layout_width="99dp"
+            android:layout_height="99dp"
 
             android:layout_weight="1"
             android:backgroundTint="@android:color/darker_gray"
@@ -83,12 +102,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="135dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginStart="225dp"
         android:layout_marginTop="16dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:layout_constraintVertical_bias="0.0">
@@ -96,7 +116,7 @@
         <ImageButton
             android:id="@+id/rawtocook"
             android:layout_width="118dp"
-            android:layout_height="63dp"
+            android:layout_height="99dp"
             android:layout_weight="1"
             android:backgroundTint="@android:color/darker_gray"
             android:contentDescription="@string/picture_of_raw_to_cooked_meat"
@@ -109,7 +129,7 @@
         <ImageButton
             android:id="@+id/lifestealbuy"
             android:layout_width="90dp"
-            android:layout_height="63dp"
+            android:layout_height="99dp"
             android:layout_weight="1"
             android:backgroundTint="@android:color/darker_gray"
             android:contentDescription="@string/picture_of_lifesteal"
@@ -120,54 +140,33 @@
             tools:layout_editor_absoluteY="361dp" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="0dp"
-        android:layout_height="112dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:gravity="center"
-        android:text="@string/you_have_reached_a_city"
-        android:textColor="@android:color/background_dark"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
     <Button
         android:id="@+id/btnexit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_width="148dp"
+        android:layout_height="79dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
         android:onClick="OK"
         android:text="@string/exit"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonBag"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.984" />
+        app:layout_constraintTop_toTopOf="@+id/buttonBag" />
 
     <ImageView
         android:id="@+id/coin"
-        android:layout_width="37dp"
-        android:layout_height="37dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginEnd="16dp"
         android:contentDescription="@string/picture_of_coin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintHorizontal_bias="0.066"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.852"
+        app:layout_constraintVertical_bias="0.848"
         app:srcCompat="@drawable/coin" />
 
 
@@ -181,7 +180,7 @@
         android:layout_marginTop="8dp"
         android:gravity=""
         android:textColor="@android:color/black"
-        android:textSize="20sp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="@+id/coin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -192,14 +191,15 @@
 
     <Button
         android:id="@+id/btnaction"
-        android:layout_width="121dp"
-        android:layout_height="62dp"
+        android:layout_width="247dp"
+        android:layout_height="96dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:onClick="buy"
         android:text="@string/buy"
+        android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -211,11 +211,12 @@
         android:id="@+id/actiondesc"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
         android:gravity="center"
         android:textColor="@android:color/black"
-        android:textSize="16sp"
+        android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/cost"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
         app:layout_constraintHorizontal_bias="0.0"
@@ -225,13 +226,14 @@
 
     <TextView
         android:id="@+id/cost"
-        android:layout_width="113dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:gravity="center"
         android:textColor="@android:color/black"
+        android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/btnaction"
         app:layout_constraintEnd_toEndOf="@+id/btnaction"
         app:layout_constraintStart_toStartOf="@+id/btnaction"
@@ -246,6 +248,7 @@
         android:layout_marginStart="8dp"
         android:onClick="bag"
         android:text="@string/bag"
+        android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="@+id/btnaction"
         app:layout_constraintEnd_toStartOf="@+id/btnaction"
         app:layout_constraintStart_toEndOf="@+id/btnexit"

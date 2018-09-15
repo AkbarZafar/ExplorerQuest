@@ -28,19 +28,19 @@ public class Selectperk extends AppCompatActivity {
 
     public void unpack() {
         attack = sharedPreferences.getInt("attack", 1);//attack level timesed by 6,, 6(current),12,18,24,35
-        defence = sharedPreferences.getInt("defence", 1);//defence timesed by 3%,, 3%(current),6%,9%,12%,18%
+        defence = sharedPreferences.getInt("defence", 1);//defence timesed by 4%,, 4%(current),8%,12%,16%,23%
         maxhp = sharedPreferences.getInt("maxhp", 100);//hp boosted by 15 every time,, 100(current),115,130,145,180
     }
 
     public void setup() {
-        Button confirm = (Button) findViewById(R.id.confirm);
-        confirm.setVisibility(View.GONE);
+        Button confirm = findViewById(R.id.confirm);
+        confirm.setVisibility(View.INVISIBLE);
 
-        Button exit = (Button) findViewById(R.id.exit);
+        Button exit = findViewById(R.id.exit);
         exit.setVisibility(View.GONE);
 
-        Button maxhealth = (Button) findViewById(R.id.perkhp);
-        TextView textmaxhealth = (TextView) findViewById(R.id.currenthp);
+        Button maxhealth = findViewById(R.id.perkhp);
+        TextView textmaxhealth = findViewById(R.id.currenthp);
         if (maxhp == 180) {
             textmaxhealth.setText("Current Max HP: 180HP");
             maxhealth.setEnabled(false);
@@ -53,23 +53,23 @@ public class Selectperk extends AppCompatActivity {
             maxhealth.setText("Upgrade max HP to: " + (maxhp + 15));
         }
 
-        Button def = (Button) findViewById(R.id.perkdef);
-        TextView textdef = (TextView) findViewById(R.id.currentdef);
+        Button def = findViewById(R.id.perkdef);
+        TextView textdef = findViewById(R.id.currentdef);
         if (defence == 5) {
-            textdef.setText("Current Defence: 18% resistence");
+            textdef.setText("Current Defence: 23% resistence");
             def.setText("You've reached max defence!");
             def.setEnabled(false);
         }else if (attack==4) {
-                textdef.setText("Current Defence: " + (defence * 3) + "% resistence");
-                def.setText("Upgrade to attack to 18% resistence");
+                textdef.setText("Current Defence: " + (defence * 4) + "% resistence");
+                def.setText("Upgrade to Defence to 23% resistence");
             } else {
-            textdef.setText("Current Defence: " + (defence * 3) + "% resistence");
-            def.setText("Upgrade to defence to " + ((defence + 1) * 3) + "% resistence");
+            textdef.setText("Current Defence: " + (defence * 4) + "% resistence");
+            def.setText("Upgrade to defence to " + ((defence + 1) * 4) + "% resistence");
 
         }
 
-        Button attk = (Button) findViewById(R.id.perkattck);
-        TextView textattk = (TextView) findViewById(R.id.currentattk);
+        Button attk = findViewById(R.id.perkattck);
+        TextView textattk = findViewById(R.id.currentattk);
         if (attack == 5) {
             textdef.setText("Current Attack: 40 dmg");
             attk.setText("You've reached max attack!");
@@ -84,48 +84,48 @@ public class Selectperk extends AppCompatActivity {
     }
 
     public void atklvl(View x) {
-        Button confirm = (Button) findViewById(R.id.confirm);
+        Button confirm = findViewById(R.id.confirm);
         confirm.setVisibility(View.VISIBLE);
 
-        Button attck=(Button)findViewById(R.id.perkattck);
+        Button attck= findViewById(R.id.perkattck);
         attck.setEnabled(false);
 
-        Button def=(Button)findViewById(R.id.perkdef);
+        Button def= findViewById(R.id.perkdef);
         def.setEnabled(true);
 
-        Button health=(Button)findViewById(R.id.perkhp);
+        Button health= findViewById(R.id.perkhp);
         health.setEnabled(true);
 
         setter = 1;
     }
 
     public void deflvl(View x) {
-        Button confirm = (Button) findViewById(R.id.confirm);
+        Button confirm = findViewById(R.id.confirm);
         confirm.setVisibility(View.VISIBLE);
 
-        Button attck=(Button)findViewById(R.id.perkattck);
+        Button attck= findViewById(R.id.perkattck);
         attck.setEnabled(true);
 
-        Button def=(Button)findViewById(R.id.perkdef);
+        Button def= findViewById(R.id.perkdef);
         def.setEnabled(false);
 
-        Button health=(Button)findViewById(R.id.perkhp);
+        Button health= findViewById(R.id.perkhp);
         health.setEnabled(true);
 
         setter = 2;
     }
 
     public void hplvl(View x) {
-        Button confirm = (Button) findViewById(R.id.confirm);
+        Button confirm = findViewById(R.id.confirm);
         confirm.setVisibility(View.VISIBLE);
 
-        Button attck=(Button)findViewById(R.id.perkattck);
+        Button attck= findViewById(R.id.perkattck);
         attck.setEnabled(true);
 
-        Button def=(Button)findViewById(R.id.perkdef);
+        Button def= findViewById(R.id.perkdef);
         def.setEnabled(true);
 
-        Button health=(Button)findViewById(R.id.perkhp);
+        Button health= findViewById(R.id.perkhp);
         health.setEnabled(false);
 
         setter = 3;
@@ -158,19 +158,19 @@ public class Selectperk extends AppCompatActivity {
     }
 
     public void exitsetup() {
-        Button confirm = (Button) findViewById(R.id.confirm);
+        Button confirm = findViewById(R.id.confirm);
         confirm.setVisibility(View.GONE);
 
-        Button perkattack = (Button) findViewById(R.id.perkattck);
+        Button perkattack = findViewById(R.id.perkattck);
         perkattack.setEnabled(false);
 
-        Button health = (Button) findViewById(R.id.perkhp);
+        Button health = findViewById(R.id.perkhp);
         health.setEnabled(false);
 
-        Button perkdefence = (Button) findViewById(R.id.perkdef);
+        Button perkdefence = findViewById(R.id.perkdef);
         perkdefence.setEnabled(false);
 
-        Button exit = (Button) findViewById(R.id.exit);
+        Button exit = findViewById(R.id.exit);
         exit.setVisibility(View.VISIBLE);
     }
 

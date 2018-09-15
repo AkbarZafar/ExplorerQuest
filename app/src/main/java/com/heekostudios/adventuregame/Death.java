@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.view.View;
 
 public class Death extends AppCompatActivity {
+
     SharedPreferences sharedPreferences;
+    String name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,16 +18,19 @@ public class Death extends AppCompatActivity {
 
         sharedPreferences= PreferenceManager.getDefaultSharedPreferences(this);
 
+        name=sharedPreferences.getString("user",null);
+
+
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
         editor.apply();
 
+        editor.putString("user",name);
+        editor.apply();
     }
 
     @Override
-    public void onBackPressed(){
-
-    }
+    public void onBackPressed(){}
 
     public void restart(View X){
         Intent restart=new Intent(getApplicationContext(),MainActivity.class);

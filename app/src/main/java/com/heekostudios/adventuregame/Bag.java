@@ -2,17 +2,15 @@ package com.heekostudios.adventuregame;
 
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.provider.ContactsContract;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.view.View;
-import android.content.Intent;
 
 import java.io.IOException;
 import java.util.Random;
@@ -22,7 +20,7 @@ import pl.droidsonroids.gif.GifDrawable;
 public class Bag extends AppCompatActivity {
 
     String user;
-    Integer rawmeat, bread, apple, setter, HP, maxhp, cookedmeat;
+    Integer rawmeat, bread, apple, setter, HP, maxhp, cookedmeat,experience;
 
     SharedPreferences sharedPreferences;
 
@@ -44,22 +42,22 @@ public class Bag extends AppCompatActivity {
 
 
     public void present() {
-        TextView health = (TextView) findViewById(R.id.HP);
-        health.setText(HP + "/" + maxhp);
+        TextView health = findViewById(R.id.HP);
+        health.setText(HP + getString(R.string.slash) + maxhp);
 
-        TextView username = (TextView) findViewById(R.id.Backpack);
-        username.setText(user + "'s Backpack");
+        TextView username = findViewById(R.id.Backpack);
+        username.setText(String.format("%s%s", user, getString(R.string.playersbackpack)));
 
 
-        ImageButton box1 = (ImageButton) findViewById(R.id.box1);
-        ImageButton box2 = (ImageButton) findViewById(R.id.box2);
-        ImageButton box3 = (ImageButton) findViewById(R.id.box3);
-        ImageButton box4 = (ImageButton) findViewById(R.id.box4);
+        ImageButton box1 = findViewById(R.id.box1);
+        ImageButton box2 = findViewById(R.id.box2);
+        ImageButton box3 = findViewById(R.id.box3);
+        ImageButton box4 = findViewById(R.id.box4);
 
-        TextView quantity1 = (TextView) findViewById(R.id.quantity1);
-        TextView quantity2 = (TextView) findViewById(R.id.quantity2);
-        TextView quantity3 = (TextView) findViewById(R.id.quantity3);
-        TextView quantity4 = (TextView) findViewById(R.id.quantity4);
+        TextView quantity1 = findViewById(R.id.quantity1);
+        TextView quantity2 = findViewById(R.id.quantity2);
+        TextView quantity3 = findViewById(R.id.quantity3);
+        TextView quantity4 = findViewById(R.id.quantity4);
 
         if (bread > 0) {
             box1.setVisibility(View.VISIBLE);
@@ -107,11 +105,11 @@ public class Bag extends AppCompatActivity {
     }
 
     public void box1(View X) {
-        ImageView confirm = (ImageView) findViewById(R.id.imageaction);
-        Button confirmation = (Button) findViewById(R.id.buttonaction);
-        TextView hprestore = (TextView) findViewById(R.id.result);
+        ImageView confirm = findViewById(R.id.imageaction);
+        Button confirmation = findViewById(R.id.buttonaction);
+        TextView hprestore = findViewById(R.id.result);
 
-        hprestore.setText("Restores 6HP");
+        hprestore.setText(getString(R.string.restores)+6+getString(R.string.hp));
         hprestore.setVisibility(View.VISIBLE);
         confirmation.setVisibility(View.VISIBLE);
         confirm.setVisibility(View.VISIBLE);
@@ -121,11 +119,11 @@ public class Bag extends AppCompatActivity {
     }
 
     public void box2(View X) {
-        ImageView confirm = (ImageView) findViewById(R.id.imageaction);
-        Button confirmation = (Button) findViewById(R.id.buttonaction);
-        TextView hprestore = (TextView) findViewById(R.id.result);
+        ImageView confirm = findViewById(R.id.imageaction);
+        Button confirmation = findViewById(R.id.buttonaction);
+        TextView hprestore = findViewById(R.id.result);
 
-        hprestore.setText("Restores 7HP");
+        hprestore.setText(getString(R.string.restores)+7 +getString(R.string.hp));
         hprestore.setVisibility(View.VISIBLE);
         confirmation.setVisibility(View.VISIBLE);
         confirm.setVisibility(View.VISIBLE);
@@ -135,13 +133,13 @@ public class Bag extends AppCompatActivity {
     }
 
     public void box3(View X) {
-        Button confirmation = (Button) findViewById(R.id.buttonaction);
+        Button confirmation = findViewById(R.id.buttonaction);
         confirmation.setVisibility(View.VISIBLE);
-        TextView hprestore = (TextView) findViewById(R.id.result);
+        TextView hprestore = findViewById(R.id.result);
 
-        hprestore.setText("Restores 5HP");
+        hprestore.setText(getString(R.string.restores)+5+ getString(R.string.hp));
         hprestore.setVisibility(View.VISIBLE);
-        ImageView confirm = (ImageView) findViewById(R.id.imageaction);
+        ImageView confirm = findViewById(R.id.imageaction);
         confirm.setVisibility(View.VISIBLE);
         confirm.setImageResource(R.drawable.rawmeat);
 
@@ -150,13 +148,13 @@ public class Bag extends AppCompatActivity {
 
     public void box4(View x) {
 
-        Button confirmation = (Button) findViewById(R.id.buttonaction);
+        Button confirmation = findViewById(R.id.buttonaction);
         confirmation.setVisibility(View.VISIBLE);
-        TextView hprestore = (TextView) findViewById(R.id.result);
+        TextView hprestore = findViewById(R.id.result);
 
-        hprestore.setText("Restores 12HP");
+        hprestore.setText(getString(R.string.restores)+ 12+ getString(R.string.hp));
         hprestore.setVisibility(View.VISIBLE);
-        ImageView confirm = (ImageView) findViewById(R.id.imageaction);
+        ImageView confirm = findViewById(R.id.imageaction);
         confirm.setVisibility(View.VISIBLE);
         confirm.setImageResource(R.drawable.cookedmeat);
 
@@ -165,6 +163,9 @@ public class Bag extends AppCompatActivity {
 
     public void action(View X) {
 
+        Random rander=new Random();
+
+        experience+=rander.nextInt(3)+4;
 
         if (HP < maxhp) {
 
@@ -172,6 +173,7 @@ public class Bag extends AppCompatActivity {
                 case 1: {
                     HP += 6;
                     bread -= 1;
+
                     break;
                 }
                 case 2: {
@@ -190,6 +192,8 @@ public class Bag extends AppCompatActivity {
                     break;
                 }
             }
+
+
         } else {
             AlertDialog.Builder builder = new AlertDialog.Builder(Bag.this);
 
@@ -211,14 +215,14 @@ public class Bag extends AppCompatActivity {
             HP = maxhp;
         }
 
-        TextView hprestore = (TextView) findViewById(R.id.result);
+        TextView hprestore = findViewById(R.id.result);
         hprestore.setVisibility(View.INVISIBLE);
 
-        Button confirmation = (Button) findViewById(R.id.buttonaction);
-        confirmation.setVisibility(View.GONE);
+        Button confirmation = findViewById(R.id.buttonaction);
+        confirmation.setVisibility(View.INVISIBLE);
 
-        ImageView confirm = (ImageView) findViewById(R.id.imageaction);
-        confirm.setVisibility(View.GONE);
+        ImageView confirm = findViewById(R.id.imageaction);
+        confirm.setVisibility(View.INVISIBLE);
 
         update();
 
@@ -233,11 +237,12 @@ public class Bag extends AppCompatActivity {
         HP = sharedPreferences.getInt("HP", 100);
         maxhp = sharedPreferences.getInt("maxhp", 100);
         cookedmeat = sharedPreferences.getInt("cookedmeat", 0);
+        experience=sharedPreferences.getInt("experience",0);
     }
 
     @Override
     public void onBackPressed() {
-
+        finish();
     }
 
     public void gif() {
@@ -257,7 +262,8 @@ public class Bag extends AppCompatActivity {
         editor.putInt("bread", bread);
         editor.putInt("apple", apple);
         editor.putInt("cookedmeat", cookedmeat);
-        editor.commit();
+        editor.putInt("experience",experience);
+        editor.apply();
     }
 
     public void back(View x) {

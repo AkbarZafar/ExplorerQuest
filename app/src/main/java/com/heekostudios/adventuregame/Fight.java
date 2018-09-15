@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.Random;
@@ -59,7 +60,7 @@ public class Fight extends AppCompatActivity {
         playergifsetup();
         enemypick();
 
-        TextView playername=(TextView)findViewById(R.id.playername);
+        TextView playername= findViewById(R.id.playername);
         playername.setText(user);
     }
 
@@ -67,23 +68,23 @@ public class Fight extends AppCompatActivity {
         Random rnd = new Random();
         int i = rnd.nextInt(4);
 
-        TextView enemyname=(TextView)findViewById(R.id.enemyname);
+        TextView enemyname= findViewById(R.id.enemyname);
 
-        //int i=1;
+        //int i=2;
         switch (i) {
             case 0: {
                 enemy = 1;
-                enemyname.setText("Zombie");
+                enemyname.setText(R.string.zombie);
                 break;
             }
             case 1: {
                 enemy = 2;
-                enemyname.setText("Rebel");
+                enemyname.setText(R.string.rebel);
                 break;
             }
             case 2: {
                 enemy = 3;
-                enemyname.setText("Monster");
+                enemyname.setText(R.string.troll);
                 break;
             }
             case 3: {
@@ -111,7 +112,7 @@ public class Fight extends AppCompatActivity {
                     break;
                 }
                 case 3: {
-                    enemymonster = new GifDrawable(getResources(), R.drawable.zombieidle);
+                    enemymonster = new GifDrawable(getResources(), R.drawable.trollidle);
                     gifhold.setImageDrawable(enemymonster);
                     break;
                 }
@@ -149,11 +150,11 @@ public class Fight extends AppCompatActivity {
         int enemypercent = (enemyhp * 100) / enemymax;
         int HPpercent = (HP * 100) / maxhp;
 
-        ProgressBar playerhp = (ProgressBar) findViewById(R.id.playerhealth);
-        ProgressBar enemy = (ProgressBar) findViewById(R.id.enemyhealth);
+        ProgressBar playerhp = findViewById(R.id.playerhealth);
+        ProgressBar enemy = findViewById(R.id.enemyhealth);
 
-        TextView txtplayerhp = (TextView) findViewById(R.id.txtplayerhealth);
-        TextView txtenemyhp = (TextView) findViewById(R.id.txtenemyhealth);
+        TextView txtplayerhp = findViewById(R.id.txtplayerhealth);
+        TextView txtenemyhp = findViewById(R.id.txtenemyhealth);
 
         playerhp.setProgress(HPpercent);
         enemy.setProgress(enemypercent);
@@ -181,7 +182,7 @@ public class Fight extends AppCompatActivity {
                 break;
             }
             case 3: {
-                zombieanimation();
+                trollanimation();
                 break;
             }
             case 4: {
@@ -194,29 +195,66 @@ public class Fight extends AppCompatActivity {
 
         double dmg = rander.nextInt(4) + (4 * difficulty);
         if (defence == 5) {
-            dmg *= (1 - 0.18);
+            dmg *= (1 - 0.23);
         } else {
-            dmg *= (1 - (defence * 0.03));
+            dmg *= (1 - (defence * 0.04));
         }
 
         HP -= ((int) Math.round(dmg));
     }
 
-    public void rebelanimation() {
+    public void trollanimation(){
+        ImageView enemy = findViewById(R.id.enemypicture);
+
+
         try {
-            GifDrawable enemy = new GifDrawable(getResources(), R.drawable.rebelattack);
-            ImageView gifhold = findViewById(R.id.enemypicture);
-            gifhold.setImageDrawable(enemy);
+            GifDrawable enemypic = new GifDrawable(getResources(), R.drawable.trollattack);
+            enemy.setImageDrawable(enemypic);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        final ImageView enemy = (ImageView) findViewById(R.id.enemypicture);
+        enemyattack = new AnimationSet(true);
+
+        final TranslateAnimation enemymove = new TranslateAnimation(0, 450, 0, 0);
+        enemymove.setDuration(1000);
+
+
+        enemyattack.addAnimation(enemymove);
+
+        enemy.startAnimation(enemyattack);
+
+        new Handler().postDelayed(new Runnable() {
+            public void run() {
+                findViewById(R.id.playerhitanimation).setVisibility(View.VISIBLE);
+                fighttester();
+            }
+        }, 600);
+
+        new Handler().postDelayed(new Runnable() {
+            public void run() {
+                findViewById(R.id.playerhitanimation).setVisibility(View.INVISIBLE);
+                enemygifsetup();
+            }
+        }, 900);
+
+    }
+
+    public void rebelanimation() {
+        ImageView enemy = findViewById(R.id.enemypicture);
+
+
+        try {
+            GifDrawable enemypic = new GifDrawable(getResources(), R.drawable.rebelattack);
+            enemy.setImageDrawable(enemypic);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         enemyattack = new AnimationSet(true);
 
-        final TranslateAnimation enemymove = new TranslateAnimation(0, 375, 0, 0);
-        enemymove.setDuration(750);
+        final TranslateAnimation enemymove = new TranslateAnimation(0, 450, 0, 0);
+        enemymove.setDuration(800);
 
 
         enemyattack.addAnimation(enemymove);
@@ -232,7 +270,7 @@ public class Fight extends AppCompatActivity {
 
         new Handler().postDelayed(new Runnable() {
             public void run() {
-                findViewById(R.id.playerhitanimation).setVisibility(View.GONE);
+                findViewById(R.id.playerhitanimation).setVisibility(View.INVISIBLE);
                 enemygifsetup();
             }
         }, 800);
@@ -240,20 +278,20 @@ public class Fight extends AppCompatActivity {
     }
 
     public void zombieanimation() {
-        final ImageView enemy = (ImageView) findViewById(R.id.enemypicture);
+        final ImageView enemy = findViewById(R.id.enemypicture);
 
-        enemyattack = new AnimationSet(true);
+        enemyattack = new AnimationSet(false);
 
-        final TranslateAnimation enemymove = new TranslateAnimation(0, 375, 0, 0);
-        enemymove.setDuration(650);
+        final TranslateAnimation enemymove = new TranslateAnimation(0, 475, 0, 0);
+        enemymove.setDuration(675);
 
         final RotateAnimation enemyhit = new RotateAnimation(0, 15);
-        enemyhit.setDuration(75);
-        enemyhit.setStartOffset(550);
-
+        enemyhit.setDuration(85);
+        enemyhit.setStartOffset(650);
 
         enemyattack.addAnimation(enemymove);
         enemyattack.addAnimation(enemyhit);
+        enemyattack.setFillAfter(false);
 
         enemy.startAnimation(enemyattack);
 
@@ -266,7 +304,7 @@ public class Fight extends AppCompatActivity {
 
         new Handler().postDelayed(new Runnable() {
             public void run() {
-                findViewById(R.id.playerhitanimation).setVisibility(View.GONE);
+                findViewById(R.id.playerhitanimation).setVisibility(View.INVISIBLE);
             }
         }, 800);
 
@@ -275,31 +313,30 @@ public class Fight extends AppCompatActivity {
     public void runaway(View x) {
         Random rander = new Random();
         int i = rander.nextInt(6);
-        TextView norun = (TextView) findViewById(R.id.Info);
+        TextView norun = findViewById(R.id.Info);
 
         if (i == 0) {
-            norun.setVisibility(View.GONE);
+            norun.setVisibility(View.INVISIBLE);
             success();
         } else {
             enemyattack();
-            norun.setText("Unable to run away");
-            norun.setVisibility(View.VISIBLE);
+            Toast.makeText(Fight.this,R.string.cantrun,Toast.LENGTH_LONG).show();
         }
     }
 
     public void playerhitanimation() {
+        ImageView player = findViewById(R.id.player);
 
         try {
             GifDrawable warrior = new GifDrawable(getResources(), R.drawable.swordswing);
-            ImageView gifhold = findViewById(R.id.player);
-            gifhold.setImageDrawable(warrior);
+
+            player.setImageDrawable(warrior);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        ImageView player = (ImageView) findViewById(R.id.player);
-        TranslateAnimation walkup = new TranslateAnimation(0, -375, 0, 0);
-        walkup.setDuration(800);
+        TranslateAnimation walkup = new TranslateAnimation(0, -475, 0, 0);
+        walkup.setDuration(850);
 
         player.startAnimation(walkup);
 
@@ -308,7 +345,7 @@ public class Fight extends AppCompatActivity {
                 findViewById(R.id.enemyhitanimation).setVisibility(View.VISIBLE);
                 fighttester();
             }
-        }, 500);
+        }, 650);
 
 
         walkup.setAnimationListener(new Animation.AnimationListener() {
@@ -318,7 +355,7 @@ public class Fight extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                findViewById(R.id.enemyhitanimation).setVisibility(View.GONE);
+                findViewById(R.id.enemyhitanimation).setVisibility(View.INVISIBLE);
 
                 enabler();
 
@@ -353,8 +390,8 @@ public class Fight extends AppCompatActivity {
     }
 
     public void hit(View x) {
-        TextView norun = (TextView) findViewById(R.id.Info);
-        norun.setVisibility(View.GONE);
+        TextView norun = findViewById(R.id.Info);
+        norun.setVisibility(View.INVISIBLE);
 
         disabler();
         enemyattack();
@@ -380,9 +417,9 @@ public class Fight extends AppCompatActivity {
     }
 
     public void enabler() {
-        Button attackbtn = (Button) findViewById(R.id.Buttonhit);
-        Button runbtn = (Button) findViewById(R.id.buttonrun);
-        Button bagbtn = (Button) findViewById(R.id.buttonbag);
+        Button attackbtn = findViewById(R.id.Buttonhit);
+        Button runbtn = findViewById(R.id.buttonrun);
+        Button bagbtn = findViewById(R.id.buttonbag);
 
         attackbtn.setEnabled(true);
         runbtn.setEnabled(true);
@@ -390,9 +427,9 @@ public class Fight extends AppCompatActivity {
     }
 
     public void disabler() {
-        Button attackbtn = (Button) findViewById(R.id.Buttonhit);
-        Button runbtn = (Button) findViewById(R.id.buttonrun);
-        Button bagbtn = (Button) findViewById(R.id.buttonbag);
+        Button attackbtn = findViewById(R.id.Buttonhit);
+        Button runbtn = findViewById(R.id.buttonrun);
+        Button bagbtn = findViewById(R.id.buttonbag);
 
         attackbtn.setEnabled(false);
         runbtn.setEnabled(false);
@@ -415,7 +452,7 @@ public class Fight extends AppCompatActivity {
     }
 
     public void enemydead() {
-        ImageView deadnme = (ImageView) findViewById(R.id.enemypicture);
+        ImageView deadnme = findViewById(R.id.enemypicture);
 
         switch (enemy) {
             case 1: {
@@ -427,7 +464,7 @@ public class Fight extends AppCompatActivity {
                 break;
             }
             case 3: {
-                deadnme.setImageResource(R.drawable.zombiedead);
+                deadnme.setImageResource(R.drawable.trolldead);
                 break;
             }
             case 4: {
@@ -445,7 +482,7 @@ public class Fight extends AppCompatActivity {
     }
 
     public void backhere() {
-        ImageView character = (ImageView) findViewById(R.id.player);
+        ImageView character = findViewById(R.id.player);
         TranslateAnimation setpostion = new TranslateAnimation(0, -100, 0, 0);
 
 
@@ -471,11 +508,11 @@ public class Fight extends AppCompatActivity {
     }
 
     public void win() {
-        TextView won = (TextView) findViewById(R.id.Info);
-        won.setText("You Won!");
+        TextView won = findViewById(R.id.Info);
+        won.setText(R.string.won);
 
         Random rander = new Random();
-        experience += rander.nextInt(12) + 5;
+        experience += rander.nextInt(10) + 20;
 
         result = 'w';
 
@@ -483,20 +520,20 @@ public class Fight extends AppCompatActivity {
     }
 
     public void dead() {
-        TextView won = (TextView) findViewById(R.id.Info);
-        won.setText("You Lost!");
+        TextView won = findViewById(R.id.Info);
+        won.setText(R.string.lost);
 
         result = 'd';
 
-        ImageView playerdead = (ImageView) findViewById(R.id.player);
+        ImageView playerdead = findViewById(R.id.player);
         playerdead.setImageResource(R.drawable.warriorlost);
 
         setuptwo();
     }
 
     public void success() {
-        TextView won = (TextView) findViewById(R.id.Info);
-        won.setText("You successfuly ran away!");
+        TextView won = findViewById(R.id.Info);
+        won.setText(R.string.runsuccess);
 
         Random rander = new Random();
         experience += rander.nextInt(5) + 1;
@@ -507,19 +544,19 @@ public class Fight extends AppCompatActivity {
     }
 
     public void setuptwo() {
-        Button hit = (Button) findViewById(R.id.Buttonhit);
+        Button hit = findViewById(R.id.Buttonhit);
         hit.setVisibility(View.GONE);
 
-        Button bag = (Button) findViewById(R.id.buttonbag);
+        Button bag = findViewById(R.id.buttonbag);
         bag.setVisibility(View.GONE);
 
-        Button run = (Button) findViewById(R.id.buttonrun);
+        Button run = findViewById(R.id.buttonrun);
         run.setVisibility(View.GONE);
 
-        Button resume = (Button) findViewById(R.id.Continue);
+        Button resume = findViewById(R.id.continuegame);
         resume.setVisibility(View.VISIBLE);
 
-        TextView message = (TextView) findViewById(R.id.Info);
+        TextView message = findViewById(R.id.Info);
         message.setVisibility(View.VISIBLE);
     }
 
@@ -561,9 +598,8 @@ public class Fight extends AppCompatActivity {
         switch (i) {
             case 0:
             case 1: {
-                for (int y = 0; y <= 1; y++) {
-                    startActivity(item);
-                }
+                startActivity(item);
+                startActivity(item);
                 break;
             }
             case 2:
@@ -573,7 +609,7 @@ public class Fight extends AppCompatActivity {
                 break;
             }
             case 5: {
-
+                //offer ad for loot.
             }
         }
         finish();
