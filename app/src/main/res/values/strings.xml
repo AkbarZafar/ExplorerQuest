@@ -47,4 +47,16 @@
     <string name="slash">/</string>
     <string name="confirm">Confirm</string>
     <string name="troll">Troll</string>
+    <string name="you_died">You Died!</string>
+    <string name="home">Home</string>
+    <string name="play_again">Play Again</string>
+    <string name="swordsdown">swordsdown</string>
+    <string name="newhighscore">NEW HIGH SCORE!</string>
+    <string name="highscoredisplay">Highscore: </string>
+    <string name="scoredisplay">Score: </string>
+    <string name="wronguser">Invalid username.</string>
+    <string name="explorer_quest">Explorer Quest</string>
+    <string name="enter_a_username">Enter a Username</string>
+    <string name="begin">Begin</string>
+    <string name="swordup">swordup</string>
 </resources>

@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 
@@ -34,20 +35,19 @@ public class MainActivity extends AppCompatActivity {
         }
 
     public void begin(View x){
-
-        TextView incorrect=(TextView)findViewById(R.id.textView);
-        EditText username=(EditText)findViewById(R.id.editText);
+        TextView incorrect= findViewById(R.id.textView);
+        EditText username= findViewById(R.id.editText);
 
         user = username.getText().toString();
 
             if (TextUtils.isEmpty(user)){
                 username.setText("");
-                incorrect.setText("Invalid username.");
+                Toast.makeText(MainActivity.this,"Invalid Username!",Toast.LENGTH_LONG).show();
 
             }else{
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("user",user);
-                editor.commit();
+                editor.apply();
 
                 sendinfo();
             }

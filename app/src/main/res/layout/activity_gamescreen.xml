@@ -142,8 +142,8 @@
             android:id="@+id/money"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:gravity="center_vertical"
             android:textColor="@android:color/black"
             android:textSize="20sp"
@@ -151,8 +151,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/coin"
-            app:layout_constraintTop_toTopOf="@+id/coin"
-            tools:textColor="black" />
+            app:layout_constraintTop_toTopOf="@+id/coin" />
 
         <TextView
             android:id="@+id/name"

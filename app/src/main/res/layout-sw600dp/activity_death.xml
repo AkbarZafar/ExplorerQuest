@@ -19,7 +19,7 @@
         android:gravity="center"
         android:text="@string/you_died"
         android:textColor="?android:attr/colorForegroundInverse"
-        android:textSize="50sp" />
+        android:textSize="75sp" />
 
     <ImageView
         android:id="@+id/imageView6"
@@ -50,7 +50,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="30sp"
+            android:textSize="45sp"
             tools:layout_editor_absoluteX="157dp"
             tools:layout_editor_absoluteY="352dp"
             tools:text="Highscore: 2356" />
@@ -61,7 +61,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="30sp"
+            android:textSize="45sp"
             tools:layout_editor_absoluteX="162dp"
             tools:layout_editor_absoluteY="400dp"
             tools:text="Score: 523" />
@@ -90,7 +90,7 @@
             android:onClick="restart"
             android:text="@string/play_again"
             android:textColor="@android:color/background_dark"
-            android:textSize="23sp"
+            android:textSize="35sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.873"
@@ -111,7 +111,7 @@
             android:onClick="home"
             android:text="@string/home"
             android:textColor="@android:color/background_dark"
-            android:textSize="23sp"
+            android:textSize="35sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.873"
