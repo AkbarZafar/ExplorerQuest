@@ -54,7 +54,7 @@ public class Cliff extends AppCompatActivity {
         falling.setDuration(850);
         falling.setStartOffset(650);
 
-        final AnimationSet fall = new AnimationSet(false);
+        final AnimationSet fall = new AnimationSet(true);
 
         fall.addAnimation(spin);
         fall.addAnimation(falling);

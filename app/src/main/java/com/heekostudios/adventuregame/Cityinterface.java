@@ -242,7 +242,7 @@ public class Cityinterface extends AppCompatActivity {
                     money -= 8;
                 } else if (money<8){
                     notenoughmoney();
-                }else if(rawmeat<1){
+                }else if(rawmeat==0){
                     notenoughrawmeat();
                 }
                 break;
@@ -354,7 +354,7 @@ public class Cityinterface extends AppCompatActivity {
 
     public void backhere(){
         ImageView character = findViewById(R.id.coin);
-        TranslateAnimation setpostion = new TranslateAnimation(100, 0, 0, 0);
+        TranslateAnimation setpostion = new TranslateAnimation(1, 0, 0, 0);
 
 
         setpostion.setAnimationListener(new Animation.AnimationListener() {
@@ -371,7 +371,7 @@ public class Cityinterface extends AppCompatActivity {
             public void onAnimationRepeat(Animation animation) {
             }
         });
-        setpostion.setDuration(50);
+        setpostion.setDuration(1);
 
 
         character.startAnimation(setpostion);

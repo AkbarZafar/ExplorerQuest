@@ -2,11 +2,13 @@ package com.heekostudios.adventuregame;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.TrafficStats;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.RotateAnimation;
@@ -28,7 +30,7 @@ public class Fight extends AppCompatActivity {
     String user;
     int enemyhp, enemymax, HP, attack, defence, maxhp, difficulty, enemy, lifesteal, experience;
     Character result = 'a';
-    AnimationSet enemyattack;
+    AnimationSet enemyattack, trying;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +54,7 @@ public class Fight extends AppCompatActivity {
         difficulty = sharedPreferences.getInt("difficulty", 1);
         lifesteal = sharedPreferences.getInt("lifesteal", 0);
         experience = sharedPreferences.getInt("experience", 0);
-        user=sharedPreferences.getString("user",user);
+        user = sharedPreferences.getString("user", user);
     }
 
     public void setup() {
@@ -60,7 +62,7 @@ public class Fight extends AppCompatActivity {
         playergifsetup();
         enemypick();
 
-        TextView playername= findViewById(R.id.playername);
+        TextView playername = findViewById(R.id.playername);
         playername.setText(user);
     }
 
@@ -68,7 +70,7 @@ public class Fight extends AppCompatActivity {
         Random rnd = new Random();
         int i = rnd.nextInt(4);
 
-        TextView enemyname= findViewById(R.id.enemyname);
+        TextView enemyname = findViewById(R.id.enemyname);
 
         //int i=2;
         switch (i) {
@@ -203,7 +205,7 @@ public class Fight extends AppCompatActivity {
         HP -= ((int) Math.round(dmg));
     }
 
-    public void trollanimation(){
+    public void trollanimation() {
         ImageView enemy = findViewById(R.id.enemypicture);
 
 
@@ -311,17 +313,67 @@ public class Fight extends AppCompatActivity {
     }
 
     public void runaway(View x) {
-        Random rander = new Random();
-        int i = rander.nextInt(6);
-        TextView norun = findViewById(R.id.Info);
 
-        if (i == 0) {
-            norun.setVisibility(View.INVISIBLE);
-            success();
-        } else {
-            enemyattack();
-            Toast.makeText(Fight.this,R.string.cantrun,Toast.LENGTH_LONG).show();
-        }
+        final Random rander = new Random();
+        final int i = rander.nextInt(6);
+        final TextView norun = findViewById(R.id.Info);
+
+        runawaytry();
+
+
+        trying.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+                disabler();
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+
+                if (i == 0) {
+                    norun.setVisibility(View.INVISIBLE);
+                    success();
+
+                    Animation fade = new AlphaAnimation(1, 0);
+                    fade.setDuration(500);
+                    fade.setFillAfter(true);
+
+                    findViewById(R.id.player).startAnimation(fade);
+                } else {
+                    int b = rander.nextInt(2);
+                    if (b == 1) {
+                        enemyattack();
+                    }
+                    Toast.makeText(Fight.this, R.string.cantrun, Toast.LENGTH_LONG).show();
+                }
+
+                enabler();
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+            }
+        });
+
+
+    }
+
+    public void runawaytry() {
+
+        TranslateAnimation right = new TranslateAnimation(0, 10, 0, 0);
+        right.setDuration(10);
+
+        TranslateAnimation left = new TranslateAnimation(0, 10, 0, 0);
+        left.setDuration(10);
+        left.setStartOffset(10);
+
+        trying = new AnimationSet(false);
+
+        trying.addAnimation(right);
+        trying.addAnimation(left);
+
+        (findViewById(R.id.player)).startAnimation(trying);
+
     }
 
     public void playerhitanimation() {
@@ -537,6 +589,10 @@ public class Fight extends AppCompatActivity {
 
         Random rander = new Random();
         experience += rander.nextInt(5) + 1;
+
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        editor.putInt("experience",experience);
+        editor.apply();
 
         result = 'r';
 

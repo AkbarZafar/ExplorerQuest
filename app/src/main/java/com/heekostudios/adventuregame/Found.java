@@ -15,7 +15,7 @@ public class Found extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
 
-    Integer HP, money, rawmeat, bread, apple;
+    Integer HP, money, rawmeat, bread, apple,difficulty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +41,7 @@ public class Found extends AppCompatActivity {
         bread = sharedPreferences.getInt("bread", 0);
         apple = sharedPreferences.getInt("apple", 0);
         rawmeat = sharedPreferences.getInt("rawmeat", 0);
+        difficulty=sharedPreferences.getInt("difficulty",1);
     }
 
     public void updater() {
@@ -84,7 +85,7 @@ public class Found extends AppCompatActivity {
             case 2: {
                 item.setImageResource(R.drawable.goldbag);
 
-                int c = rander.nextInt(25) + 10;
+                int c = rander.nextInt(25) + (5*difficulty);
                 founditem.setText(c + " Gold");
                 money = c + money;
                 break;
@@ -92,7 +93,7 @@ public class Found extends AppCompatActivity {
             case 3: {
                 item.setImageResource(R.drawable.goldbag);
 
-                int c = rander.nextInt(65) + 10;
+                int c = rander.nextInt(65) + (5*difficulty);
                 founditem.setText(c + " Gold");
                 money = c + money;
                 break;

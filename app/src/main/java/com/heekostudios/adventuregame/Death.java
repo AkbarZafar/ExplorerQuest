@@ -21,7 +21,6 @@ public class Death extends AppCompatActivity {
         sharedPreferences= PreferenceManager.getDefaultSharedPreferences(this);
 
         extract();
-        setscore();
         reset();
     }
 
@@ -29,31 +28,41 @@ public class Death extends AppCompatActivity {
         TextView txthighscore=findViewById(R.id.highscore);
         TextView txtscore=findViewById(R.id.score);
 
-        score=(HP)+((difficulty-1)*150)+((level-1)*100)+(money*2)+(experience)+(distance*3);
+        score=((difficulty-1)*150)+((level-1)*100)+(money*2)+(experience)+(distance*3);
+
         if(score>highscore){
             highscore=score;
             txthighscore.setText(R.string.newhighscore);
+
+            SharedPreferences.Editor editor=sharedPreferences.edit();
+            editor.putInt("highscore", highscore);
+            editor.apply();
+
         }else{
             txthighscore.setText(getString(R.string.highscoredisplay)+highscore);
         }
         txtscore.setText(getString(R.string.scoredisplay)+score);
+
+
     }
 
     public void reset(){
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
+        editor.putInt("highscore",highscore);
         editor.apply();
     }
 
     public void extract(){
         user=sharedPreferences.getString("user",null);
         highscore=sharedPreferences.getInt("highscore",0);
-        HP = sharedPreferences.getInt("HP", 100);
         money = sharedPreferences.getInt("money", 0);
         level = sharedPreferences.getInt("level", 1);
         experience = sharedPreferences.getInt("experience", 0);
         distance = sharedPreferences.getInt("distance", 0);
         difficulty = sharedPreferences.getInt("difficulty", 1);
+
+        setscore();
     }
 
     @Override
