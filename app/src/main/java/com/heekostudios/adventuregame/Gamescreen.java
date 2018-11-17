@@ -1,6 +1,5 @@
 package com.heekostudios.adventuregame;
 
-import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -17,12 +16,8 @@ import android.content.Intent;
 
 import com.budiyev.android.circularprogressbar.CircularProgressBar;
 
-import org.w3c.dom.Text;
-
 import java.io.IOException;
 import java.util.Random;
-
-import javax.xml.datatype.Duration;
 
 import pl.droidsonroids.gif.GifDrawable;
 
@@ -119,6 +114,16 @@ public class Gamescreen extends AppCompatActivity {
         }
     }
 
+    public void gifwalk(){
+        try {
+            GifDrawable warrior = new GifDrawable(getResources(), R.drawable.warriorwalk);
+            ImageView gifhold = findViewById(R.id.idle);
+            gifhold.setImageDrawable(warrior);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void setup() {
         TextView username = findViewById(R.id.name);
         username.setText(user);
@@ -188,6 +193,8 @@ public class Gamescreen extends AppCompatActivity {
 
     public void explore(View view) {
 
+        gifwalk();
+
         distance += 1;
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt("distance", distance);
@@ -249,7 +256,7 @@ public class Gamescreen extends AppCompatActivity {
         Random random = new Random();
         int events = random.nextInt(11);
 
-        //int events=7;
+        //int events=10;
         switch (events) {
             case 0:
             case 1:
@@ -272,7 +279,7 @@ public class Gamescreen extends AppCompatActivity {
                 break;
             }
             case 10: {
-                Intent ditch = new Intent(getApplicationContext(), Ditch.class);
+                Intent ditch = new Intent(getApplicationContext(), Cliff.class);
                 startActivity(ditch);
                 break;
             }

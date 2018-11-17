@@ -59,4 +59,6 @@
     <string name="enter_a_username">Enter a Username</string>
     <string name="begin">Begin</string>
     <string name="swordup">swordup</string>
+    <string name="fellinditch">YOU FELL OFF A CLIFF</string>
+    <string name="lostnohp">Luckily, you lost no HP</string>
 </resources>

@@ -1,8 +1,7 @@
 package com.heekostudios.adventuregame;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
@@ -33,7 +32,7 @@ public class Terrain extends AppCompatActivity {
     public void backgroundset() {
 
 
-        ImageView background = (ImageView) findViewById(R.id.background);
+        ImageView background = findViewById(R.id.background);
 
         Random rand = new Random();
 
@@ -90,13 +89,11 @@ public class Terrain extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed(){
-
-    }
+    public void onBackPressed(){    }
 
     public void gif() {
         try {
-            GifDrawable warrior = new GifDrawable(getResources(), R.drawable.warrioridle);
+            GifDrawable warrior = new GifDrawable(getResources(), R.drawable.warriorwalk);
             ImageView gifhold = findViewById(R.id.idle);
             gifhold.setImageDrawable(warrior);
         } catch (IOException e) {

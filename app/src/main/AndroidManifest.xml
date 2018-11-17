@@ -26,7 +26,7 @@
         <activity android:name=".Selectperk" />
         <activity android:name=".Cityinterface" />
         <activity android:name=".Fight" />
-        <activity android:name=".Ditch"></activity>
+        <activity android:name=".Cliff"></activity>
     </application>
 
 </manifest>

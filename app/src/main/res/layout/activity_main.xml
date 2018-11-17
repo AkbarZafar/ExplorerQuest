@@ -19,22 +19,6 @@
         android:textColor="@android:color/background_dark"
         android:textSize="45sp" />
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_weight="1"
-        android:ems="10"
-        android:hint="@string/enter_a_username"
-        android:inputType="textPersonName"
-        android:textColor="@android:color/background_dark"
-        android:textColorHighlight="@android:color/background_dark"
-        android:textColorHint="@android:color/background_dark" />
-
     <ImageView
         android:id="@+id/image"
         android:layout_width="match_parent"
@@ -44,8 +28,34 @@
         android:scaleType="fitCenter"
         app:srcCompat="@drawable/swordcrossup" />
 
+    <EditText
+        android:id="@+id/editText"
+        style="@style/Widget.AppCompat.EditText"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_weight="1"
+        android:ems="10"
+        android:fontFamily="casual"
+        android:gravity="center"
+        android:hint="@string/enter_a_username"
+        android:inputType="textPersonName"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@android:color/background_dark"
+        android:textColorHighlight="@android:color/background_dark"
+        android:textColorHint="@android:color/background_dark"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
     <Button
         android:id="@+id/buttonrun"
+        style="@style/RobotoButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -53,10 +63,9 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="32dp"
         android:layout_weight="1"
-        android:background="@android:color/transparent"
         android:onClick="begin"
         android:text="@string/begin"
-        android:textColor="@android:color/background_dark"
+        android:textColor="@android:color/background_light"
         android:textSize="30sp" />
 
 </LinearLayout>

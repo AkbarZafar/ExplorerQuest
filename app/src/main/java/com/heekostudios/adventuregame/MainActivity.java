@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     public void begin(View x){
-        TextView incorrect= findViewById(R.id.textView);
         EditText username= findViewById(R.id.editText);
 
         user = username.getText().toString();
