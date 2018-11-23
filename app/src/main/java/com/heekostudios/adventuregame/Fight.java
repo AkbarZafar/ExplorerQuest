@@ -338,6 +338,7 @@ public class Fight extends AppCompatActivity {
                     fade.setDuration(500);
                     fade.setFillAfter(true);
 
+
                     findViewById(R.id.player).startAnimation(fade);
                 } else {
                     int b = rander.nextInt(2);

@@ -12,20 +12,29 @@
             android:label="Explorer Quest">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Gamescreen" />
-        <activity android:name=".Bag" />
-        <activity android:name=".Settings" />
-        <activity android:name=".Terrain" />
-        <activity android:name=".Found" />
-        <activity android:name=".Death" />
-        <activity android:name=".Levelup" />
-        <activity android:name=".Selectperk" />
-        <activity android:name=".Cityinterface" />
-        <activity android:name=".Fight" />
+        <activity android:name=".Gamescreen"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Bag"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Settings"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Terrain"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Found"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Death"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Levelup"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Selectperk"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Cityinterface"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Fight"
+            android:screenOrientation="portrait"/>
         <activity android:name=".Cliff"></activity>
     </application>
 
