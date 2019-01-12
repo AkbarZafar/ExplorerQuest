@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.heekostudios.adventuregame">
+    package="com.heekostudios.explorerquest">
 
     <application
         android:allowBackup="true"
+        android:fullBackupContent="@xml/backup_rules"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:icon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
+                android:screenOrientation="portrait"
             android:label="Explorer Quest">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
         <activity android:name=".Gamescreen"
@@ -35,7 +42,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".Fight"
             android:screenOrientation="portrait"/>
-        <activity android:name=".Cliff"></activity>
+        <activity android:name=".Cliff"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

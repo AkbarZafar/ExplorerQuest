@@ -1,5 +1,6 @@
-package com.heekostudios.adventuregame;
+package com.heekostudios.explorerquest;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -25,7 +26,8 @@ public class Gamescreen extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
     String user;
-    Integer HP, money, level, experience, randoms, apple, bread, rawmeat, attack, defence, maxhp, city, distance, difficulty, cookedmeat, lifesteal;
+    Integer HP, money, level, experience, randoms, apple, bread, rawmeat, attack, defence, maxhp, city, distance, cookedmeat, lifesteal;
+    float difficulty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,7 +131,7 @@ public class Gamescreen extends AppCompatActivity {
         username.setText(user);
 
         TextView mula = findViewById(R.id.money);
-        mula.setText("" + money);
+        mula.setText(""+money);
 
         hpsetup();
 
@@ -152,7 +154,7 @@ public class Gamescreen extends AppCompatActivity {
                     progressBar.setProgressAnimationDuration(500);
                     progressBar.setProgress(experience);
                     progressBar.animate();
-                    leveldisplay.setText("" + level);
+                    leveldisplay.setText(""+level);
 
                 }
             }
@@ -162,12 +164,12 @@ public class Gamescreen extends AppCompatActivity {
     public void hpsetup() {
 
         TextView hp = findViewById(R.id.HP);
-        hp.setText(HP + "/" + maxhp);
+        hp.setText(HP + " / " + maxhp*Constants.HP_INCREASE);
     }
 
     public void extract() {
         user = sharedPreferences.getString("user", user);
-        HP = sharedPreferences.getInt("HP", 100);
+        HP = sharedPreferences.getInt("HP", 50);
         money = sharedPreferences.getInt("money", 0);
         level = sharedPreferences.getInt("level", 1);
         experience = sharedPreferences.getInt("experience", 0);
@@ -176,10 +178,10 @@ public class Gamescreen extends AppCompatActivity {
         bread = sharedPreferences.getInt("bread", 0);
         attack = sharedPreferences.getInt("attack", 1);
         defence = sharedPreferences.getInt("defence", 1);
-        maxhp = sharedPreferences.getInt("maxhp", 100);
+        maxhp = sharedPreferences.getInt("maxhp", 1);
         distance = sharedPreferences.getInt("distance", 0);
         city = sharedPreferences.getInt("city", 0);
-        difficulty = sharedPreferences.getInt("difficulty", 1);
+        difficulty = sharedPreferences.getFloat("difficulty", 1);
         cookedmeat = sharedPreferences.getInt("cookedmeat", 0);
         lifesteal = sharedPreferences.getInt("lifesteal", 0);
     }
@@ -296,8 +298,8 @@ public class Gamescreen extends AppCompatActivity {
     public void citycheck() {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         if (distance == city) {
-            difficulty += 1;
-            editor.putInt("difficulty", difficulty);
+            difficulty += Constants.DIFFICULTY_INCREASE;
+            editor.putFloat("difficulty", difficulty);
             editor.apply();
 
             Intent reach = new Intent(getApplicationContext(), Cityinterface.class);

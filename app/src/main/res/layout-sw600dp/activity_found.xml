@@ -56,7 +56,7 @@
         android:layout_weight="1"
         android:backgroundTint="@color/ic_launcher_background"
         android:onClick="OK"
-        android:text="@string/continuegame"
+        android:text="@string/continue_game"
         android:textSize="50sp" />
 
 </LinearLayout>

@@ -1,6 +1,5 @@
-package com.heekostudios.adventuregame;
+package com.heekostudios.explorerquest;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
@@ -9,13 +8,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.content.Intent;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import java.io.IOException;
-
-import pl.droidsonroids.gif.GifDrawable;
 
 public class MainActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;

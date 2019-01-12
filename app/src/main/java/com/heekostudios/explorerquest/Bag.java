@@ -1,4 +1,4 @@
-package com.heekostudios.adventuregame;
+package com.heekostudios.explorerquest;
 
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -43,10 +43,10 @@ public class Bag extends AppCompatActivity {
 
     public void present() {
         TextView health = findViewById(R.id.HP);
-        health.setText(HP + getString(R.string.slash) + maxhp);
+        health.setText(HP + " / " + maxhp*Constants.HP_INCREASE);
 
         TextView username = findViewById(R.id.Backpack);
-        username.setText(String.format("%s%s", user, getString(R.string.playersbackpack)));
+        username.setText(String.format("%s%s", user, getString(R.string.player_backpack)));
 
 
         ImageButton box1 = findViewById(R.id.box1);
@@ -167,7 +167,7 @@ public class Bag extends AppCompatActivity {
 
         experience+=rander.nextInt(3)+4;
 
-        if (HP < maxhp) {
+        if (HP < (maxhp*Constants.HP_INCREASE)) {
 
             switch (setter) {
                 case 1: {
@@ -211,8 +211,8 @@ public class Bag extends AppCompatActivity {
         }
 
 
-        if (HP > maxhp) {
-            HP = maxhp;
+        if (HP > (maxhp*Constants.HP_INCREASE)) {
+            HP = maxhp*Constants.HP_INCREASE;
         }
 
         TextView hprestore = findViewById(R.id.result);
@@ -234,8 +234,8 @@ public class Bag extends AppCompatActivity {
         bread = sharedPreferences.getInt("bread", 0);
         rawmeat = sharedPreferences.getInt("rawmeat", 0);
         apple = sharedPreferences.getInt("apple", 0);
-        HP = sharedPreferences.getInt("HP", 100);
-        maxhp = sharedPreferences.getInt("maxhp", 100);
+        HP = sharedPreferences.getInt("HP", 50);
+        maxhp = sharedPreferences.getInt("maxhp", 1);
         cookedmeat = sharedPreferences.getInt("cookedmeat", 0);
         experience=sharedPreferences.getInt("experience",0);
     }

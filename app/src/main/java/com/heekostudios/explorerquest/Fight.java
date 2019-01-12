@@ -1,8 +1,7 @@
-package com.heekostudios.adventuregame;
+package com.heekostudios.explorerquest;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.TrafficStats;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
@@ -28,8 +27,9 @@ public class Fight extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
     String user;
-    int enemyhp, enemymax, HP, attack, defence, maxhp, difficulty, enemy, lifesteal, experience;
+    int enemyhp, enemymax, HP, attack, defence, maxhp, enemy, lifesteal, experience;
     Character result = 'a';
+    float difficulty;
     AnimationSet enemyattack, trying;
 
     @Override
@@ -47,11 +47,11 @@ public class Fight extends AppCompatActivity {
     }
 
     public void unload() {
-        HP = sharedPreferences.getInt("HP", 100);
+        HP = sharedPreferences.getInt("HP", 50);
         defence = sharedPreferences.getInt("defence", 1);
         attack = sharedPreferences.getInt("attack", 1);
-        maxhp = sharedPreferences.getInt("maxhp", 100);
-        difficulty = sharedPreferences.getInt("difficulty", 1);
+        maxhp = sharedPreferences.getInt("maxhp", 1);
+        difficulty = sharedPreferences.getFloat("difficulty", 1);
         lifesteal = sharedPreferences.getInt("lifesteal", 0);
         experience = sharedPreferences.getInt("experience", 0);
         user = sharedPreferences.getString("user", user);
@@ -68,7 +68,7 @@ public class Fight extends AppCompatActivity {
 
     public void enemypick() {
         Random rnd = new Random();
-        int i = rnd.nextInt(4);
+        int i = rnd.nextInt(3);
 
         TextView enemyname = findViewById(R.id.enemyname);
 
@@ -89,11 +89,11 @@ public class Fight extends AppCompatActivity {
                 enemyname.setText(R.string.troll);
                 break;
             }
-            case 3: {
+            /*case 3: {
                 enemy = 4;
                 enemyname.setText("New Monster");
                 break;
-            }
+            }*/
         }
         enemygifsetup();
     }
@@ -141,7 +141,7 @@ public class Fight extends AppCompatActivity {
 
     public void healthsetup() {
         Random rander = new Random();
-        enemymax = rander.nextInt(5) + (9 * difficulty);
+        enemymax = rander.nextInt(5) + Math.round(9 * difficulty);
         enemyhp = enemymax;
 
         healthupdate();
@@ -150,7 +150,7 @@ public class Fight extends AppCompatActivity {
     public void healthupdate() {
 
         int enemypercent = (enemyhp * 100) / enemymax;
-        int HPpercent = (HP * 100) / maxhp;
+        int HPpercent = (HP * 100) / (maxhp*Constants.HP_INCREASE);
 
         ProgressBar playerhp = findViewById(R.id.playerhealth);
         ProgressBar enemy = findViewById(R.id.enemyhealth);
@@ -162,7 +162,7 @@ public class Fight extends AppCompatActivity {
         enemy.setProgress(enemypercent);
 
         txtenemyhp.setText(enemyhp + "/" + enemymax);
-        txtplayerhp.setText(HP + "/" + maxhp);
+        txtplayerhp.setText(HP + "/" + (maxhp*Constants.HP_INCREASE));
 
     }
 
@@ -195,12 +195,9 @@ public class Fight extends AppCompatActivity {
 
         Random rander = new Random();
 
-        double dmg = rander.nextInt(4) + (4 * difficulty);
-        if (defence == 5) {
-            dmg *= (1 - 0.23);
-        } else {
-            dmg *= (1 - (defence * 0.04));
-        }
+        double dmg = rander.nextInt(4) + (Constants.ENEMY_HIT * difficulty);
+
+        dmg *= (1 - ((defence * Constants.DEFENCE_INCREASE)/100));
 
         HP -= ((int) Math.round(dmg));
     }
@@ -345,7 +342,7 @@ public class Fight extends AppCompatActivity {
                     if (b == 1) {
                         enemyattack();
                     }
-                    Toast.makeText(Fight.this, R.string.cantrun, Toast.LENGTH_LONG).show();
+                    Toast.makeText(Fight.this, R.string.cant_run, Toast.LENGTH_LONG).show();
                 }
 
                 enabler();
@@ -431,14 +428,11 @@ public class Fight extends AppCompatActivity {
         int dmg;
         double lifestealheal;
 
-        if (attack == 5) {
-            dmg = rander.nextInt(4) + 35;
-        } else {
-            dmg = rander.nextInt(4) + (attack * 6);
-        }
+        dmg = rander.nextInt(4) + (attack * Constants.ATTACK_INCREASE);
+
         enemyhp -= dmg;
 
-        lifestealheal = dmg * (0.05 * lifesteal);
+        lifestealheal = dmg * (Constants.LIFESTEAL_GAIN * lifesteal);
         HP += ((int) Math.round(lifestealheal));
     }
 
@@ -586,7 +580,7 @@ public class Fight extends AppCompatActivity {
 
     public void success() {
         TextView won = findViewById(R.id.Info);
-        won.setText(R.string.runsuccess);
+        won.setText(R.string.run_success);
 
         Random rander = new Random();
         experience += rander.nextInt(5) + 1;

@@ -1,6 +1,5 @@
-package com.heekostudios.adventuregame;
+package com.heekostudios.explorerquest;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
@@ -15,7 +14,8 @@ public class Found extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
 
-    Integer HP, money, rawmeat, bread, apple,difficulty;
+    Integer money, rawmeat, bread, apple;
+    float difficulty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +41,7 @@ public class Found extends AppCompatActivity {
         bread = sharedPreferences.getInt("bread", 0);
         apple = sharedPreferences.getInt("apple", 0);
         rawmeat = sharedPreferences.getInt("rawmeat", 0);
-        difficulty=sharedPreferences.getInt("difficulty",1);
+        difficulty=sharedPreferences.getFloat("difficulty",1);
     }
 
     public void updater() {
@@ -50,17 +50,17 @@ public class Found extends AppCompatActivity {
         editor.putInt("bread", bread);
         editor.putInt("apple", apple);
         editor.putInt("rawmeat", rawmeat);
-        editor.commit();
+        editor.apply();
     }
 
 
     public void itemfind() {
 
-        TextView founditem = (TextView) findViewById(R.id.founditem);
-        ImageView item = (ImageView) findViewById(R.id.item_found);
+        TextView founditem = findViewById(R.id.founditem);
+        ImageView item = findViewById(R.id.item_found);
 
-        TextView foundorlost = (TextView) findViewById(R.id.youfound);
-        foundorlost.setText("You Found:");
+        TextView foundorlost = findViewById(R.id.youfound);
+        foundorlost.setText(R.string.you_found);
 
 
         Random rander = new Random();
@@ -72,29 +72,29 @@ public class Found extends AppCompatActivity {
                 item.setImageResource(R.drawable.rawmeat);
 
                 rawmeat = rawmeat + 1;
-                founditem.setText("Raw meat");
+                founditem.setText(R.string.rawmeat);
                 break;
             }
             case 1: {
                 item.setImageResource(R.drawable.appleimage);
 
                 apple = apple + 1;
-                founditem.setText("An apple");
+                founditem.setText(R.string.apple);
                 break;
             }
             case 2: {
                 item.setImageResource(R.drawable.goldbag);
 
-                int c = rander.nextInt(25) + (5*difficulty);
-                founditem.setText(c + " Gold");
+                int c = rander.nextInt(25) + Math.round(5*difficulty);
+                founditem.setText(c +" "+getString(R.string.gold));
                 money = c + money;
                 break;
             }
             case 3: {
                 item.setImageResource(R.drawable.goldbag);
 
-                int c = rander.nextInt(65) + (5*difficulty);
-                founditem.setText(c + " Gold");
+                int c = rander.nextInt(65) + Math.round(5*difficulty);
+                founditem.setText(c +getString(R.string.gold));
                 money = c + money;
                 break;
             }
@@ -102,7 +102,7 @@ public class Found extends AppCompatActivity {
                 item.setImageResource(R.drawable.breadpicture);
 
                 bread = bread + 1;
-                founditem.setText("A loaf of bread");
+                founditem.setText(R.string.bread);
                 break;
             }
         }

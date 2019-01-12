@@ -1,4 +1,4 @@
-package com.heekostudios.adventuregame;
+package com.heekostudios.explorerquest;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -29,9 +29,9 @@ public class Levelup extends AppCompatActivity {
 
         TextView levelnow= findViewById(R.id.levelnow);
         if (level==12){
-            levelnow.setText(R.string.maxlevelreach);
+            levelnow.setText(R.string.max_level_reach);
         }
-        levelnow.setText(getString(R.string.levelstate)+" "+level);
+        levelnow.setText(getString(R.string.level_now)+" "+level);
 
 
         levelnumber=findViewById(R.id.level);

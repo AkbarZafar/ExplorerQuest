@@ -111,7 +111,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
-                    android:contentDescription="@string/picture_of_bread"
+                    android:contentDescription="@string/bread"
                     android:onClick="box2"
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/breadpicture" />
@@ -133,7 +133,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
-                    android:contentDescription="@string/picture_of_apple"
+                    android:contentDescription="@string/apple"
                     android:onClick="box1"
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/appleimage" />
@@ -193,7 +193,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
-                    android:contentDescription="@string/picture_of_rawmeat"
+                    android:contentDescription="@string/rawmeat"
                     android:onClick="box3"
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/rawmeat" />
@@ -230,7 +230,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
-                    android:contentDescription="@string/picture_of_cooked_meat"
+                    android:contentDescription="@string/cooked_meat"
                     android:onClick="box4"
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/cookedmeat" />

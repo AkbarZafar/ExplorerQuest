@@ -1,4 +1,4 @@
-package com.heekostudios.adventuregame;
+package com.heekostudios.explorerquest;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -29,7 +29,7 @@ public class Selectperk extends AppCompatActivity {
     public void unpack() {
         attack = sharedPreferences.getInt("attack", 1);//attack level timesed by 6,, 6(current),12,18,24,35
         defence = sharedPreferences.getInt("defence", 1);//defence timesed by 3%,, 3%(current),6%,9%,12%,18%
-        maxhp = sharedPreferences.getInt("maxhp", 100);//hp boosted by 15 every time,, 100(current),115,130,145,180
+        maxhp = sharedPreferences.getInt("maxhp", 1);//hp boosted by 15 every time,, 100(current),115,130,145,180
     }
 
     public void setup() {
@@ -146,9 +146,7 @@ public class Selectperk extends AppCompatActivity {
             break;}
             case 3: {
                 maxhp = maxhp + 15;
-                if (maxhp == 145) {
-                    maxhp = 180;
-                break;}
+                break;
             }
         }
 

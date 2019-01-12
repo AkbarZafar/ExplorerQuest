@@ -1,25 +1,18 @@
-package com.heekostudios.adventuregame;
+package com.heekostudios.explorerquest;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.RotateAnimation;
-import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.io.IOException;
 import java.util.Random;
-
-import pl.droidsonroids.gif.GifDrawable;
 
 public class Cliff extends AppCompatActivity {
 
@@ -80,7 +73,7 @@ public class Cliff extends AppCompatActivity {
     }
 
     public void unload() {
-        HP = sharedPreferences.getInt("HP", 100);
+        HP = sharedPreferences.getInt("HP", 50);
         difficulty = sharedPreferences.getInt("difficulty", 1);
     }
 
@@ -88,12 +81,12 @@ public class Cliff extends AppCompatActivity {
         TextView fell = findViewById(R.id.youfell);
         TextView dmglost = findViewById(R.id.lost);
 
-        fell.setText(R.string.fellinditch);
+        fell.setText(R.string.fell_in_ditch);
 
         if (HP > 4 * difficulty) {
             Random random = new Random();
 
-            double fall = random.nextInt(25) + 35;
+            double fall = random.nextInt(6) + 17;
 
 
             int hplost = (int) Math.round((fall / 100) * HP);
@@ -101,7 +94,7 @@ public class Cliff extends AppCompatActivity {
             HP -= hplost;
             dmglost.setText("You lost " + hplost + " HP");
         } else {
-            dmglost.setText(R.string.lostnohp);
+            dmglost.setText(R.string.lost_no_hp);
         }
 
 

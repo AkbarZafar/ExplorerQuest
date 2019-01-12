@@ -1,4 +1,4 @@
-package com.heekostudios.adventuregame;
+package com.heekostudios.explorerquest;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,7 +12,7 @@ public class Death extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
     String user;
-    Integer highscore,score,HP, money, level, experience,difficulty, distance;
+    Integer highscore,score, money, level, experience,difficulty, distance;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,16 +32,16 @@ public class Death extends AppCompatActivity {
 
         if(score>highscore){
             highscore=score;
-            txthighscore.setText(R.string.newhighscore);
+            txthighscore.setText(R.string.new_high_score);
 
             SharedPreferences.Editor editor=sharedPreferences.edit();
             editor.putInt("highscore", highscore);
             editor.apply();
 
         }else{
-            txthighscore.setText(getString(R.string.highscoredisplay)+highscore);
+            txthighscore.setText(getString(R.string.highscore_display)+highscore);
         }
-        txtscore.setText(getString(R.string.scoredisplay)+score);
+        txtscore.setText(getString(R.string.score_display)+score);
 
 
     }

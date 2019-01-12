@@ -109,7 +109,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:background="@android:color/transparent"
-                    android:contentDescription="@string/picture_of_rawmeat"
+                    android:contentDescription="@string/rawmeat"
                     android:onClick="box3"
                     android:scaleType="fitCenter"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -149,7 +149,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:background="@android:color/transparent"
-                    android:contentDescription="@string/picture_of_apple"
+                    android:contentDescription="@string/apple"
                     android:onClick="box1"
                     android:scaleType="fitCenter" />
             </android.support.constraint.ConstraintLayout>
@@ -188,7 +188,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"
-                    android:contentDescription="@string/picture_of_cooked_meat"
+                    android:contentDescription="@string/cooked_meat"
                     android:onClick="box4"
                     android:scaleType="fitCenter"
                     android:src="@drawable/coin" />
@@ -224,7 +224,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:background="@android:color/transparent"
-                    android:contentDescription="@string/picture_of_bread"
+                    android:contentDescription="@string/bread"
                     android:onClick="box2"
                     android:scaleType="fitCenter"
                     app:layout_constraintBottom_toBottomOf="parent"

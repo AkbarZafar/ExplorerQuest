@@ -1,4 +1,4 @@
-package com.heekostudios.adventuregame;
+package com.heekostudios.explorerquest;
 
 import android.content.DialogInterface;
 import android.content.Intent;

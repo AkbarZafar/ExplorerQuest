@@ -1,4 +1,4 @@
-package com.heekostudios.adventuregame;
+package com.heekostudios.explorerquest;
 
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -45,7 +45,7 @@ public class Bag extends AppCompatActivity {
 
     public void present() {
         TextView health = (TextView) findViewById(R.id.HP);
-        health.setText(HP + "/" + maxhp);
+        health.setText(HP + "/" + maxhp*Constants.HP_INCREASE);
 
         TextView username = (TextView) findViewById(R.id.Backpack);
         username.setText(user + "'s Backpack");
@@ -166,7 +166,7 @@ public class Bag extends AppCompatActivity {
     public void action(View X) {
 
 
-        if (HP < maxhp) {
+        if (HP < (maxhp*Constants.HP_INCREASE)) {
 
             switch (setter) {
                 case 1: {
@@ -207,8 +207,8 @@ public class Bag extends AppCompatActivity {
         }
 
 
-        if (HP > maxhp) {
-            HP = maxhp;
+        if (HP > (maxhp*Constants.HP_INCREASE)) {
+            HP = (maxhp*Constants.HP_INCREASE);
         }
 
         TextView hprestore = (TextView) findViewById(R.id.result);
@@ -231,7 +231,7 @@ public class Bag extends AppCompatActivity {
         rawmeat = sharedPreferences.getInt("rawmeat", 0);
         apple = sharedPreferences.getInt("apple", 0);
         HP = sharedPreferences.getInt("HP", 100);
-        maxhp = sharedPreferences.getInt("maxhp", 100);
+        maxhp = sharedPreferences.getInt("maxhp", 1);
         cookedmeat = sharedPreferences.getInt("cookedmeat", 0);
     }
 

@@ -1,4 +1,4 @@
-package com.heekostudios.adventuregame;
+package com.heekostudios.explorerquest;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

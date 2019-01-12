@@ -1,4 +1,4 @@
-package com.heekostudios.adventuregame;
+package com.heekostudios.explorerquest;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -191,10 +191,10 @@ public class Cityinterface extends AppCompatActivity {
         button5.setEnabled(false);
 
 
-        actiondesc.setText("Recieve health everytime you hit an enemy");
+        actiondesc.setText(R.string.recieve_health);
         if (lifesteal == 0) {
-            cost.setText("Cost: 220 gold");
-            actiondesc.setText("Recieve health everytime you hit an enemy");
+            cost.setText(R.string.cost_lifesteal);
+            actiondesc.setText(R.string.recieve_health);
             select = 6;
             buy.setVisibility(View.VISIBLE);
             button.setEnabled(false);

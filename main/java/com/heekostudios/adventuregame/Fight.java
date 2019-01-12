@@ -1,4 +1,4 @@
-package com.heekostudios.adventuregame;
+package com.heekostudios.explorerquest;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -45,7 +45,7 @@ public class Fight extends AppCompatActivity {
         HP = sharedPreferences.getInt("HP", 100);
         defence = sharedPreferences.getInt("defence", 1);
         attack = sharedPreferences.getInt("attack", 1);
-        maxhp = sharedPreferences.getInt("maxhp", 100);
+        maxhp = sharedPreferences.getInt("maxhp", 1);
         difficulty = sharedPreferences.getInt("difficulty", 1);
         lifesteal = sharedPreferences.getInt("lifesteal", 0);
         experience = sharedPreferences.getInt("experience", 0);
@@ -147,7 +147,7 @@ public class Fight extends AppCompatActivity {
     public void healthupdate() {
 
         int enemypercent = (enemyhp * 100) / enemymax;
-        int HPpercent = (HP * 100) / maxhp;
+        int HPpercent = (HP * 100) / maxhp*Constants.HP_INCREASE;
 
         ProgressBar playerhp = findViewById(R.id.playerhealth);
         ProgressBar enemy = findViewById(R.id.enemyhealth);
@@ -159,7 +159,7 @@ public class Fight extends AppCompatActivity {
         enemy.setProgress(enemypercent);
 
         txtenemyhp.setText(enemyhp + getString(R.string.dash) + enemymax);
-        txtplayerhp.setText(HP + getString(R.string.dash) + maxhp);
+        txtplayerhp.setText(HP + getString(R.string.dash) + maxhp**Constants.HP_INCREASE);
 
     }
 

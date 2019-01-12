@@ -1,4 +1,4 @@
-package com.heekostudios.adventuregame;
+package com.heekostudios.explorerquest;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
@@ -139,7 +139,7 @@ public class Gamescreen extends AppCompatActivity {
     public void hpsetup() {
 
         TextView hp = (TextView) findViewById(R.id.HP);
-        hp.setText(HP + "/" + maxhp);
+        hp.setText(HP + "/" + maxhp*Constants.HP_INCREASE);
     }
 
     public void extract() {
@@ -153,7 +153,7 @@ public class Gamescreen extends AppCompatActivity {
         bread = sharedPreferences.getInt("bread", 0);
         attack = sharedPreferences.getInt("attack", 1);
         defence = sharedPreferences.getInt("defence", 1);
-        maxhp = sharedPreferences.getInt("maxhp", 100);
+        maxhp = sharedPreferences.getInt("maxhp", 1);
         distance = sharedPreferences.getInt("distance", 0);
         city = sharedPreferences.getInt("city", 0);
         difficulty = sharedPreferences.getInt("difficulty", 1);

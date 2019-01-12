@@ -1,16 +1,13 @@
-package com.heekostudios.adventuregame;
+package com.heekostudios.explorerquest;
 
-import android.app.Dialog;
-import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.preference.PreferenceManager;
+import android.print.pdf.PrintedPdfDocument;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.animation.TranslateAnimation;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.view.View;
 import android.content.Intent;
 import android.content.DialogInterface;
@@ -30,6 +27,20 @@ public class Settings extends AppCompatActivity {
 
         sharedPreferences= PreferenceManager.getDefaultSharedPreferences(this);
         sharedPreferences.getString("username",null);
+
+
+        FloatingActionButton mailer= (findViewById(R.id.mailer));
+
+        mailer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Intent.ACTION_SENDTO);
+                intent.setData(Uri.parse("mailto:"));
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"heekostudios@gmail.com"});
+                intent.putExtra(Intent.EXTRA_SUBJECT,"Feedback");
+                startActivity(intent);
+            }
+        });
     }
 
     public void changename(View x){
